@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { SITE } from "@/lib/constants";
 
 export function TopBar() {
