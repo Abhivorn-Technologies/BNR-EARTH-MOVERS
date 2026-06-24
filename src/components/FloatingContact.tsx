@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Phone } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Phone, ChevronUp } from "lucide-react";
 import { SITE } from "@/lib/constants";
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -42,25 +43,25 @@ function FloatingButton({
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       aria-label={label}
-      initial={{ opacity: 0, scale: 0, x: 40 }}
-      animate={{ opacity: 1, scale: 1, x: 0 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
-      whileHover={{ scale: 1.08 }}
+      initial={{ opacity: 0, scale: 0, y: 50 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.5 }}
+      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       className="group relative flex items-center justify-end"
     >
       {textLabel && (
         <span
-          className={`absolute right-full mr-3 sm:mr-4 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-bold shadow-lg whitespace-nowrap hidden md:block ${labelColor}`}
+          className={`absolute right-full mr-3 sm:mr-4 px-3 py-2 rounded-md text-sm font-semibold shadow-md whitespace-nowrap hidden md:block ${labelColor}`}
         >
           {textLabel}
         </span>
       )}
       <span
-        className={`absolute h-16 w-16 rounded-full ${glowColor} animate-pulse-ring hidden sm:block`}
+        className={`absolute h-[60px] w-[60px] rounded-full ${glowColor} animate-pulse-ring hidden sm:block`}
       />
       <span
-        className={`relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full ${color} shadow-lg transition-shadow group-hover:shadow-xl`}
+        className={`relative flex h-12 w-12 sm:h-[60px] sm:w-[60px] items-center justify-center rounded-full ${color} shadow-lg transition-transform`}
       >
         {children}
       </span>
@@ -69,17 +70,56 @@ function FloatingButton({
 }
 
 export function FloatingContact() {
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 500) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-3 sm:gap-4 items-end">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-4 items-end">
+      
+      <AnimatePresence>
+        {showScroll && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0, y: 50 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={scrollToTop}
+            className="group relative flex h-12 w-12 sm:h-[60px] sm:w-[60px] items-center justify-center rounded-full bg-slate-900 shadow-lg shadow-slate-900/20 transition-transform"
+            aria-label="Scroll to top"
+          >
+            <ChevronUp className="h-6 w-6 sm:h-8 sm:w-8 text-[#fcd34d]" strokeWidth={3} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+
       <FloatingButton
         href={SITE.phoneUrl}
         label="Call us"
         textLabel="Talk to an Expert"
         color="bg-[#fc6604]"
         glowColor="bg-[#fc6604]/40"
-        labelColor="bg-[#fc6604] text-white"
+        labelColor="bg-[#fc6604] text-white shadow-md"
       >
-        <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-white" fill="white" />
+        <Phone className="h-5 w-5 sm:h-[26px] sm:w-[26px] text-white" fill="white" />
       </FloatingButton>
 
       <FloatingButton
@@ -88,10 +128,10 @@ export function FloatingContact() {
         textLabel="WhatsApp Now"
         color="bg-[#25D366]"
         glowColor="bg-[#25D366]/40"
-        labelColor="bg-[#25D366] text-white"
+        labelColor="bg-[#25D366] text-white shadow-md"
         external
       >
-        <WhatsAppIcon className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
+        <WhatsAppIcon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
       </FloatingButton>
     </div>
   );

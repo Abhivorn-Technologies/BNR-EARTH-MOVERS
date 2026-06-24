@@ -1,6 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
-import { VideoSection, CtaBanner } from "@/components/VideoSection";
+import { VideoSection } from "@/components/VideoSection";
 import { Services } from "@/components/Services";
 import { Process, WhyUs } from "@/components/Process";
 import { Testimonials } from "@/components/Testimonials";
@@ -13,7 +13,6 @@ export default function Home() {
       <Hero />
       <Stats />
       <VideoSection />
-      <CtaBanner />
       <Services />
       <Process />
       <WhyUs />

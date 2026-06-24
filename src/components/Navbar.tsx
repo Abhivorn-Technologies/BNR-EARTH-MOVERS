@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
@@ -11,8 +11,32 @@ import { NAV_LINKS } from "@/lib/constants";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const { scrollY } = useScroll();
-  const pathname = usePathname();
+  const pathname = usePathname() || "/";
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sectionIds = NAV_LINKS.filter((l) => l.href.startsWith("#")).map((l) => l.href.substring(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -40% 0px" }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [pathname]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 40);
@@ -21,21 +45,38 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white shadow-md transition-all duration-300">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-        <Link href={pathname === "/" ? "#home" : "/"} className="group shrink-0 transition-opacity hover:opacity-90">
+        <Link href="/" className="group shrink-0 transition-opacity hover:opacity-90">
           <Logo />
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => {
-            const targetHref = link.href.startsWith("#") ? (pathname === "/" ? link.href : `/${link.href}`) : link.href;
+            const targetHref = link.href.startsWith("#") ? `/${link.href}` : link.href;
+            
+            // Determine if this link is the currently active page/section
+            let isActive = false;
+            if (pathname === "/") {
+              if (link.href.startsWith("#")) {
+                isActive = activeSection === link.href.substring(1);
+              }
+            } else {
+              isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            }
+
             return (
               <Link
                 key={link.href}
                 href={targetHref}
-                className="group relative py-1 text-sm font-bold uppercase tracking-wide text-foreground/80 transition-colors hover:text-accent"
+                className={`group relative py-1 text-sm font-bold uppercase tracking-wide transition-colors ${
+                  isActive ? "text-accent" : "text-foreground/80 hover:text-accent"
+                }`}
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent transition-all duration-300 ease-out group-hover:w-full" />
+                <span 
+                  className={`absolute bottom-0 left-0 h-[2px] bg-accent transition-all duration-300 ease-out ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`} 
+                />
               </Link>
             );
           })}
@@ -69,13 +110,28 @@ export function Navbar() {
         >
           <div className="flex flex-col gap-3">
             {NAV_LINKS.map((link) => {
-              const targetHref = link.href.startsWith("#") ? (pathname === "/" ? link.href : `/${link.href}`) : link.href;
+              const targetHref = link.href.startsWith("#") ? `/${link.href}` : link.href;
+              
+              // Determine if this link is the currently active page/section
+              let isActive = false;
+              if (pathname === "/") {
+                if (link.href.startsWith("#")) {
+                  isActive = activeSection === link.href.substring(1);
+                }
+              } else {
+                isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+              }
+
               return (
                 <Link
                   key={link.href}
                   href={targetHref}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-3 py-2 text-sm font-semibold uppercase tracking-wide text-foreground/80 hover:bg-surface hover:text-accent"
+                  className={`rounded-lg px-3 py-2 text-sm font-semibold uppercase tracking-wide ${
+                    isActive 
+                      ? "bg-accent/10 text-accent" 
+                      : "text-foreground/80 hover:bg-surface hover:text-accent"
+                  }`}
                 >
                   {link.label}
                 </Link>

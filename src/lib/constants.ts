@@ -16,8 +16,8 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
   { label: "Machinery", href: "/machinery" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "#contact" },
@@ -62,7 +62,7 @@ export const SERVICES = [
   {
     id: "soil-excavation",
     title: "Soil Excavation",
-    image: "/SOIL EXCAVATION.png",
+    image: "/Soil Excavations.jpg",
     description: "Rapid and reliable mass soil excavation for all types of infrastructure projects.",
     points: [
       "Mass Soil Excavation for residential, commercial, industrial and infrastructure projects",
@@ -76,7 +76,7 @@ export const SERVICES = [
   {
     id: "site-preparation",
     title: "Site Preparation",
-    image: "/Site preparation.png",
+    image: "/Site Preparations.jpeg",
     description: "Complete site preparation, from jungle clearing to high-quality soil supplying and compaction.",
     points: [
       "Jungle Cleaning, tree cutting and Land leveling works",

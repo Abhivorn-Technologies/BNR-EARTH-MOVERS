@@ -19,6 +19,7 @@ export function Hero() {
         loop
         muted
         playsInline
+        poster="/ROCK EXCAVATION 1.png"
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Very subtle dark overlay so the video is super clear */}
@@ -92,22 +93,6 @@ export function Hero() {
           </motion.div>
       </motion.div>
 
-      {/* Floating Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none"
-      >
-        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/50 mb-3">Scroll</span>
-        <div className="h-12 w-6 rounded-full border-2 border-white/20 flex justify-center p-1">
-          <motion.div
-            animate={{ y: [0, 24, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_rgba(252,102,4,0.8)]"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }

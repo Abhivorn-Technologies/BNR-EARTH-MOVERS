@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Barlow, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/constants";
-import { ScrollToTop } from "@/components/ScrollToTop";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
@@ -48,7 +47,6 @@ export default function RootLayout({
         {children}
         <Footer />
         <FloatingContact />
-        <ScrollToTop />
       </body>
     </html>
   );

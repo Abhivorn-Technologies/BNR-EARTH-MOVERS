@@ -68,13 +68,16 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-8 sm:flex-row">
-          <p className="text-xs font-medium tracking-wide text-slate-500">
-            ©{new Date().getFullYear()} {SITE.name}. All rights reserved.
-          </p>
-          <p className="text-xs font-medium tracking-wide text-slate-500">
-            Built in India by {SITE.name}.
-          </p>
+        <div className="mt-20 flex flex-col items-center justify-center gap-3 border-t border-slate-800/80 pt-8 sm:flex-row sm:justify-start">
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+            <p className="text-sm font-medium tracking-wide text-slate-400 text-center sm:text-left">
+              ©{new Date().getFullYear()} {SITE.name}. All rights reserved.
+            </p>
+            <span className="hidden text-slate-600 sm:inline-block">|</span>
+            <p className="text-sm font-medium tracking-wide text-slate-400 text-center sm:text-left">
+              Developed by <span className="text-[#fc6604]">Abhivorn Technologies Pvt Ltd</span> & <span className="text-[#fc6604]">Digi Level Up</span>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

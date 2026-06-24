@@ -86,21 +86,21 @@ export function Process() {
 
 export function WhyUs() {
   return (
-    <AnimatedSection className="bg-slate-50 py-16 lg:py-20 border-t border-slate-200">
+    <AnimatedSection className="bg-slate-50 py-10 lg:py-20 border-t border-slate-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-sm font-bold uppercase tracking-widest text-[#fc6604]">
             Why Choose Us
           </p>
           <h2
-            className="mt-4 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl"
+            className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
             style={{ fontFamily: "var(--font-barlow)" }}
           >
             The Power Behind Every Project
           </h2>
         </div>
 
-        <StaggerContainer className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerContainer className="mt-10 lg:mt-16 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {WHY_US.map((item, i) => (
               <motion.div
                 key={item.title}
