@@ -8,7 +8,7 @@ import { SERVICE_AREAS, SITE } from "@/lib/constants";
 
 export function ServiceArea() {
   // Default to Hyderabad or the first area
-  const [activeArea, setActiveArea] = useState(SERVICE_AREAS[1] || SERVICE_AREAS[0] || "Hyderabad");
+  const [activeArea, setActiveArea] = useState<string>(SERVICE_AREAS[1] || SERVICE_AREAS[0] || "Hyderabad");
 
   return (
     <AnimatedSection className="bg-[#141414] py-16 lg:py-20">
