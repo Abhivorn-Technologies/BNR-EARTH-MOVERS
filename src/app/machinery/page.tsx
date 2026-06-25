@@ -7,24 +7,9 @@ import { MACHINERY } from "@/lib/constants";
 
 // Helper function to pick a real image for each machinery
 function getIconForMachinery(name: string) {
-  let imgSrc = "/machinery/wagon-drills.jpeg"; // Fallback image
-
-  switch (name) {
-    case "Excavators": imgSrc = "/machinery/excavators.jpg"; break;
-    case "Dumpers": imgSrc = "/machinery/dumpers.jpeg"; break;
-    case "Jack Hammer Drills": imgSrc = "/machinery/jack-hammer.png"; break;
-    case "Wagon Drills": imgSrc = "/machinery/wagon-drills.jpeg"; break;
-    case "Explosives Mobile Magazines": imgSrc = "/machinery/explosives.jpeg"; break;
-    case "Seismographs": imgSrc = "/machinery/seismographs.jpeg"; break;
-    case "Water Tanker with Sprinklers": imgSrc = "/machinery/water-tanker.jpeg"; break;
-    case "Dozers": imgSrc = "/machinery/dozers.jpeg"; break;
-    case "Dewatering Pumps": imgSrc = "/machinery/dewatering-pumps.jpeg"; break;
-    case "Diamond Rope Cutting Units": imgSrc = "/machinery/rope-cutting.png"; break;
-    case "Blasting Mats / Rubber Mats": imgSrc = "/machinery/blasting-mats.jpeg"; break;
-    case "Pile Load Testing Equipment": imgSrc = "/machinery/pile-testing.jpeg"; break;
-    case "Backhoe": imgSrc = "/machinery/backhoe.jpeg"; break;
-    case "Hydraulic Rotary Rig": imgSrc = "/machinery/rotary-rig.png"; break;
-  }
+  // Using the transparent excavator image as a placeholder for all items
+  // until the specific transparent machinery images are downloaded.
+  const imgSrc = "/machinery/excavators.png"; 
 
   return (
     <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-slate-50 shadow-sm ring-1 ring-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:ring-[#fc6604] group-hover:ring-2">
@@ -32,7 +17,7 @@ function getIconForMachinery(name: string) {
         src={imgSrc} 
         alt={name} 
         fill 
-        className="object-cover"
+        className="object-contain p-1.5 drop-shadow-sm"
         sizes="56px"
       />
     </div>
