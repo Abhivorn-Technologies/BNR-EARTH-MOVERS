@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GALLERY_IMAGES, NEW_GALLERY_PHOTOS, NEW_GALLERY_VIDEOS } from "@/lib/constants";
-import { Play as PlayIcon, X as XIcon, Image as ImageIcon } from "lucide-react";
+import { Play as PlayIcon, X as XIcon, Image as ImageIcon, RotateCw, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
