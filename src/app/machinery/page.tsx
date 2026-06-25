@@ -5,30 +5,36 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { MACHINERY } from "@/lib/constants";
 
-// Helper function to pick a 3D-style emoji icon for each machinery
+// Helper function to pick a real image for each machinery
 function getIconForMachinery(name: string) {
-  let emoji = "🚜"; // Fallback
+  let imgSrc = "/photo1.jpeg"; // Fallback image
 
   switch (name) {
-    case "Excavators": emoji = "🚜"; break;
-    case "Dumpers": emoji = "🚛"; break;
-    case "Jack Hammer Drills": emoji = "🔨"; break;
-    case "Wagon Drills": emoji = "⛏️"; break;
-    case "Explosives Mobile Magazines": emoji = "🧨"; break;
-    case "Seismographs": emoji = "📈"; break;
-    case "Water Tanker with Sprinklers": emoji = "💧"; break;
-    case "Dozers": emoji = "🚧"; break;
-    case "Dewatering Pumps": emoji = "🌊"; break;
-    case "Diamond Rope Cutting Units": emoji = "🪚"; break;
-    case "Blasting Mats / Rubber Mats": emoji = "🛡️"; break;
-    case "Pile Load Testing Equipment": emoji = "🏗️"; break;
-    case "Backhoe": emoji = "🚜"; break;
-    case "Hydraulic Rotary Rig": emoji = "🔩"; break;
+    case "Excavators": imgSrc = "/Excavators.jpg"; break;
+    case "Dumpers": imgSrc = "/photo11.jpeg"; break;
+    case "Jack Hammer Drills": imgSrc = "/tractor jack hammer blasting 1.png"; break;
+    case "Wagon Drills": imgSrc = "/photo1.jpeg"; break;
+    case "Explosives Mobile Magazines": imgSrc = "/photo2.jpeg"; break;
+    case "Seismographs": imgSrc = "/photo3.jpeg"; break;
+    case "Water Tanker with Sprinklers": imgSrc = "/photo4.jpeg"; break;
+    case "Dozers": imgSrc = "/photo5.jpeg"; break;
+    case "Dewatering Pumps": imgSrc = "/photo6.jpeg"; break;
+    case "Diamond Rope Cutting Units": imgSrc = "/Rope Cutting.png"; break;
+    case "Blasting Mats / Rubber Mats": imgSrc = "/photo7.jpeg"; break;
+    case "Pile Load Testing Equipment": imgSrc = "/photo8.jpeg"; break;
+    case "Backhoe": imgSrc = "/photo9.jpeg"; break;
+    case "Hydraulic Rotary Rig": imgSrc = "/RIG BALSTING.png"; break;
   }
 
   return (
-    <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-slate-50 shadow-sm ring-1 ring-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:ring-[#fc6604] group-hover:ring-2">
-      <span className="text-3xl filter drop-shadow-sm">{emoji}</span>
+    <div className="relative h-14 w-14 overflow-hidden rounded-full bg-slate-50 shadow-sm ring-1 ring-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:ring-[#fc6604] group-hover:ring-2">
+      <Image 
+        src={imgSrc} 
+        alt={name} 
+        fill 
+        className="object-cover"
+        sizes="56px"
+      />
     </div>
   );
 }
