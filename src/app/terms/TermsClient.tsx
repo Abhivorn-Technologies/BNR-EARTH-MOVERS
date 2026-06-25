@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FileText, HardHat, Truck, AlertTriangle, CreditCard, ArrowRight } from "lucide-react";
+import { FileText, HardHat, Truck, AlertTriangle, CreditCard, ArrowRight, PhoneCall, Mail } from "lucide-react";
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
 
@@ -112,11 +112,13 @@ const SECTIONS = [
             Payment structures will be outlined clearly in your custom quote. We require an initial mobilization deposit before machinery is dispatched to the site. Final balance is due upon project completion or at agreed-upon milestones for long-term excavations.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4 pt-6 border-t border-slate-100">
-            <a href={SITE.phoneUrl} className="inline-flex items-center justify-center px-8 py-4 bg-[#fc6604] text-white font-bold rounded-xl hover:bg-[#ea5a02] transition-all shadow-lg shadow-[#fc6604]/20 hover:-translate-y-1">
-              Contact Billing
+            <a href={SITE.phoneUrl} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#fc6604] text-white font-bold rounded-xl hover:bg-[#ea5a02] transition-all shadow-lg shadow-[#fc6604]/20 hover:-translate-y-1">
+              <PhoneCall className="h-4 w-4" />
+              Call Billing
             </a>
-            <a href={SITE.emailUrl} className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 font-bold rounded-xl border-2 border-slate-200 hover:border-slate-400 hover:bg-slate-50 transition-all hover:-translate-y-1">
-              Request Quote
+            <a href={SITE.emailUrl} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-900 font-bold rounded-xl border-2 border-slate-200 hover:border-slate-400 hover:bg-slate-50 transition-all hover:-translate-y-1">
+              <Mail className="h-4 w-4 text-slate-400" />
+              Email for Quote
             </a>
           </div>
         </div>
