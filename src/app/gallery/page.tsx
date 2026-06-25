@@ -199,7 +199,7 @@ export default function GalleryPage() {
     return `${m}:${s.toString().padStart(2, '0')}`;
   };
 
-  const activeItems = activeTab === "Photos" ? [...GALLERY_IMAGES, ...NEW_GALLERY_PHOTOS] : NEW_GALLERY_VIDEOS;
+  const activeItems = activeTab === "Photos" ? NEW_GALLERY_PHOTOS : NEW_GALLERY_VIDEOS;
   const visibleItems = showAll ? activeItems : activeItems.slice(0, 8);
   const hasMore = activeItems.length > 8 && !showAll;
 
