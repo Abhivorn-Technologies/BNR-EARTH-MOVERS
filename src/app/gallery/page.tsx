@@ -3,13 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GALLERY_VIDEOS } from "@/lib/constants";
-import { ChevronDown, Play as PlayIcon } from "lucide-react";
+import { ChevronDown, Play as PlayIcon, X as XIcon } from "lucide-react";
 import Image from "next/image";
 
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [expandedVideo, setExpandedVideo] = useState<{src: string, title: string, category: string} | null>(null);
   
   const filteredVideos = activeCategory === "All" 
     ? GALLERY_VIDEOS 
@@ -97,7 +98,8 @@ export default function GalleryPage() {
             {filteredVideos.map((item) => (
               <motion.div
                 key={item.src}
-                layout
+                layoutId={`video-container-${item.src}`}
+                onClick={() => setExpandedVideo(item)}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
@@ -146,6 +148,40 @@ export default function GalleryPage() {
           </div>
         )}
       </section>
+
+      {/* Video Modal Overlay */}
+      <AnimatePresence>
+        {expandedVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setExpandedVideo(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-8"
+          >
+            <motion.div
+              layoutId={`video-container-${expandedVideo.src}`}
+              className="relative w-full overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 aspect-video"
+              style={{ maxWidth: '80vw' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setExpandedVideo(null)}
+                className="absolute right-4 top-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-black/80 transition-colors"
+              >
+                <XIcon className="h-6 w-6" />
+              </button>
+              <video
+                src={expandedVideo.src}
+                className="h-full w-full object-contain bg-black"
+                autoPlay
+                controls
+                playsInline
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
