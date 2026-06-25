@@ -82,6 +82,15 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
         onEnded={() => setIsPlaying(false)}
       />
 
+      {/* Top Right Close Button (Appears on Hover) */}
+      <button 
+        onClick={(e) => { e.stopPropagation(); onClose(); }}
+        className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors opacity-0 group-hover:opacity-100 backdrop-blur-sm"
+        aria-label="Close Video"
+      >
+        <XIcon className="h-5 w-5" />
+      </button>
+
       {/* Custom Control Bar (Appears on Hover) */}
       <div 
         className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-16 pb-4 px-4 sm:px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
