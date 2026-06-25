@@ -108,22 +108,44 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
 
         {/* Controls Row */}
         <div className="flex items-center justify-between text-white">
-          <div className="flex items-center gap-5 sm:gap-7">
-            <button onClick={togglePlay} className="hover:text-red-500 transition-colors transform hover:scale-110" aria-label="Play/Pause">
-              {isPlaying ? <PauseIcon className="h-6 w-6" fill="currentColor" /> : <PlayIcon className="h-6 w-6" fill="currentColor" />}
-            </button>
-            <button onClick={toggleMute} className="hover:text-red-500 transition-colors transform hover:scale-110" aria-label="Mute/Unmute">
-              {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
-            </button>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <div className="group/btn relative flex items-center justify-center">
+              <button onClick={togglePlay} className="hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Play/Pause">
+                {isPlaying ? <PauseIcon className="h-5 w-5" fill="currentColor" /> : <PlayIcon className="h-5 w-5" fill="currentColor" />}
+              </button>
+              <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
+                {isPlaying ? "Pause" : "Play"}
+              </div>
+            </div>
+
+            <div className="group/btn relative flex items-center justify-center">
+              <button onClick={toggleMute} className="hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Mute/Unmute">
+                {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+              </button>
+              <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
+                {isMuted ? "Unmute" : "Mute"}
+              </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-5 sm:gap-7">
-            <button onClick={toggleFullScreen} className="hover:text-red-500 transition-colors transform hover:scale-110 hidden sm:block" aria-label="Full Screen">
-              <Maximize className="h-5 w-5" />
-            </button>
-            <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="hover:text-red-500 transition-colors transform hover:scale-110" aria-label="Minimize/Close">
-              <Minimize className="h-6 w-6" />
-            </button>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <div className="group/btn relative hidden sm:flex items-center justify-center">
+              <button onClick={toggleFullScreen} className="hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Full Screen">
+                <Maximize className="h-4 w-4" />
+              </button>
+              <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
+                Full Screen
+              </div>
+            </div>
+
+            <div className="group/btn relative flex items-center justify-center">
+              <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Minimize/Close">
+                <Minimize className="h-5 w-5" />
+              </button>
+              <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
+                Minimize
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -132,12 +154,7 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
 }
 
 export default function GalleryPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
   const [expandedVideo, setExpandedVideo] = useState<{src: string, title: string, category: string} | null>(null);
-  
-  const filteredVideos = activeCategory === "All" 
-    ? GALLERY_VIDEOS 
-    : GALLERY_VIDEOS.filter((vid) => vid.category === activeCategory);
 
   return (
     <main className="min-h-screen bg-slate-100 selection:bg-accent selection:text-white pb-24">
@@ -195,30 +212,13 @@ export default function GalleryPage() {
       </section>
 
       {/* 2. Premium Image Grid */}
-      <section className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Dynamic Category Filters */}
-        <div className="relative z-30 mx-auto -mt-10 mb-8 flex max-w-fit flex-wrap items-center justify-center gap-2 rounded-2xl bg-white p-2 shadow-xl shadow-black/10 ring-1 ring-slate-900/5">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`rounded-xl px-6 py-2.5 text-sm font-bold tracking-wide transition-all duration-300 ${
-                activeCategory === cat
-                  ? "bg-accent text-white shadow-md"
-                  : "bg-transparent text-slate-600 hover:bg-slate-50 hover:text-accent"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
+      <section className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-16">
         <motion.div 
           layout
           className="flex flex-wrap justify-center gap-5 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filteredVideos.map((item) => (
+            {GALLERY_VIDEOS.map((item) => (
               <motion.div
                 key={item.src}
                 layoutId={`video-container-${item.src}`}
@@ -265,9 +265,9 @@ export default function GalleryPage() {
           </AnimatePresence>
         </motion.div>
         
-        {filteredVideos.length === 0 && (
+        {GALLERY_VIDEOS.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-lg text-slate-500">No videos found in this category.</p>
+            <p className="text-lg text-slate-500">No videos found.</p>
           </div>
         )}
       </section>
