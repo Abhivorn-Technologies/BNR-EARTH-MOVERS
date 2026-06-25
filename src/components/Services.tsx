@@ -7,6 +7,7 @@ import Image from "next/image";
 import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { SERVICES } from "@/lib/constants";
+import Link from "next/link";
 
 function ServicesContent() {
   const searchParams = useSearchParams();
@@ -173,7 +174,7 @@ function ServicesContent() {
                 className="shrink-0 snap-start snap-always w-[85vw] sm:w-[400px] lg:w-[450px]"
                 onPointerDown={() => setUserInteracted(true)} // Interacting directly with cards stops autoplay
               >
-                <div className="group/card relative h-[480px] lg:h-[520px] w-full flex-col overflow-hidden rounded-[2.5rem] bg-slate-900 shadow-xl shadow-slate-200/50 border-[6px] border-white transition-all duration-500 hover:shadow-2xl hover:shadow-[#fc6604]/20 hover:border-[#fc6604] cursor-pointer">
+                <Link href={`/services/${service.id}`} className="block group/card relative h-[480px] lg:h-[520px] w-full flex-col overflow-hidden rounded-[2.5rem] bg-slate-900 shadow-xl shadow-slate-200/50 border-[6px] border-white transition-all duration-500 hover:shadow-2xl hover:shadow-[#fc6604]/20 hover:border-[#fc6604] cursor-pointer">
                   
                   {/* Complete Image (Covering entire card) */}
                   <Image
@@ -216,7 +217,7 @@ function ServicesContent() {
                     </div>
                   </div>
                   
-                </div>
+                </Link>
               </div>
             ))}
           </div>
@@ -224,14 +225,6 @@ function ServicesContent() {
           {/* Navigation Controls */}
           <div className="flex justify-center items-center gap-4 sm:gap-8 mt-4">
             
-            {/* Left Arrow */}
-            <button
-              onClick={() => scrollBy(-1, true)}
-              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-slate-700 shadow-md ring-1 ring-slate-200 transition-all duration-300 hover:text-[#fc6604] hover:shadow-lg hover:-translate-y-1 active:scale-95"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-
             {/* Dots */}
             <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3">
               {SERVICES.map((_, idx) => (
@@ -254,14 +247,6 @@ function ServicesContent() {
                 </button>
               ))}
             </div>
-
-            {/* Right Arrow */}
-            <button
-              onClick={() => scrollBy(1, true)}
-              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-slate-700 shadow-md ring-1 ring-slate-200 transition-all duration-300 hover:text-[#fc6604] hover:shadow-lg hover:-translate-y-1 active:scale-95"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
 
           </div>
 
