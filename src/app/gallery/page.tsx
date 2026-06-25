@@ -1,12 +1,135 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GALLERY_VIDEOS } from "@/lib/constants";
-import { ChevronDown, Play as PlayIcon, X as XIcon } from "lucide-react";
+import { ChevronDown, Play as PlayIcon, X as XIcon, Pause as PauseIcon, Volume2, VolumeX, Maximize, Minimize } from "lucide-react";
 import Image from "next/image";
 
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
+
+function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const toggleFullScreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (containerRef.current) {
+      if (!document.fullscreenElement) {
+        containerRef.current.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const current = videoRef.current.currentTime;
+      const total = videoRef.current.duration;
+      setProgress((current / total) * 100 || 0);
+    }
+  };
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+    const newTime = Number(e.target.value);
+    if (videoRef.current) {
+      const timeToSeek = (newTime / 100) * videoRef.current.duration;
+      videoRef.current.currentTime = timeToSeek;
+      setProgress(newTime);
+    }
+  };
+
+  return (
+    <div 
+      ref={containerRef} 
+      className="relative w-full h-full bg-black group flex items-center justify-center"
+      onClick={togglePlay}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        className="h-full w-full object-contain"
+        autoPlay
+        playsInline
+        onTimeUpdate={handleTimeUpdate}
+        onEnded={() => setIsPlaying(false)}
+      />
+
+      {/* Custom Control Bar (Appears on Hover) */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-16 pb-4 px-4 sm:px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Progress Bar (YouTube Style) */}
+        <div className="w-full h-1.5 bg-white/30 mb-4 cursor-pointer relative group/slider">
+          <input 
+            type="range" 
+            min="0" 
+            max="100" 
+            value={progress}
+            onChange={handleSeek}
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+          />
+          <div 
+            className="h-full bg-red-600 relative"
+            style={{ width: `${progress}%` }}
+          >
+            {/* Thumb */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-red-600 rounded-full scale-0 group-hover/slider:scale-100 transition-transform" />
+          </div>
+        </div>
+
+        {/* Controls Row */}
+        <div className="flex items-center justify-between text-white">
+          <div className="flex items-center gap-5 sm:gap-7">
+            <button onClick={togglePlay} className="hover:text-red-500 transition-colors transform hover:scale-110" aria-label="Play/Pause">
+              {isPlaying ? <PauseIcon className="h-6 w-6" fill="currentColor" /> : <PlayIcon className="h-6 w-6" fill="currentColor" />}
+            </button>
+            <button onClick={toggleMute} className="hover:text-red-500 transition-colors transform hover:scale-110" aria-label="Mute/Unmute">
+              {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
+            </button>
+          </div>
+
+          <div className="flex items-center gap-5 sm:gap-7">
+            <button onClick={toggleFullScreen} className="hover:text-red-500 transition-colors transform hover:scale-110 hidden sm:block" aria-label="Full Screen">
+              <Maximize className="h-5 w-5" />
+            </button>
+            <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="hover:text-red-500 transition-colors transform hover:scale-110" aria-label="Minimize/Close">
+              <Minimize className="h-6 w-6" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -165,19 +288,7 @@ export default function GalleryPage() {
               style={{ maxWidth: '80vw' }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setExpandedVideo(null)}
-                className="absolute right-4 top-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-black/80 transition-colors"
-              >
-                <XIcon className="h-6 w-6" />
-              </button>
-              <video
-                src={expandedVideo.src}
-                className="h-full w-full object-contain bg-black"
-                autoPlay
-                controls
-                playsInline
-              />
+              <CustomVideoPlayer src={expandedVideo.src} onClose={() => setExpandedVideo(null)} />
             </motion.div>
           </motion.div>
         )}
