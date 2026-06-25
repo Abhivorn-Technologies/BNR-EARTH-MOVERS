@@ -69,13 +69,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             {/* LEFT SIDE: Image */}
             <div className="relative w-full h-full">
               <div className="lg:sticky lg:top-32">
-                <div className="group relative w-full aspect-[4/3] overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-100 bg-slate-100">
-                  <Image
+                <div className="group overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-100 bg-slate-100 flex items-center justify-center">
+                  <img
                     src={service.image}
                     alt={service.title}
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="w-full h-auto object-contain transition-transform duration-1000 group-hover:scale-105"
                   />
                 </div>
               </div>
