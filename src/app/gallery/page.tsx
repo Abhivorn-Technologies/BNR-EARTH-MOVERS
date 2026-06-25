@@ -3,177 +3,30 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GALLERY_IMAGES, NEW_GALLERY_PHOTOS, NEW_GALLERY_VIDEOS } from "@/lib/constants";
-import { ChevronDown, Play as PlayIcon, X as XIcon, Pause as PauseIcon, Volume2, VolumeX, Maximize, Minimize, Image as ImageIcon, RotateCw } from "lucide-react";
+import { Play as PlayIcon, X as XIcon, Image as ImageIcon } from "lucide-react";
 import Image from "next/image";
 
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
 
 function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-
-  const formatTime = (timeInSeconds: number) => {
-    if (!timeInSeconds || isNaN(timeInSeconds)) return "0:00";
-    const m = Math.floor(timeInSeconds / 60);
-    const s = Math.floor(timeInSeconds % 60);
-    return `${m}:${s.toString().padStart(2, '0')}`;
-  };
-
-  const togglePlay = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
-
-  const toggleFullScreen = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (containerRef.current) {
-      if (!document.fullscreenElement) {
-        containerRef.current.requestFullscreen().catch(err => {
-          console.error(`Error attempting to enable fullscreen: ${err.message}`);
-        });
-      } else {
-        document.exitFullscreen();
-      }
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      const current = videoRef.current.currentTime;
-      const total = videoRef.current.duration;
-      setProgress((current / total) * 100 || 0);
-      setCurrentTime(current);
-      setDuration(total || 0);
-    }
-  };
-
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.stopPropagation();
-    const newTime = Number(e.target.value);
-    if (videoRef.current) {
-      const timeToSeek = (newTime / 100) * videoRef.current.duration;
-      videoRef.current.currentTime = timeToSeek;
-      setProgress(newTime);
-    }
-  };
-
   return (
-    <div 
-      ref={containerRef} 
-      className="relative flex items-center justify-center bg-black group overflow-hidden rounded-2xl"
-      onClick={togglePlay}
-    >
+    <div className="relative flex items-center justify-center bg-black group overflow-hidden rounded-2xl p-0.5">
       <video
-        ref={videoRef}
         src={src}
-        className="w-auto h-auto max-w-full max-h-[85vh] object-contain"
+        className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-xl"
         autoPlay
+        controls
         playsInline
-        muted={isMuted}
-        onTimeUpdate={handleTimeUpdate}
-        onEnded={() => setIsPlaying(false)}
       />
 
       {/* Top Right Close Button (Appears on Hover) */}
       <button 
         onClick={(e) => { e.stopPropagation(); onClose(); }}
-        className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors opacity-0 group-hover:opacity-100 backdrop-blur-sm"
+        className="absolute top-4 right-4 z-50 rounded-full bg-black/70 p-2 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-sm"
         aria-label="Close Video"
       >
         <XIcon className="h-5 w-5" />
       </button>
-
-      {/* Custom Control Bar (Appears on Hover) */}
-      <div 
-        className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-16 pb-4 px-4 sm:px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Progress Bar (YouTube Style) */}
-        <div className="w-full h-1.5 bg-white/30 mb-4 cursor-pointer relative group/slider">
-          <input 
-            type="range" 
-            min="0" 
-            max="100" 
-            value={progress}
-            onChange={handleSeek}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-          />
-          <div 
-            className="h-full bg-red-600 relative"
-            style={{ width: `${progress}%` }}
-          >
-            {/* Thumb */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-red-600 rounded-full scale-0 group-hover/slider:scale-100 transition-transform" />
-          </div>
-        </div>
-
-        {/* Controls Row */}
-        <div className="flex items-center justify-between text-white">
-          <div className="flex items-center gap-4 sm:gap-6">
-            <div className="group/btn relative flex items-center justify-center">
-              <button onClick={togglePlay} className="hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Play/Pause">
-                {isPlaying ? <PauseIcon className="h-5 w-5" fill="currentColor" /> : <PlayIcon className="h-5 w-5" fill="currentColor" />}
-              </button>
-              <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
-                {isPlaying ? "Pause" : "Play"}
-              </div>
-            </div>
-
-            <div className="group/btn relative flex items-center justify-center">
-              <button onClick={toggleMute} className="hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Mute/Unmute">
-                {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-              </button>
-              <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
-                {isMuted ? "Unmute" : "Mute"}
-              </div>
-            </div>
-
-            <div className="text-white text-xs font-medium opacity-80 tracking-wide ml-2 hidden sm:block">
-              {formatTime(currentTime)} <span className="opacity-50 mx-1">/</span> {formatTime(duration)}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 sm:gap-6">
-            <div className="group/btn relative hidden sm:flex items-center justify-center">
-              <button onClick={toggleFullScreen} className="hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Full Screen">
-                <Maximize className="h-4 w-4" />
-              </button>
-              <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
-                Full Screen
-              </div>
-            </div>
-
-            <div className="group/btn relative flex items-center justify-center">
-              <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Minimize/Close">
-                <Minimize className="h-5 w-5" />
-              </button>
-              <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
-                Minimize
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
