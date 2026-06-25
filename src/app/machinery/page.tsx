@@ -27,7 +27,7 @@ function getIconForMachinery(name: string) {
   }
 
   return (
-    <div className="relative h-14 w-14 overflow-hidden rounded-full bg-slate-50 shadow-sm ring-1 ring-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:ring-[#fc6604] group-hover:ring-2">
+    <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-slate-50 shadow-sm ring-1 ring-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:ring-[#fc6604] group-hover:ring-2">
       <Image 
         src={imgSrc} 
         alt={name} 
