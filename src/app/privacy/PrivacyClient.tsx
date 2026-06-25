@@ -124,7 +124,7 @@ const SECTIONS = [
               className="flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-[#fc6604] text-white font-black text-sm uppercase tracking-widest rounded-xl shadow-lg shadow-[#fc6604]/20 hover:-translate-y-1 transition-all"
             >
               <PhoneCall className="h-4 w-4" />
-              {SITE.phoneDisplay}
+              Call Now
             </a>
             <a 
               href={SITE.emailUrl} 
