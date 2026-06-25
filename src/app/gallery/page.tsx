@@ -219,6 +219,7 @@ export default function GalleryPage() {
             src="/services/ROCK EXCAVATION 1.png"
             alt="Gallery Hero Background"
             fill
+            unoptimized={true}
             className="object-cover opacity-40 mix-blend-luminosity animate-[pulse_20s_ease-in-out_infinite] scale-105"
             priority
           />
@@ -308,6 +309,7 @@ export default function GalleryPage() {
                     src={item.src}
                     alt={item.title}
                     fill
+                    unoptimized={true}
                     className="object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-100"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />

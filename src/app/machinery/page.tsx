@@ -64,6 +64,7 @@ export default function MachineryPage() {
             src="/services/ROCK EXCAVATION 1.png"
             alt="Machinery Hero Background"
             fill
+            unoptimized={true}
             className="object-cover opacity-40 mix-blend-luminosity animate-[pulse_20s_ease-in-out_infinite] scale-105"
             priority
           />
