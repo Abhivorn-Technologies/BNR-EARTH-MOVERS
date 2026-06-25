@@ -400,13 +400,22 @@ export default function GalleryPage() {
                 <CustomVideoPlayer src={expandedItem.src} onClose={() => { setExpandedItem(null); setRotation(0); }} />
               ) : (
                 <div className="w-full h-full relative flex items-center justify-center">
+                  {/* Top Right Close Button (YouTube Style) */}
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }}
+                    className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors opacity-0 group-hover:opacity-100 backdrop-blur-sm"
+                    aria-label="Close Image"
+                  >
+                    <XIcon className="h-5 w-5" />
+                  </button>
+
                   <img
                     src={expandedItem.src}
                     alt={expandedItem.title}
                     className="w-full h-full object-contain transition-transform duration-300"
                     style={{ transform: `rotate(${rotation}deg)` }}
                   />
-                  {/* Unified Photo Controls (matching video style) */}
+                  {/* Unified Photo Controls */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="flex items-center justify-end gap-4 sm:gap-6 pr-2">
                       <div className="group/btn relative flex items-center justify-center">
@@ -415,14 +424,6 @@ export default function GalleryPage() {
                         </button>
                         <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
                           Rotate
-                        </div>
-                      </div>
-                      <div className="group/btn relative flex items-center justify-center">
-                        <button onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }} className="text-white hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Minimize/Close">
-                          <Minimize className="h-5 w-5" />
-                        </button>
-                        <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
-                          Minimize
                         </div>
                       </div>
                     </div>
