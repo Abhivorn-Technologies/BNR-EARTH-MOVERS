@@ -45,10 +45,13 @@ const CATEGORIES = ["All", "Excavation", "Drilling & Blasting", "Transport", "Su
 
 export default function MachineryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [showAll, setShowAll] = useState(false);
   
   const filteredMachinery = activeCategory === "All" 
     ? MACHINERY 
     : MACHINERY.filter((m) => m.category === activeCategory);
+
+  const displayedMachinery = showAll ? filteredMachinery : filteredMachinery.slice(0, 8);
 
   return (
     <main className="min-h-screen bg-slate-100 selection:bg-accent selection:text-white pb-24">
@@ -106,7 +109,7 @@ export default function MachineryPage() {
       </section>
 
       {/* 2. Premium Machinery Grid */}
-      <section className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section id="machinery-grid" className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 scroll-mt-32">
         {/* Dynamic Category Filters */}
         <div className="relative z-30 mx-auto -mt-10 mb-8 flex max-w-fit flex-wrap items-center justify-center gap-2 rounded-2xl bg-white p-2 shadow-xl shadow-black/10 ring-1 ring-slate-900/5">
           {CATEGORIES.map((cat) => (
@@ -129,7 +132,7 @@ export default function MachineryPage() {
           className="flex flex-wrap justify-center gap-5 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filteredMachinery.map((item, idx) => (
+            {displayedMachinery.map((item, idx) => (
               <motion.div
                 key={item.name}
                 layout
@@ -165,7 +168,32 @@ export default function MachineryPage() {
           </AnimatePresence>
         </motion.div>
 
-        {/* 3. High-End Outro Banner */}
+        {/* View More / View Less Buttons */}
+        {filteredMachinery.length > 8 && (
+          <div className="mt-12 flex justify-center gap-4">
+            {!showAll ? (
+              <button
+                onClick={() => setShowAll(true)}
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-slate-900 px-8 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20"
+              >
+                <span>View More</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setShowAll(false);
+                  document.getElementById("machinery-grid")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-8 py-3.5 text-sm font-bold text-slate-700 shadow-md ring-1 ring-slate-200 transition-all hover:bg-slate-50 hover:shadow-lg"
+              >
+                <span>View Less</span>
+              </button>
+            )}
+          </div>
+        )}
+      </section>
+
+      {/* 3. High-End Outro Banner */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 40 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
