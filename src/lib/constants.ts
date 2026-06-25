@@ -5,6 +5,7 @@ export const SITE = {
     "Specialized rock rope cutting, chemical breaking, controlled blasting, and precise excavation services for complex site development.",
   email: "earthmoversbnr@gmail.com",
   emailUrl: "https://mail.google.com/mail/?view=cm&fs=1&to=earthmoversbnr@gmail.com&su=New%20Project%20Inquiry&body=Hi%20BNR%20Earth%20Movers!%20I%20would%20like%20to%20discuss%20a%20project%20and%20get%20a%20free%20quote.",
+  instagramUrl: "",
   phone: "9059648878",
   phoneDisplay: "+91 90596 48878",
   whatsapp: "9059648878",

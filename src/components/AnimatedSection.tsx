@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
 type AnimatedSectionProps = {
@@ -55,7 +55,7 @@ export function StaggerContainer({ children, className = "" }: StaggerContainerP
   );
 }
 
-export const staggerItem = {
+export const staggerItem: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
