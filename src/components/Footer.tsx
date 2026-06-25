@@ -3,6 +3,7 @@
 import { Logo } from "@/components/Logo";
 import { SITE, SERVICES } from "@/lib/constants";
 import Link from "next/link";
+import { Phone, MessageCircle } from "lucide-react";
 
 const footerLinks = {
   SERVICES: SERVICES.slice(0, 4).map(s => ({ label: s.title, href: `/?service=${s.id}#services` })),
@@ -38,13 +39,29 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <a 
-                href="#" 
+                href={SITE.instagramUrl || "#"} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 transition-all hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] shadow-md"
                 aria-label="Follow us on Instagram"
               >
                 <InstagramIcon className="h-5 w-5 text-slate-400 group-hover:text-white transition-colors" />
+              </a>
+              <a 
+                href={SITE.whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 transition-all hover:bg-[#25D366] shadow-md"
+                aria-label="Chat with us on WhatsApp"
+              >
+                <MessageCircle className="h-5 w-5 text-slate-400 group-hover:text-white transition-colors" />
+              </a>
+              <a 
+                href={SITE.phoneUrl} 
+                className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 transition-all hover:bg-[#fc6604] shadow-md"
+                aria-label="Call us"
+              >
+                <Phone className="h-5 w-5 text-slate-400 group-hover:text-white transition-colors" />
               </a>
             </div>
           </div>
