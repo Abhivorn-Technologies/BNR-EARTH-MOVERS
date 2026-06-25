@@ -75,7 +75,14 @@ export function Footer() {
             </p>
             <span className="hidden text-slate-600 sm:inline-block">|</span>
             <p className="text-sm font-medium tracking-wide text-slate-400 text-center sm:text-left">
-              Developed by <span className="text-[#fc6604]">Abhivorn Technologies Pvt Ltd</span> & <span className="text-[#fc6604]">Digi Level Up</span>
+              Developed by{" "}
+              <a href="https://www.abhivorn.com/" target="_blank" rel="noopener noreferrer" className="text-[#fc6604] hover:underline transition-all">
+                Abhivorn Technologies Pvt Ltd
+              </a>{" "}
+              &{" "}
+              <a href="https://www.digilevelup.in/" target="_blank" rel="noopener noreferrer" className="text-[#fc6604] hover:underline transition-all">
+                Digi Level Up
+              </a>
             </p>
           </div>
         </div>

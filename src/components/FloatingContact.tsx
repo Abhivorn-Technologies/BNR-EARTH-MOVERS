@@ -18,6 +18,25 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+    </svg>
+  );
+}
+
 function FloatingButton({
   href,
   label,
@@ -132,6 +151,18 @@ export function FloatingContact() {
         external
       >
         <WhatsAppIcon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+      </FloatingButton>
+
+      <FloatingButton
+        href="#"
+        label="Follow on Instagram"
+        textLabel="Instagram"
+        color="bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]"
+        glowColor="bg-[#e1306c]/40"
+        labelColor="bg-[#e1306c] text-white shadow-md"
+        external
+      >
+        <InstagramIcon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
       </FloatingButton>
     </div>
   );

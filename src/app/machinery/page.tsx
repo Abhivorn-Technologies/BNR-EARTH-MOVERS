@@ -8,37 +8,39 @@ import { Tractor, Truck, Hammer, Pickaxe, Flame, Activity, Droplets, HardHat, Wa
 
 // Helper function to pick a semi-relevant colorful icon (emoji)
 function getIconForMachinery(name: string) {
+  const iconClass = "w-8 h-8 transition-transform group-hover:scale-110";
+  
   switch (name) {
     case "Excavators":
-      return <span className="text-3xl" role="img" aria-label="Tractor">🚜</span>;
+      return <Tractor className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
     case "Dumpers":
-      return <span className="text-3xl" role="img" aria-label="Truck">🚛</span>;
+      return <Truck className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
     case "Jack Hammer Drills":
-      return <span className="text-3xl" role="img" aria-label="Hammer">🔨</span>;
+      return <Hammer className={`${iconClass} text-rose-500`} strokeWidth={1.5} />;
     case "Wagon Drills":
-      return <span className="text-3xl" role="img" aria-label="Pickaxe">⛏️</span>;
+      return <Drill className={`${iconClass} text-rose-500`} strokeWidth={1.5} />;
     case "Explosives Mobile Magazines":
-      return <span className="text-3xl" role="img" aria-label="Explosives">🧨</span>;
+      return <Flame className={`${iconClass} text-red-500`} strokeWidth={1.5} />;
     case "Seismographs":
-      return <span className="text-3xl" role="img" aria-label="Activity">📈</span>;
+      return <Activity className={`${iconClass} text-blue-500`} strokeWidth={1.5} />;
     case "Water Tanker with Sprinklers":
-      return <span className="text-3xl" role="img" aria-label="Water">💧</span>;
+      return <Droplets className={`${iconClass} text-cyan-500`} strokeWidth={1.5} />;
     case "Dozers":
-      return <span className="text-3xl" role="img" aria-label="Dozer">🚧</span>;
+      return <Shovel className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
     case "Dewatering Pumps":
-      return <span className="text-3xl" role="img" aria-label="Waves">🌊</span>;
+      return <Waves className={`${iconClass} text-blue-500`} strokeWidth={1.5} />;
     case "Diamond Rope Cutting Units":
-      return <span className="text-3xl" role="img" aria-label="Diamond">💎</span>;
+      return <Disc className={`${iconClass} text-purple-500`} strokeWidth={1.5} />;
     case "Blasting Mats / Rubber Mats":
-      return <span className="text-3xl" role="img" aria-label="Shield">🛡️</span>;
+      return <Layers className={`${iconClass} text-slate-700`} strokeWidth={1.5} />;
     case "Pile Load Testing Equipment":
-      return <span className="text-3xl" role="img" aria-label="Crane">🏗️</span>;
+      return <ArrowDownToLine className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
     case "Backhoe":
-      return <span className="text-3xl" role="img" aria-label="Backhoe">🚜</span>;
+      return <Tractor className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
     case "Hydraulic Rotary Rig":
-      return <span className="text-3xl" role="img" aria-label="Drill">🗜️</span>;
+      return <Drill className={`${iconClass} text-rose-600`} strokeWidth={1.5} />;
     default:
-      return <span className="text-3xl" role="img" aria-label="Machine">⚙️</span>;
+      return <Settings className={`${iconClass} text-slate-500`} strokeWidth={1.5} />;
   }
 }
 
