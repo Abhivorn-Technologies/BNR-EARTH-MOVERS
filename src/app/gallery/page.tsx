@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GALLERY_IMAGES } from "@/lib/constants";
-import { ChevronDown, Image as ImageIcon } from "lucide-react";
+import { GALLERY_VIDEOS } from "@/lib/constants";
+import { ChevronDown, Play as PlayIcon } from "lucide-react";
 import Image from "next/image";
 
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
@@ -11,9 +11,9 @@ const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   
-  const filteredImages = activeCategory === "All" 
-    ? GALLERY_IMAGES 
-    : GALLERY_IMAGES.filter((img) => img.category === activeCategory);
+  const filteredVideos = activeCategory === "All" 
+    ? GALLERY_VIDEOS 
+    : GALLERY_VIDEOS.filter((vid) => vid.category === activeCategory);
 
   return (
     <main className="min-h-screen bg-slate-100 selection:bg-accent selection:text-white pb-24">
@@ -94,7 +94,7 @@ export default function GalleryPage() {
           className="flex flex-wrap justify-center gap-5 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filteredImages.map((item) => (
+            {filteredVideos.map((item) => (
               <motion.div
                 key={item.src}
                 layout
@@ -104,13 +104,14 @@ export default function GalleryPage() {
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 className="group relative h-80 w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] overflow-hidden rounded-[2rem] bg-slate-900 shadow-md shadow-slate-200/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 hover:ring-2 hover:ring-accent/50 cursor-pointer"
               >
-                {/* Background Image */}
-                <Image
+                {/* Background Video */}
+                <video
                   src={item.src}
-                  alt={item.title}
-                  fill
-                  className="object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-70"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover h-full w-full opacity-90 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-100"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                 />
                 
                 {/* Gradient Overlay */}
@@ -118,7 +119,7 @@ export default function GalleryPage() {
                 
                 {/* Hover Icon (Center) */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-50 rounded-full bg-white/10 p-4 opacity-0 shadow-xl ring-1 ring-white/20 backdrop-blur-md transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 z-20">
-                   <ImageIcon className="h-6 w-6 text-white" />
+                   <PlayIcon className="h-6 w-6 text-white" fill="white" />
                 </div>
 
                 {/* Content Container (Bottom) */}
@@ -139,9 +140,9 @@ export default function GalleryPage() {
           </AnimatePresence>
         </motion.div>
         
-        {filteredImages.length === 0 && (
+        {filteredVideos.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-lg text-slate-500">No images found in this category.</p>
+            <p className="text-lg text-slate-500">No videos found in this category.</p>
           </div>
         )}
       </section>

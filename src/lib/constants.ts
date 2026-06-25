@@ -168,6 +168,10 @@ export const GALLERY_IMAGES = [
   { src: "/image2.jpg", title: "Earthmoving in Action", category: "Projects" },
 ] as const;
 
+export const GALLERY_VIDEOS = [
+  { src: "/video.mp4", title: "Site Operations Showcase", category: "Projects" },
+] as const;
+
 
 export const PROCESS_STEPS = [
   {
