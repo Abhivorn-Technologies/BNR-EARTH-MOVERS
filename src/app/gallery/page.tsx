@@ -14,6 +14,15 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  const formatTime = (timeInSeconds: number) => {
+    if (!timeInSeconds || isNaN(timeInSeconds)) return "0:00";
+    const m = Math.floor(timeInSeconds / 60);
+    const s = Math.floor(timeInSeconds % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
 
   const togglePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -53,6 +62,8 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
       const current = videoRef.current.currentTime;
       const total = videoRef.current.duration;
       setProgress((current / total) * 100 || 0);
+      setCurrentTime(current);
+      setDuration(total || 0);
     }
   };
 
@@ -136,6 +147,10 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
                 {isMuted ? "Unmute" : "Mute"}
               </div>
             </div>
+
+            <div className="text-white text-xs font-medium opacity-80 tracking-wide ml-2 hidden sm:block">
+              {formatTime(currentTime)} <span className="opacity-50 mx-1">/</span> {formatTime(duration)}
+            </div>
           </div>
 
           <div className="flex items-center gap-4 sm:gap-6">
@@ -168,6 +183,18 @@ export default function GalleryPage() {
   const [showAll, setShowAll] = useState(false);
   const [expandedItem, setExpandedItem] = useState<{type: "photo" | "video", src: string, title: string, category: string} | null>(null);
   const [rotation, setRotation] = useState(0);
+  const [durations, setDurations] = useState<Record<string, number>>({});
+
+  const handleMetadataLoaded = (src: string, e: React.SyntheticEvent<HTMLVideoElement>) => {
+    setDurations(prev => ({ ...prev, [src]: e.currentTarget.duration }));
+  };
+
+  const formatDuration = (timeInSeconds: number) => {
+    if (!timeInSeconds || isNaN(timeInSeconds)) return "0:00";
+    const m = Math.floor(timeInSeconds / 60);
+    const s = Math.floor(timeInSeconds % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
 
   const activeItems = activeTab === "Photos" ? NEW_GALLERY_PHOTOS : NEW_GALLERY_VIDEOS;
   const visibleItems = showAll ? activeItems : activeItems.slice(0, 8);
@@ -288,6 +315,7 @@ export default function GalleryPage() {
                     muted
                     playsInline
                     preload="metadata"
+                    onLoadedMetadata={(e) => handleMetadataLoaded(item.src, e)}
                   />
                 )}
                 
@@ -298,7 +326,7 @@ export default function GalleryPage() {
                 {activeTab === "Videos" && (
                   <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1 rounded bg-black/80 px-2 py-1 text-xs font-bold tracking-wider text-white backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
                     <PlayIcon className="h-3 w-3" fill="white" />
-                    <span>0:30</span>
+                    <span>{durations[item.src] ? formatDuration(durations[item.src]) : "0:00"}</span>
                   </div>
                 )}
                 
