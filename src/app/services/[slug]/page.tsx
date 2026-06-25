@@ -120,8 +120,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 View Gallery
               </Link>
             </div>
+            </div>
           </div>
-
         </div>
       </section>
     </main>
