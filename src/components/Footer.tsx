@@ -33,9 +33,20 @@ export function Footer() {
                 <Logo variant="compact" />
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-slate-400">
+            <p className="text-sm leading-relaxed text-slate-400 mb-8">
               {SITE.description}
             </p>
+            <div className="flex items-center gap-4">
+              <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 transition-all hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] shadow-md"
+                aria-label="Follow us on Instagram"
+              >
+                <InstagramIcon className="h-5 w-5 text-slate-400 group-hover:text-white transition-colors" />
+              </a>
+            </div>
           </div>
 
           {/* Links Columns */}
@@ -88,5 +99,24 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+    </svg>
   );
 }

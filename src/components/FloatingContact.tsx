@@ -77,10 +77,10 @@ function FloatingButton({
         </span>
       )}
       <span
-        className={`absolute h-[60px] w-[60px] rounded-full ${glowColor} animate-pulse-ring hidden sm:block`}
+        className={`absolute h-[50px] w-[50px] rounded-full ${glowColor} animate-pulse-ring hidden sm:block`}
       />
       <span
-        className={`relative flex h-12 w-12 sm:h-[60px] sm:w-[60px] items-center justify-center rounded-full ${color} shadow-lg transition-transform`}
+        className={`relative flex h-10 w-10 sm:h-[50px] sm:w-[50px] items-center justify-center rounded-full ${color} shadow-lg transition-transform`}
       >
         {children}
       </span>
@@ -122,10 +122,10 @@ export function FloatingContact() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
-            className="group relative flex h-12 w-12 sm:h-[60px] sm:w-[60px] items-center justify-center rounded-full bg-slate-900 shadow-lg shadow-slate-900/20 transition-transform"
+            className="group relative flex h-10 w-10 sm:h-[50px] sm:w-[50px] items-center justify-center rounded-full bg-slate-900 shadow-lg shadow-slate-900/20 transition-transform"
             aria-label="Scroll to top"
           >
-            <ChevronUp className="h-6 w-6 sm:h-8 sm:w-8 text-[#fcd34d]" strokeWidth={3} />
+            <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6 text-[#fc6604]" strokeWidth={3} />
           </motion.button>
         )}
       </AnimatePresence>
@@ -138,7 +138,7 @@ export function FloatingContact() {
         glowColor="bg-[#fc6604]/40"
         labelColor="bg-[#fc6604] text-white shadow-md"
       >
-        <Phone className="h-5 w-5 sm:h-[26px] sm:w-[26px] text-white" fill="white" />
+        <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-white" fill="white" />
       </FloatingButton>
 
       <FloatingButton
@@ -150,7 +150,7 @@ export function FloatingContact() {
         labelColor="bg-[#25D366] text-white shadow-md"
         external
       >
-        <WhatsAppIcon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+        <WhatsAppIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
       </FloatingButton>
 
       <FloatingButton
@@ -162,7 +162,7 @@ export function FloatingContact() {
         labelColor="bg-[#e1306c] text-white shadow-md"
         external
       >
-        <InstagramIcon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+        <InstagramIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
       </FloatingButton>
     </div>
   );
