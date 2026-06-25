@@ -344,39 +344,47 @@ export default function GalleryPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => { setExpandedItem(null); setRotation(0); }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-8"
           >
+            {/* Global Lightbox Controls for Photos */}
+            {expandedItem.type === "photo" && (
+              <div className="absolute top-6 right-6 z-[110] flex items-center gap-4">
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setRotation((prev) => prev + 90); }}
+                  className="rounded-full bg-white/10 p-3 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-md shadow-lg"
+                  aria-label="Rotate Image"
+                >
+                  <RotateCw className="h-6 w-6" />
+                </button>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }}
+                  className="rounded-full bg-white/10 p-3 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-md shadow-lg"
+                  aria-label="Close Image"
+                >
+                  <XIcon className="h-6 w-6" />
+                </button>
+              </div>
+            )}
+
             <motion.div
               layoutId={`media-container-${expandedItem.src}`}
-              className={`relative w-full overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 ${expandedItem.type === "video" ? "aspect-video" : "h-[80vh] flex items-center justify-center"}`}
-              style={{ maxWidth: expandedItem.type === "video" ? '60vw' : '80vw' }}
+              className={`relative flex items-center justify-center ${
+                expandedItem.type === "video" 
+                  ? "w-full overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 aspect-video" 
+                  : "w-full h-full bg-transparent"
+              }`}
+              style={{ maxWidth: expandedItem.type === "video" ? '60vw' : '100vw' }}
               onClick={(e) => e.stopPropagation()}
             >
               {expandedItem.type === "video" ? (
                 <CustomVideoPlayer src={expandedItem.src} onClose={() => { setExpandedItem(null); setRotation(0); }} />
               ) : (
-                <>
-                  <button 
-                    onClick={(e) => { e.stopPropagation(); setRotation((prev) => prev + 90); }}
-                    className="absolute top-4 right-16 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-sm"
-                    aria-label="Rotate Image"
-                  >
-                    <RotateCw className="h-5 w-5" />
-                  </button>
-                  <button 
-                    onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }}
-                    className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-sm"
-                    aria-label="Close Image"
-                  >
-                    <XIcon className="h-5 w-5" />
-                  </button>
-                  <img
-                    src={expandedItem.src}
-                    alt={expandedItem.title}
-                    className="h-full w-full object-contain transition-transform duration-300"
-                    style={{ transform: `rotate(${rotation}deg)` }}
-                  />
-                </>
+                <img
+                  src={expandedItem.src}
+                  alt={expandedItem.title}
+                  className="max-h-[90vh] max-w-[90vw] object-contain transition-transform duration-300"
+                  style={{ transform: `rotate(${rotation}deg)` }}
+                />
               )}
             </motion.div>
           </motion.div>
