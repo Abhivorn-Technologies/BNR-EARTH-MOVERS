@@ -17,9 +17,16 @@ export function AnimatedSection({
   id,
 }: AnimatedSectionProps) {
   return (
-    <section id={id} className={className}>
+    <motion.section 
+      id={id} 
+      className={className}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7, delay, ease: "easeOut" }}
+    >
       {children}
-    </section>
+    </motion.section>
   );
 }
 
@@ -30,13 +37,32 @@ type StaggerContainerProps = {
 
 export function StaggerContainer({ children, className = "" }: StaggerContainerProps) {
   return (
-    <div className={className}>
+    <motion.div 
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: 0.15
+          }
+        }
+      }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
 export const staggerItem = {
-  hidden: {},
-  visible: {},
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  },
 };

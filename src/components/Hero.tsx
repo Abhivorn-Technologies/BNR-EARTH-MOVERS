@@ -11,7 +11,7 @@ export function Hero() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
-    <section id="home" className="relative min-h-[90vh] pt-32 pb-32 flex items-center justify-center overflow-hidden bg-slate-900">
+    <section id="home" className="relative min-h-[90vh] pt-24 pb-20 sm:pt-32 sm:pb-32 flex items-center justify-center overflow-hidden bg-slate-900">
       {/* Background Video Placeholder */}
       <video
         src="/gallery/videos/video.mp4"
@@ -43,7 +43,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-5xl font-black uppercase leading-tight tracking-tight text-white drop-shadow-2xl sm:text-6xl md:text-7xl lg:text-[4.5rem]"
+            className="text-4xl font-black uppercase leading-tight tracking-tight text-white drop-shadow-2xl sm:text-5xl md:text-6xl lg:text-[4.5rem]"
             style={{ fontFamily: "var(--font-barlow)", textShadow: "0 4px 30px rgba(0,0,0,0.6)" }}
           >
             Specialized <span className="text-accent">Rock Cutting</span><br className="hidden lg:block" /> & Earthworks
@@ -53,7 +53,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-10 max-w-3xl text-lg font-semibold leading-relaxed text-slate-200 drop-shadow-xl sm:text-2xl"
+            className="mt-6 sm:mt-10 max-w-3xl text-base font-semibold leading-relaxed text-slate-200 drop-shadow-xl sm:text-xl"
             style={{ textShadow: "0 2px 15px rgba(0,0,0,0.8)" }}
           >
             Precise, vibration-free rock breaking, controlled blasting, and heavy-duty excavation. Built for complex sites and strict safety requirements.

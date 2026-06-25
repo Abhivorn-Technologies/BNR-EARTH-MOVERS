@@ -42,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jakarta.variable} ${barlow.variable}`} data-scroll-behavior="smooth">
-      <body className="antialiased font-sans">
+      <body className="antialiased font-sans overflow-x-hidden max-w-[100vw]">
         <Navbar />
         {children}
         <Footer />

@@ -1,11 +1,14 @@
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
-import { VideoSection } from "@/components/VideoSection";
-import { Services } from "@/components/Services";
-import { Process, WhyUs } from "@/components/Process";
-import { Testimonials } from "@/components/Testimonials";
-import { ServiceArea } from "@/components/ServiceArea";
-import { FinalCta } from "@/components/FinalCta";
+import dynamic from "next/dynamic";
+
+const VideoSection = dynamic(() => import("@/components/VideoSection").then((mod) => mod.VideoSection));
+const Services = dynamic(() => import("@/components/Services").then((mod) => mod.Services));
+const Process = dynamic(() => import("@/components/Process").then((mod) => mod.Process));
+const WhyUs = dynamic(() => import("@/components/Process").then((mod) => mod.WhyUs));
+const Testimonials = dynamic(() => import("@/components/Testimonials").then((mod) => mod.Testimonials));
+const ServiceArea = dynamic(() => import("@/components/ServiceArea").then((mod) => mod.ServiceArea));
+const FinalCta = dynamic(() => import("@/components/FinalCta").then((mod) => mod.FinalCta));
 
 export default function Home() {
   return (
