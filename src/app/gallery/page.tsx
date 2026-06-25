@@ -391,45 +391,43 @@ export default function GalleryPage() {
             onClick={() => { setExpandedItem(null); setRotation(0); }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-8"
           >
-            {/* Global Lightbox Controls for Photos */}
-            {expandedItem.type === "photo" && (
-              <div className="absolute top-6 right-6 z-[110] flex items-center gap-4">
-                <button 
-                  onClick={(e) => { e.stopPropagation(); setRotation((prev) => prev + 90); }}
-                  className="rounded-full bg-white/10 p-3 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-md shadow-lg"
-                  aria-label="Rotate Image"
-                >
-                  <RotateCw className="h-6 w-6" />
-                </button>
-                <button 
-                  onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }}
-                  className="rounded-full bg-white/10 p-3 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-md shadow-lg"
-                  aria-label="Close Image"
-                >
-                  <XIcon className="h-6 w-6" />
-                </button>
-              </div>
-            )}
-
             <motion.div
               layoutId={`media-container-${expandedItem.src}`}
-              className={`relative flex items-center justify-center ${
-                expandedItem.type === "video" 
-                  ? "w-full overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 aspect-video" 
-                  : "w-full h-full bg-transparent"
-              }`}
-              style={{ maxWidth: expandedItem.type === "video" ? '60vw' : '100vw' }}
+              className="relative flex items-center justify-center w-full max-w-[95vw] md:max-w-[85vw] lg:max-w-[65vw] overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 aspect-video group"
               onClick={(e) => e.stopPropagation()}
             >
               {expandedItem.type === "video" ? (
                 <CustomVideoPlayer src={expandedItem.src} onClose={() => { setExpandedItem(null); setRotation(0); }} />
               ) : (
-                <img
-                  src={expandedItem.src}
-                  alt={expandedItem.title}
-                  className="max-h-[90vh] max-w-[90vw] object-contain transition-transform duration-300"
-                  style={{ transform: `rotate(${rotation}deg)` }}
-                />
+                <div className="w-full h-full relative flex items-center justify-center">
+                  <img
+                    src={expandedItem.src}
+                    alt={expandedItem.title}
+                    className="w-full h-full object-contain transition-transform duration-300"
+                    style={{ transform: `rotate(${rotation}deg)` }}
+                  />
+                  {/* Unified Photo Controls (matching video style) */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center justify-end gap-4 sm:gap-6 pr-2">
+                      <div className="group/btn relative flex items-center justify-center">
+                        <button onClick={(e) => { e.stopPropagation(); setRotation((prev) => prev + 90); }} className="text-white hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Rotate Image">
+                          <RotateCw className="h-5 w-5" />
+                        </button>
+                        <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
+                          Rotate
+                        </div>
+                      </div>
+                      <div className="group/btn relative flex items-center justify-center">
+                        <button onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }} className="text-white hover:text-[#fc6604] transition-colors transform hover:scale-110" aria-label="Minimize/Close">
+                          <Minimize className="h-5 w-5" />
+                        </button>
+                        <div className="absolute bottom-full mb-3 px-3 py-1.5 bg-white text-[#fc6604] text-[10px] font-black uppercase tracking-wider rounded-lg shadow-lg shadow-black/20 opacity-0 group-hover/btn:opacity-100 transition-all scale-95 group-hover/btn:scale-100 pointer-events-none whitespace-nowrap">
+                          Minimize
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
             </motion.div>
           </motion.div>
