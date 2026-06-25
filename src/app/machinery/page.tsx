@@ -23,7 +23,7 @@ function getIconForMachinery(name: string) {
     case "Dewatering Pumps": imgSrc = "/machinery/Dewatering Pumps.jpg"; break;
     case "Diamond Rope Cutting Units": imgSrc = "/machinery/Diamond Rope Cutting Units.jpg"; break;
     case "Blasting Mats / Rubber Mats": imgSrc = "/machinery/Blasting Mats.jpg"; break;
-    case "Pile Load Testing Equipment": imgSrc = "/machinery/Pile Load Testing Equipment.jpg"; break;
+    case "Pile Load Testing Equipment": imgSrc = "/machinery/Pile Load Testing Equipment.png"; break;
     case "Backhoe": imgSrc = "/machinery/Backhoe.jpg"; break;
     case "Hydraulic Rotary Rig": imgSrc = "/machinery/Hydraulic Rotary Rig.avif"; break;
   }
