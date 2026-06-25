@@ -60,7 +60,7 @@ export function ServiceArea() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="overflow-hidden rounded-2xl border border-border shadow-2xl"
+            className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
           >
             <iframe
               title={`BNR Earth Movers service area — ${activeArea}`}
