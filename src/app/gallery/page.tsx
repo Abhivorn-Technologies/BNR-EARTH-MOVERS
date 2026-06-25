@@ -80,13 +80,13 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
   return (
     <div 
       ref={containerRef} 
-      className="relative w-full h-full bg-black group flex items-center justify-center"
+      className="relative flex items-center justify-center bg-black group overflow-hidden rounded-2xl"
       onClick={togglePlay}
     >
       <video
         ref={videoRef}
         src={src}
-        className="h-full w-full object-contain"
+        className="w-auto h-auto max-w-full max-h-[85vh] object-contain"
         autoPlay
         playsInline
         muted={isMuted}
@@ -393,13 +393,13 @@ export default function GalleryPage() {
           >
             <motion.div
               layoutId={`media-container-${expandedItem.src}`}
-              className="relative flex items-center justify-center w-full max-w-[95vw] md:max-w-[85vw] lg:max-w-[65vw] overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 aspect-video group"
+              className="relative flex items-center justify-center max-w-[95vw] md:max-w-[85vw] lg:max-w-[75vw] max-h-[95vh] overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 group"
               onClick={(e) => e.stopPropagation()}
             >
               {expandedItem.type === "video" ? (
                 <CustomVideoPlayer src={expandedItem.src} onClose={() => { setExpandedItem(null); setRotation(0); }} />
               ) : (
-                <div className="w-full h-full relative flex items-center justify-center">
+                <div className="relative flex items-center justify-center bg-black">
                   {/* Top Right Close Button (YouTube Style) */}
                   <button 
                     onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }}
@@ -412,7 +412,7 @@ export default function GalleryPage() {
                   <img
                     src={expandedItem.src}
                     alt={expandedItem.title}
-                    className="w-full h-full object-contain transition-transform duration-300"
+                    className="w-auto h-auto max-w-full max-h-[85vh] object-contain transition-transform duration-300"
                     style={{ transform: `rotate(${rotation}deg)` }}
                   />
                   {/* Unified Photo Controls */}
