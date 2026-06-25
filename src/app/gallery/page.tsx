@@ -12,7 +12,7 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
 
   const togglePlay = (e: React.MouseEvent) => {
@@ -78,6 +78,7 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
         className="h-full w-full object-contain"
         autoPlay
         playsInline
+        muted={isMuted}
         onTimeUpdate={handleTimeUpdate}
         onEnded={() => setIsPlaying(false)}
       />
