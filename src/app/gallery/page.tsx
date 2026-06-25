@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NEW_GALLERY_PHOTOS, NEW_GALLERY_VIDEOS } from "@/lib/constants";
-import { ChevronDown, Play as PlayIcon, X as XIcon, Pause as PauseIcon, Volume2, VolumeX, Maximize, Minimize, Image as ImageIcon } from "lucide-react";
+import { ChevronDown, Play as PlayIcon, X as XIcon, Pause as PauseIcon, Volume2, VolumeX, Maximize, Minimize, Image as ImageIcon, RotateCw } from "lucide-react";
 import Image from "next/image";
 
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
@@ -166,6 +166,7 @@ export default function GalleryPage() {
   const [activeTab, setActiveTab] = useState<"Photos" | "Videos">("Photos");
   const [showAll, setShowAll] = useState(false);
   const [expandedItem, setExpandedItem] = useState<{type: "photo" | "video", src: string, title: string, category: string} | null>(null);
+  const [rotation, setRotation] = useState(0);
 
   const activeItems = activeTab === "Photos" ? NEW_GALLERY_PHOTOS : NEW_GALLERY_VIDEOS;
   const visibleItems = showAll ? activeItems : activeItems.slice(0, 8);
@@ -263,7 +264,7 @@ export default function GalleryPage() {
               <motion.div
                 key={item.src}
                 layoutId={`media-container-${item.src}`}
-                onClick={() => setExpandedItem({ ...item, type: activeTab === "Photos" ? "photo" : "video" })}
+                onClick={() => { setExpandedItem({ ...item, type: activeTab === "Photos" ? "photo" : "video" }); setRotation(0); }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
@@ -283,10 +284,9 @@ export default function GalleryPage() {
                   <video
                     src={item.src}
                     className="object-cover h-full w-full opacity-90 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-100"
-                    autoPlay
-                    loop
                     muted
                     playsInline
+                    preload="metadata"
                   />
                 )}
                 
@@ -342,7 +342,7 @@ export default function GalleryPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setExpandedItem(null)}
+            onClick={() => { setExpandedItem(null); setRotation(0); }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
           >
             <motion.div
@@ -352,11 +352,18 @@ export default function GalleryPage() {
               onClick={(e) => e.stopPropagation()}
             >
               {expandedItem.type === "video" ? (
-                <CustomVideoPlayer src={expandedItem.src} onClose={() => setExpandedItem(null)} />
+                <CustomVideoPlayer src={expandedItem.src} onClose={() => { setExpandedItem(null); setRotation(0); }} />
               ) : (
                 <>
                   <button 
-                    onClick={(e) => { e.stopPropagation(); setExpandedItem(null); }}
+                    onClick={(e) => { e.stopPropagation(); setRotation((prev) => prev + 90); }}
+                    className="absolute top-4 right-16 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-sm"
+                    aria-label="Rotate Image"
+                  >
+                    <RotateCw className="h-5 w-5" />
+                  </button>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }}
                     className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-sm"
                     aria-label="Close Image"
                   >
@@ -365,7 +372,8 @@ export default function GalleryPage() {
                   <img
                     src={expandedItem.src}
                     alt={expandedItem.title}
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-contain transition-transform duration-300"
+                    style={{ transform: `rotate(${rotation}deg)` }}
                   />
                 </>
               )}
