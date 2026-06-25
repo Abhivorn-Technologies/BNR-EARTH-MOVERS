@@ -234,7 +234,7 @@ export default function GalleryPage() {
       </section>
 
       {/* 2. Premium Image Grid */}
-      <section className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-16">
+      <section id="gallery-section" className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-16">
         
         {/* Tabs */}
         <div className="relative z-30 mx-auto mb-12 flex max-w-fit items-center justify-center gap-2 rounded-full bg-white p-2 shadow-xl shadow-black/10 ring-1 ring-slate-900/5">
@@ -294,8 +294,20 @@ export default function GalleryPage() {
                 {/* Clean Hover Overlay */}
                 <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/40 z-10" />
                 
+                {/* YouTube-style Video Duration Badge */}
+                {activeTab === "Videos" && (
+                  <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1 rounded bg-black/80 px-2 py-1 text-xs font-bold tracking-wider text-white backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
+                    <PlayIcon className="h-3 w-3" fill="white" />
+                    <span>0:30</span>
+                  </div>
+                )}
+                
                 {/* Hover Icon (Center) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-50 rounded-full bg-white/20 p-4 opacity-0 shadow-xl ring-1 ring-white/30 backdrop-blur-md transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 z-20">
+                <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full p-4 shadow-xl ring-1 backdrop-blur-md transition-all duration-500 z-20
+                  ${activeTab === "Videos" 
+                    ? "scale-100 opacity-100 bg-black/50 ring-white/20 group-hover:scale-110 group-hover:bg-[#fc6604] group-hover:ring-[#fc6604]" 
+                    : "scale-50 opacity-0 bg-white/20 ring-white/30 group-hover:scale-100 group-hover:opacity-100"}`}
+                >
                    {activeTab === "Photos" ? <ImageIcon className="h-8 w-8 text-white" /> : <PlayIcon className="h-8 w-8 text-white" fill="white" />}
                 </div>
               </motion.div>
@@ -303,17 +315,31 @@ export default function GalleryPage() {
           </AnimatePresence>
         </motion.div>
         
-        {/* View All Button */}
-        {hasMore && (
-          <div className="mt-12 flex justify-center">
+        {/* Pagination Buttons */}
+        <div className="mt-12 flex justify-center gap-4">
+          {hasMore && (
             <button
               onClick={() => setShowAll(true)}
               className="rounded-full bg-[#fc6604] px-8 py-3 font-bold text-white shadow-lg shadow-[#fc6604]/20 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#fc6604]/40"
             >
-              View All {activeTab}
+              View More
             </button>
-          </div>
-        )}
+          )}
+          {showAll && activeItems.length > 8 && (
+            <button
+              onClick={() => {
+                setShowAll(false);
+                const section = document.getElementById('gallery-section');
+                if (section) {
+                  window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+                }
+              }}
+              className="rounded-full bg-white px-8 py-3 font-bold text-slate-800 ring-1 ring-slate-200 shadow-lg shadow-black/5 transition-all hover:-translate-y-1 hover:shadow-xl hover:ring-slate-300"
+            >
+              View Less
+            </button>
+          )}
+        </div>
         
         {activeItems.length === 0 && (
           <div className="py-20 text-center">
