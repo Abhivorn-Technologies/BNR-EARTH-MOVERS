@@ -27,35 +27,38 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   return (
     <main className="min-h-screen bg-slate-50 selection:bg-accent selection:text-white pb-24">
       {/* 1. Stunning Dark Hero Section */}
-      <section className="relative flex min-h-[50vh] items-center justify-center overflow-hidden bg-slate-950 pt-32 pb-20 text-center">
+      <section className="relative flex flex-col justify-center overflow-hidden bg-slate-950 pt-32 pb-28 text-center">
         {/* Background Grid & Glow */}
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(#fc6604 1px, transparent 1px), linear-gradient(90deg, #fc6604 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-[#fc6604]/20 blur-[150px] pointer-events-none" />
 
-        {/* Back Button */}
-        <div className="absolute top-28 left-4 sm:left-8 lg:left-12 z-50">
-          <Link 
-            href="/#about" 
-            className="group flex items-center gap-2 rounded-full bg-white/5 px-5 py-2.5 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 ring-1 ring-white/10 hover:ring-white/30 shadow-lg"
-          >
-            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to Services
-          </Link>
-        </div>
-
-        <div className="relative z-10 mx-auto w-full max-w-[95%] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 flex flex-col items-center mt-10">
-          <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-accent/40 bg-accent/10 px-5 py-2 backdrop-blur-md shadow-[0_0_20px_rgba(252,102,4,0.15)]">
-            <span className="text-xs font-black uppercase tracking-widest text-accent">
-              Our Services
-            </span>
+        <div className="relative z-10 mx-auto w-full max-w-[95%] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 flex flex-col">
+          
+          {/* Back Button - Naturally aligned with the left edge of the content */}
+          <div className="self-start mb-8 sm:mb-2 lg:mb-0">
+            <Link 
+              href="/#about" 
+              className="group inline-flex items-center gap-2 rounded-full bg-white/5 px-5 py-2.5 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 ring-1 ring-white/10 hover:ring-white/30 shadow-lg"
+            >
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              Back to Services
+            </Link>
           </div>
 
-          <h1 
-            className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl"
-            style={{ fontFamily: "var(--font-barlow)" }}
-          >
-            {service.title}
-          </h1>
+          <div className="flex flex-col items-center">
+            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-accent/40 bg-accent/10 px-5 py-2 backdrop-blur-md shadow-[0_0_20px_rgba(252,102,4,0.15)]">
+              <span className="text-xs font-black uppercase tracking-widest text-accent">
+                Our Services
+              </span>
+            </div>
+
+            <h1 
+              className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl"
+              style={{ fontFamily: "var(--font-barlow)" }}
+            >
+              {service.title}
+            </h1>
+          </div>
         </div>
         
         {/* Slanted Bottom Divider */}
