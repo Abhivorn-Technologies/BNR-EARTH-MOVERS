@@ -10,7 +10,7 @@ const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
 
 function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void }) {
   return (
-    <div className="relative flex items-center justify-center bg-black group overflow-hidden rounded-2xl p-0.5">
+    <div className="relative flex items-center justify-center bg-transparent group overflow-hidden rounded-2xl p-0.5">
       <video
         src={src}
         className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-xl"
@@ -242,17 +242,17 @@ export default function GalleryPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => { setExpandedItem(null); setRotation(0); }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-xl p-4 sm:p-8"
           >
             <motion.div
               layoutId={`media-container-${expandedItem.src}`}
-              className="relative flex items-center justify-center max-w-[95vw] md:max-w-[85vw] lg:max-w-[75vw] max-h-[95vh] overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 group"
+              className="relative flex items-center justify-center max-w-[95vw] md:max-w-[85vw] lg:max-w-[75vw] max-h-[95vh] overflow-hidden rounded-2xl bg-transparent shadow-[0_0_50px_rgba(0,0,0,0.5)] ring-1 ring-white/20 group"
               onClick={(e) => e.stopPropagation()}
             >
               {expandedItem.type === "video" ? (
                 <CustomVideoPlayer src={expandedItem.src} onClose={() => { setExpandedItem(null); setRotation(0); }} />
               ) : (
-                <div className="relative flex items-center justify-center bg-black">
+                <div className="relative flex items-center justify-center bg-transparent">
                   {/* Top Right Close Button (YouTube Style) */}
                   <button 
                     onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }}
