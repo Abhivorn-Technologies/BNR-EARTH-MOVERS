@@ -149,8 +149,8 @@ export const SERVICES = [
 export const GALLERY_IMAGES = [
   // The 8 Services Images
   { src: "/services/ROCK EXCAVATION 1.png", title: "Rock Excavation", category: "Services" },
-  { src: "/SOIL EXCAVATION.png", title: "Soil Excavation", category: "Services" },
-  { src: "/Site preparation.png", title: "Site Preparation", category: "Services" },
+  { src: "/services/SOIL EXCAVATION.png", title: "Soil Excavation", category: "Services" },
+  { src: "/services/Site preparation.png", title: "Site Preparation", category: "Services" },
   { src: "/services/Concrete Breaking.webp", title: "Concrete Breaking", category: "Services" },
   { src: "/services/Demolition Works.png", title: "Demolition Works", category: "Services" },
   { src: "/services/RIG BALSTING.png", title: "Rig Blasting", category: "Services" },
@@ -158,24 +158,24 @@ export const GALLERY_IMAGES = [
   { src: "/services/tractor jack hammer blasting 1.png", title: "Tractor Jack Hammer", category: "Services" },
   
   // Other Public Images
-  { src: "/Rock Excavations.avif", title: "Heavy Rock Cutting", category: "Projects" },
+  { src: "/gallery/photos/Rock Excavations.avif", title: "Heavy Rock Cutting", category: "Projects" },
   { src: "/services/Soil Excavations.jpg", title: "Mass Excavation Site", category: "Projects" },
   { src: "/services/Site Preparations.jpeg", title: "Land Leveling", category: "Projects" },
-  { src: "/Equipments for Hire.jpg", title: "Fleet Ready for Hire", category: "Machinery" },
-  { src: "/about-excavator-premium.png", title: "Premium Excavator", category: "Machinery" },
-  { src: "/cbn.avif", title: "Heavy Construction Machinery", category: "Machinery" },
-  { src: "/image.webp", title: "Site Operations", category: "Projects" },
-  { src: "/image2.jpg", title: "Earthmoving in Action", category: "Projects" },
+  { src: "/gallery/photos/Equipments for Hire.jpg", title: "Fleet Ready for Hire", category: "Machinery" },
+  { src: "/gallery/photos/about-excavator-premium.png", title: "Premium Excavator", category: "Machinery" },
+  { src: "/gallery/photos/cbn.avif", title: "Heavy Construction Machinery", category: "Machinery" },
+  { src: "/gallery/photos/image.webp", title: "Site Operations", category: "Projects" },
+  { src: "/gallery/photos/image2.jpg", title: "Earthmoving in Action", category: "Projects" },
 ] as const;
 
 export const NEW_GALLERY_PHOTOS = Array.from({ length: 15 }, (_, i) => ({
-  src: `/photo${i + 1}.jpeg`,
+  src: `/gallery/photos/photo${i + 1}.jpeg`,
   title: `Site Operation ${i + 1}`,
   category: "Projects",
 }));
 
 export const NEW_GALLERY_VIDEOS = Array.from({ length: 6 }, (_, i) => ({
-  src: `/video${i + 1}.mp4`,
+  src: `/gallery/videos/video${i + 1}.mp4`,
   title: `Video Showcase ${i + 1}`,
   category: "Projects",
 }));
