@@ -57,7 +57,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           
           {/* Breadcrumb Back Button */}
           <Link 
-            href="/#about" 
+            href="/#services" 
             className="group inline-flex items-center gap-2 text-slate-500 hover:text-accent font-semibold mb-8 transition-colors"
           >
             <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
