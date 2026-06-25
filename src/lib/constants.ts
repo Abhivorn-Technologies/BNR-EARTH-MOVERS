@@ -168,9 +168,17 @@ export const GALLERY_IMAGES = [
   { src: "/image2.jpg", title: "Earthmoving in Action", category: "Projects" },
 ] as const;
 
-export const GALLERY_VIDEOS = [
-  { src: "/video.mp4", title: "Site Operations Showcase", category: "Projects" },
-] as const;
+export const NEW_GALLERY_PHOTOS = Array.from({ length: 15 }, (_, i) => ({
+  src: `/photo${i + 1}.jpeg`,
+  title: `Site Operation ${i + 1}`,
+  category: "Projects",
+}));
+
+export const NEW_GALLERY_VIDEOS = Array.from({ length: 6 }, (_, i) => ({
+  src: `/video${i + 1}.mp4`,
+  title: `Video Showcase ${i + 1}`,
+  category: "Projects",
+}));
 
 
 export const PROCESS_STEPS = [

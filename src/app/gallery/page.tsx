@@ -2,8 +2,8 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GALLERY_VIDEOS } from "@/lib/constants";
-import { ChevronDown, Play as PlayIcon, X as XIcon, Pause as PauseIcon, Volume2, VolumeX, Maximize, Minimize } from "lucide-react";
+import { NEW_GALLERY_PHOTOS, NEW_GALLERY_VIDEOS } from "@/lib/constants";
+import { ChevronDown, Play as PlayIcon, X as XIcon, Pause as PauseIcon, Volume2, VolumeX, Maximize, Minimize, Image as ImageIcon } from "lucide-react";
 import Image from "next/image";
 
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
@@ -163,7 +163,18 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
 }
 
 export default function GalleryPage() {
-  const [expandedVideo, setExpandedVideo] = useState<{src: string, title: string, category: string} | null>(null);
+  const [activeTab, setActiveTab] = useState<"Photos" | "Videos">("Photos");
+  const [showAll, setShowAll] = useState(false);
+  const [expandedItem, setExpandedItem] = useState<{type: "photo" | "video", src: string, title: string, category: string} | null>(null);
+
+  const activeItems = activeTab === "Photos" ? NEW_GALLERY_PHOTOS : NEW_GALLERY_VIDEOS;
+  const visibleItems = showAll ? activeItems : activeItems.slice(0, 8);
+  const hasMore = activeItems.length > 8 && !showAll;
+
+  const handleTabChange = (tab: "Photos" | "Videos") => {
+    setActiveTab(tab);
+    setShowAll(false);
+  };
 
   return (
     <main className="min-h-screen bg-slate-100 selection:bg-accent selection:text-white pb-24">
@@ -222,38 +233,69 @@ export default function GalleryPage() {
 
       {/* 2. Premium Image Grid */}
       <section className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-16">
+        
+        {/* Tabs */}
+        <div className="relative z-30 mx-auto mb-12 flex max-w-fit items-center justify-center gap-2 rounded-full bg-white p-2 shadow-xl shadow-black/10 ring-1 ring-slate-900/5">
+          <button
+            onClick={() => handleTabChange("Photos")}
+            className={`rounded-full px-8 py-3 text-sm font-bold tracking-wide transition-all duration-300 ${
+              activeTab === "Photos" ? "bg-[#fc6604] text-white shadow-md" : "bg-transparent text-slate-600 hover:bg-slate-50 hover:text-[#fc6604]"
+            }`}
+          >
+            Photos
+          </button>
+          <button
+            onClick={() => handleTabChange("Videos")}
+            className={`rounded-full px-8 py-3 text-sm font-bold tracking-wide transition-all duration-300 ${
+              activeTab === "Videos" ? "bg-[#fc6604] text-white shadow-md" : "bg-transparent text-slate-600 hover:bg-slate-50 hover:text-[#fc6604]"
+            }`}
+          >
+            Videos
+          </button>
+        </div>
+
         <motion.div 
           layout
           className="flex flex-wrap justify-center gap-5 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {GALLERY_VIDEOS.map((item) => (
+            {visibleItems.map((item) => (
               <motion.div
                 key={item.src}
-                layoutId={`video-container-${item.src}`}
-                onClick={() => setExpandedVideo(item)}
+                layoutId={`media-container-${item.src}`}
+                onClick={() => setExpandedItem({ ...item, type: activeTab === "Photos" ? "photo" : "video" })}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 className="group relative h-80 w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] overflow-hidden rounded-[2rem] bg-slate-900 shadow-md shadow-slate-200/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 hover:ring-2 hover:ring-accent/50 cursor-pointer"
               >
-                {/* Background Video */}
-                <video
-                  src={item.src}
-                  className="object-cover h-full w-full opacity-90 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-100"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
+                {/* Background Media */}
+                {activeTab === "Photos" ? (
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    className="object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-100"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                ) : (
+                  <video
+                    src={item.src}
+                    className="object-cover h-full w-full opacity-90 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-100"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                )}
                 
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
                 
                 {/* Hover Icon (Center) */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-50 rounded-full bg-white/10 p-4 opacity-0 shadow-xl ring-1 ring-white/20 backdrop-blur-md transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 z-20">
-                   <PlayIcon className="h-6 w-6 text-white" fill="white" />
+                   {activeTab === "Photos" ? <ImageIcon className="h-6 w-6 text-white" /> : <PlayIcon className="h-6 w-6 text-white" fill="white" />}
                 </div>
 
                 {/* Content Container (Bottom) */}
@@ -274,30 +316,59 @@ export default function GalleryPage() {
           </AnimatePresence>
         </motion.div>
         
-        {GALLERY_VIDEOS.length === 0 && (
+        {/* View All Button */}
+        {hasMore && (
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="rounded-full bg-[#fc6604] px-8 py-3 font-bold text-white shadow-lg shadow-[#fc6604]/20 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#fc6604]/40"
+            >
+              View All {activeTab}
+            </button>
+          </div>
+        )}
+        
+        {activeItems.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-lg text-slate-500">No videos found.</p>
+            <p className="text-lg text-slate-500">No media found.</p>
           </div>
         )}
       </section>
 
-      {/* Video Modal Overlay */}
+      {/* Media Modal Overlay */}
       <AnimatePresence>
-        {expandedVideo && (
+        {expandedItem && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setExpandedVideo(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-8"
+            onClick={() => setExpandedItem(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
           >
             <motion.div
-              layoutId={`video-container-${expandedVideo.src}`}
-              className="relative w-full overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 aspect-video"
-              style={{ maxWidth: '60vw' }}
+              layoutId={`media-container-${expandedItem.src}`}
+              className={`relative w-full overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 ${expandedItem.type === "video" ? "aspect-video" : "h-[80vh] flex items-center justify-center"}`}
+              style={{ maxWidth: expandedItem.type === "video" ? '60vw' : '80vw' }}
               onClick={(e) => e.stopPropagation()}
             >
-              <CustomVideoPlayer src={expandedVideo.src} onClose={() => setExpandedVideo(null)} />
+              {expandedItem.type === "video" ? (
+                <CustomVideoPlayer src={expandedItem.src} onClose={() => setExpandedItem(null)} />
+              ) : (
+                <>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); setExpandedItem(null); }}
+                    className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-sm"
+                    aria-label="Close Image"
+                  >
+                    <XIcon className="h-5 w-5" />
+                  </button>
+                  <img
+                    src={expandedItem.src}
+                    alt={expandedItem.title}
+                    className="h-full w-full object-contain"
+                  />
+                </>
+              )}
             </motion.div>
           </motion.div>
         )}
