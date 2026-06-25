@@ -64,18 +64,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             Back to Services
           </Link>
 
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 lg:items-start">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
             
             {/* LEFT SIDE: Image */}
-            <div className="relative w-full">
-              <div className="group relative h-[350px] lg:h-[450px] w-full overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-100 bg-slate-100">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+            <div className="relative w-full h-full">
+              <div className="lg:sticky lg:top-32">
+                <div className="group relative w-full aspect-[4/3] overflow-hidden rounded-3xl shadow-xl ring-1 ring-slate-100 bg-slate-100">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
               </div>
             </div>
 
