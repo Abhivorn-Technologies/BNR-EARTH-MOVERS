@@ -128,7 +128,7 @@ export default function MachineryPage() {
 
         <motion.div 
           layout
-          className="flex flex-wrap items-start justify-center gap-5 sm:gap-6"
+          className="flex flex-wrap justify-center gap-5 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
             {displayedMachinery.map((item, idx) => (
@@ -142,25 +142,35 @@ export default function MachineryPage() {
                 className="group relative flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] flex-col rounded-[2rem] border border-slate-200/80 bg-white shadow-md shadow-slate-200/40 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/30"
               >
                 {/* Grand Full-Bleed Image Container */}
-                <div className="relative h-64 w-full overflow-hidden bg-white">
+                <div className="relative h-64 w-full overflow-hidden bg-white border-b border-slate-100 p-2 flex items-center justify-center">
                   {getIconForMachinery(item.name)}
                   {/* Subtle overlay for premium look */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
                 </div>
                 
                 {/* Content Section */}
-                <div className="relative z-10 flex flex-col h-full p-6 pt-5">
-                  {/* Category Pill */}
-                  <span className="mb-3 w-fit rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 transition-colors duration-500 group-hover:bg-accent/10 group-hover:text-accent">
-                    {item.category}
-                  </span>
+                <div className="relative z-10 flex flex-col flex-grow p-6 pt-5">
+                  <div className="flex-grow">
+                    {/* Category Pill */}
+                    <span className="mb-3 w-fit rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 transition-colors duration-500 group-hover:bg-accent/10 group-hover:text-accent">
+                      {item.category}
+                    </span>
+                    
+                    <h3 className="mb-2 text-xl font-bold text-slate-900 transition-colors duration-500 group-hover:text-accent" style={{ fontFamily: "var(--font-barlow)" }}>
+                      {item.name}
+                    </h3>
+                    <p className="text-sm font-medium leading-relaxed text-slate-500">
+                      {item.desc}
+                    </p>
+                  </div>
                   
-                  <h3 className="mb-2 text-xl font-bold text-slate-900 transition-colors duration-500 group-hover:text-accent" style={{ fontFamily: "var(--font-barlow)" }}>
-                    {item.name}
-                  </h3>
-                  <p className="text-sm font-medium leading-relaxed text-slate-500">
-                    {item.desc}
-                  </p>
+                  {/* Anchored Bottom Link to Fix Empty Space */}
+                  <div className="mt-6 flex items-center text-sm font-bold text-accent">
+                    <span>Request Details</span>
+                    <svg className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
                 </div>
                 
                 {/* Calm Bottom Glowing Line */}
