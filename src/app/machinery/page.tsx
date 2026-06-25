@@ -214,8 +214,6 @@ export default function MachineryPage() {
              </a>
           </div>
         </motion.div>
-
-      </section>
     </main>
   );
 }
