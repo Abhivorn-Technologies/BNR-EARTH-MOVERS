@@ -4,44 +4,39 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { MACHINERY } from "@/lib/constants";
-import { Tractor, Truck, Hammer, Pickaxe, Flame, Activity, Droplets, HardHat, Waves, Disc, Layers, ArrowDownToLine, Shovel, Drill, Settings, ChevronDown } from "lucide-react";
 
-// Helper function to pick a semi-relevant colorful icon (emoji)
+// Helper function to pick a real image for each machinery
 function getIconForMachinery(name: string) {
-  const iconClass = "w-8 h-8 transition-transform group-hover:scale-110";
-  
+  let imgSrc = "/photo1.jpeg"; // Fallback image
+
   switch (name) {
-    case "Excavators":
-      return <Tractor className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
-    case "Dumpers":
-      return <Truck className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
-    case "Jack Hammer Drills":
-      return <Hammer className={`${iconClass} text-rose-500`} strokeWidth={1.5} />;
-    case "Wagon Drills":
-      return <Drill className={`${iconClass} text-rose-500`} strokeWidth={1.5} />;
-    case "Explosives Mobile Magazines":
-      return <Flame className={`${iconClass} text-red-500`} strokeWidth={1.5} />;
-    case "Seismographs":
-      return <Activity className={`${iconClass} text-blue-500`} strokeWidth={1.5} />;
-    case "Water Tanker with Sprinklers":
-      return <Droplets className={`${iconClass} text-cyan-500`} strokeWidth={1.5} />;
-    case "Dozers":
-      return <Shovel className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
-    case "Dewatering Pumps":
-      return <Waves className={`${iconClass} text-blue-500`} strokeWidth={1.5} />;
-    case "Diamond Rope Cutting Units":
-      return <Disc className={`${iconClass} text-purple-500`} strokeWidth={1.5} />;
-    case "Blasting Mats / Rubber Mats":
-      return <Layers className={`${iconClass} text-slate-700`} strokeWidth={1.5} />;
-    case "Pile Load Testing Equipment":
-      return <ArrowDownToLine className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
-    case "Backhoe":
-      return <Tractor className={`${iconClass} text-[#fc6604]`} strokeWidth={1.5} />;
-    case "Hydraulic Rotary Rig":
-      return <Drill className={`${iconClass} text-rose-600`} strokeWidth={1.5} />;
-    default:
-      return <Settings className={`${iconClass} text-slate-500`} strokeWidth={1.5} />;
+    case "Excavators": imgSrc = "/Excavators.jpg"; break;
+    case "Dumpers": imgSrc = "/photo11.jpeg"; break;
+    case "Jack Hammer Drills": imgSrc = "/tractor jack hammer blasting 1.png"; break;
+    case "Wagon Drills": imgSrc = "/photo1.jpeg"; break;
+    case "Explosives Mobile Magazines": imgSrc = "/photo2.jpeg"; break;
+    case "Seismographs": imgSrc = "/photo3.jpeg"; break;
+    case "Water Tanker with Sprinklers": imgSrc = "/photo4.jpeg"; break;
+    case "Dozers": imgSrc = "/photo5.jpeg"; break;
+    case "Dewatering Pumps": imgSrc = "/photo6.jpeg"; break;
+    case "Diamond Rope Cutting Units": imgSrc = "/Rope Cutting.png"; break;
+    case "Blasting Mats / Rubber Mats": imgSrc = "/photo7.jpeg"; break;
+    case "Pile Load Testing Equipment": imgSrc = "/photo8.jpeg"; break;
+    case "Backhoe": imgSrc = "/photo9.jpeg"; break;
+    case "Hydraulic Rotary Rig": imgSrc = "/RIG BALSTING.png"; break;
   }
+
+  return (
+    <div className="relative h-20 w-20 overflow-hidden rounded-2xl shadow-sm border border-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:border-[#fc6604]/40">
+      <Image 
+        src={imgSrc} 
+        alt={name} 
+        fill 
+        className="object-cover"
+        sizes="80px"
+      />
+    </div>
+  );
 }
 
 const CATEGORIES = ["All", "Excavation", "Drilling & Blasting", "Transport", "Support", "Specialized"];
@@ -143,8 +138,8 @@ export default function MachineryPage() {
                 className="group relative flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] flex-col rounded-[2rem] border border-slate-200/80 bg-white p-6 shadow-md shadow-slate-200/40 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/30"
               >
                 <div className="relative z-10 flex flex-col h-full">
-                  {/* Colorful Animated Icon Container */}
-                  <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-50 border border-slate-100 transition-colors duration-500 group-hover:bg-accent/10 group-hover:border-accent/20 shadow-sm">
+                  {/* Real Image Icon Container */}
+                  <div className="mb-5 inline-flex">
                     {getIconForMachinery(item.name)}
                   </div>
                   
