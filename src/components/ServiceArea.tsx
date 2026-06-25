@@ -65,7 +65,7 @@ export function ServiceArea() {
             <iframe
               title={`BNR Earth Movers service area — ${activeArea}`}
               src={`https://maps.google.com/maps?q=${encodeURIComponent(activeArea + ', India')}&z=10&output=embed`}
-              className="aspect-[4/3] w-full border-0 grayscale-[30%] invert-[90%] hue-rotate-180"
+              className="block aspect-[4/3] w-full border-0 grayscale-[30%] invert-[90%] hue-rotate-180"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
