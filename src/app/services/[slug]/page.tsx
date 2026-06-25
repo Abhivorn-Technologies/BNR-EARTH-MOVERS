@@ -64,7 +64,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             Back to Services
           </Link>
 
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 lg:items-start">
             
             {/* LEFT SIDE: Image */}
             <div className="relative w-full">
@@ -104,22 +104,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </li>
               ))}
             </ul>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#fc6604] to-[#ea5a02] px-8 py-4 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-[#fc6604]/30 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#fc6604]/40"
-              >
-                Get a Free Quote
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/gallery"
-                className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-8 py-4 text-sm font-black uppercase tracking-widest text-slate-900 shadow-sm transition-all hover:-translate-y-1 hover:bg-slate-200"
-              >
-                View Gallery
-              </Link>
-            </div>
             </div>
           </div>
         </div>
