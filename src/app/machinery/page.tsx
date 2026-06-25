@@ -13,7 +13,7 @@ function getIconForMachinery(name: string) {
 
   switch (name) {
     case "Excavators": imgSrc = "/machinery/excavators.png"; break;
-    case "Dumpers": imgSrc = "/machinery/dumpers.png"; break;
+    case "Dumpers": imgSrc = "/machinery/Dumper.jpg"; break;
     // Add other transparent images here as you download them!
     // case "Jack Hammer Drills": imgSrc = "/machinery/jack-hammer.png"; break;
   }
