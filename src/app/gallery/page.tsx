@@ -291,26 +291,12 @@ export default function GalleryPage() {
                   />
                 )}
                 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+                {/* Clean Hover Overlay */}
+                <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/40 z-10" />
                 
                 {/* Hover Icon (Center) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-50 rounded-full bg-white/10 p-4 opacity-0 shadow-xl ring-1 ring-white/20 backdrop-blur-md transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 z-20">
-                   {activeTab === "Photos" ? <ImageIcon className="h-6 w-6 text-white" /> : <PlayIcon className="h-6 w-6 text-white" fill="white" />}
-                </div>
-
-                {/* Content Container (Bottom) */}
-                <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center justify-end p-6 transition-transform duration-500 group-hover:-translate-y-2">
-                  <h3 className="text-xl font-black text-white tracking-tight text-center transition-colors duration-300 group-hover:text-accent" style={{ fontFamily: "var(--font-barlow)" }}>
-                    {item.title}
-                  </h3>
-                  <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-hover:mt-2">
-                    <div className="overflow-hidden">
-                      <span className="text-xs font-bold uppercase tracking-widest text-slate-300">
-                        {item.category}
-                      </span>
-                    </div>
-                  </div>
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-50 rounded-full bg-white/20 p-4 opacity-0 shadow-xl ring-1 ring-white/30 backdrop-blur-md transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 z-20">
+                   {activeTab === "Photos" ? <ImageIcon className="h-8 w-8 text-white" /> : <PlayIcon className="h-8 w-8 text-white" fill="white" />}
                 </div>
               </motion.div>
             ))}
