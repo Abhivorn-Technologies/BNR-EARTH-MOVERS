@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NEW_GALLERY_PHOTOS, NEW_GALLERY_VIDEOS } from "@/lib/constants";
+import { GALLERY_IMAGES, NEW_GALLERY_PHOTOS, NEW_GALLERY_VIDEOS } from "@/lib/constants";
 import { ChevronDown, Play as PlayIcon, X as XIcon, Pause as PauseIcon, Volume2, VolumeX, Maximize, Minimize, Image as ImageIcon, RotateCw } from "lucide-react";
 import Image from "next/image";
 
