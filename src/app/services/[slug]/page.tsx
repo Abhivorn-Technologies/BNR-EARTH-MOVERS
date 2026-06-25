@@ -32,10 +32,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(#fc6604 1px, transparent 1px), linear-gradient(90deg, #fc6604 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-[#fc6604]/20 blur-[150px] pointer-events-none" />
 
-        <div className="relative z-10 mx-auto w-full max-w-[95%] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 flex flex-col">
+        <div className="relative z-10 mx-auto w-full max-w-[95%] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[150px]">
           
-          {/* Back Button - Naturally aligned with the left edge of the content */}
-          <div className="self-start mb-8 sm:mb-2 lg:mb-0">
+          {/* Back Button - Aligned with the left grid edge, but absolutely positioned so text stays perfectly centered */}
+          <div className="absolute left-4 sm:left-6 lg:left-8 top-0 lg:top-4 z-50">
             <Link 
               href="/#about" 
               className="group inline-flex items-center gap-2 rounded-full bg-white/5 px-5 py-2.5 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 ring-1 ring-white/10 hover:ring-white/30 shadow-lg"
@@ -45,7 +45,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </Link>
           </div>
 
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mt-12 lg:mt-0">
             <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-accent/40 bg-accent/10 px-5 py-2 backdrop-blur-md shadow-[0_0_20px_rgba(252,102,4,0.15)]">
               <span className="text-xs font-black uppercase tracking-widest text-accent">
                 Our Services
@@ -67,24 +67,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       {/* 2. Main Content Section */}
       <section className="relative z-20 mx-auto w-full max-w-[95%] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 -mt-16">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:items-center bg-white p-6 sm:p-10 lg:p-14 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 ring-1 ring-slate-100">
+        <div className="flex flex-col lg:flex-row bg-white rounded-[2.5rem] shadow-2xl shadow-slate-200/50 ring-1 ring-slate-100 overflow-hidden">
           
-          {/* LEFT SIDE: Image */}
-          <div className="relative w-full">
-            <div className="group relative h-full min-h-[400px] lg:min-h-[650px] w-full overflow-hidden rounded-[2rem] shadow-xl ring-1 ring-slate-100 bg-slate-100">
-              <Image
-                src={service.image}
-                alt={service.title}
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
+          {/* LEFT SIDE: Image (Flush to edges) */}
+          <div className="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-[600px] bg-slate-100 overflow-hidden group">
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
 
-          {/* RIGHT SIDE: Content */}
-          <div className="flex flex-col justify-center py-4">
-            <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl" style={{ fontFamily: "var(--font-barlow)" }}>
+          {/* RIGHT SIDE: Content (With generous padding) */}
+          <div className="flex flex-col justify-center w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 2xl:p-20">
+            <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl" style={{ fontFamily: "var(--font-barlow)" }}>
               Specialized {service.title} Solutions.
             </h2>
             <div className="mt-4 h-1 w-16 rounded-full bg-[#fc6604]" />
