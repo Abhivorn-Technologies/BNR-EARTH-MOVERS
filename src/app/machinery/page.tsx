@@ -7,9 +7,16 @@ import { MACHINERY } from "@/lib/constants";
 
 // Helper function to pick a real image for each machinery
 function getIconForMachinery(name: string) {
-  // Using the transparent excavator image as a placeholder for all items
+  // Using the transparent excavator image as a fallback for all items
   // until the specific transparent machinery images are downloaded.
-  const imgSrc = "/machinery/excavators.png"; 
+  let imgSrc = "/machinery/excavators.png"; 
+
+  switch (name) {
+    case "Excavators": imgSrc = "/machinery/excavators.png"; break;
+    case "Dumpers": imgSrc = "/machinery/dumpers.png"; break;
+    // Add other transparent images here as you download them!
+    // case "Jack Hammer Drills": imgSrc = "/machinery/jack-hammer.png"; break;
+  }
 
   return (
     <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-slate-50 shadow-sm ring-1 ring-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:ring-[#fc6604] group-hover:ring-2">
