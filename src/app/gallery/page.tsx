@@ -285,7 +285,7 @@ export default function GalleryPage() {
             <motion.div
               layoutId={`video-container-${expandedVideo.src}`}
               className="relative w-full overflow-hidden rounded-2xl bg-black shadow-2xl ring-1 ring-white/20 aspect-video"
-              style={{ maxWidth: '80vw' }}
+              style={{ maxWidth: '60vw' }}
               onClick={(e) => e.stopPropagation()}
             >
               <CustomVideoPlayer src={expandedVideo.src} onClose={() => setExpandedVideo(null)} />
