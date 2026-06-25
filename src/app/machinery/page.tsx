@@ -14,8 +14,18 @@ function getIconForMachinery(name: string) {
   switch (name) {
     case "Excavators": imgSrc = "/machinery/excavators.png"; break;
     case "Dumpers": imgSrc = "/machinery/Dumper.jpg"; break;
-    // Add other transparent images here as you download them!
-    // case "Jack Hammer Drills": imgSrc = "/machinery/jack-hammer.png"; break;
+    case "Jack Hammer Drills": imgSrc = "/machinery/Jack Hammer Drills.jpg"; break;
+    case "Wagon Drills": imgSrc = "/machinery/Wagon Drills.jpg"; break;
+    case "Explosives Mobile Magazines": imgSrc = "/machinery/Explosives Mobile Magazines.jpg"; break;
+    case "Seismographs": imgSrc = "/machinery/Seismographs.jpg"; break;
+    case "Water Tanker with Sprinklers": imgSrc = "/machinery/Water Tanker with Sprinklers.jpg"; break;
+    case "Dozers": imgSrc = "/machinery/Dozers.jpg"; break;
+    case "Dewatering Pumps": imgSrc = "/machinery/Dewatering Pumps.jpg"; break;
+    case "Diamond Rope Cutting Units": imgSrc = "/machinery/Diamond Rope Cutting Units.jpg"; break;
+    case "Blasting Mats / Rubber Mats": imgSrc = "/machinery/Blasting Mats.jpg"; break;
+    case "Pile Load Testing Equipment": imgSrc = "/machinery/Pile Load Testing Equipment.jpg"; break;
+    case "Backhoe": imgSrc = "/machinery/Backhoe.jpg"; break;
+    case "Hydraulic Rotary Rig": imgSrc = "/machinery/Hydraulic Rotary Rig.avif"; break;
   }
 
   return (
