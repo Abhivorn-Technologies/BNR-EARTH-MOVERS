@@ -29,15 +29,13 @@ function getIconForMachinery(name: string) {
   }
 
   return (
-    <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-slate-50 shadow-sm ring-1 ring-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:ring-[#fc6604] group-hover:ring-2">
-      <Image 
-        src={imgSrc} 
-        alt={name} 
-        fill 
-        className="object-contain p-1.5 drop-shadow-sm"
-        sizes="56px"
-      />
-    </div>
+    <Image 
+      src={imgSrc} 
+      alt={name} 
+      fill 
+      className="object-cover transition-transform duration-700 group-hover:scale-110"
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    />
   );
 }
 
@@ -141,20 +139,23 @@ export default function MachineryPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="group relative flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] flex-col rounded-[2rem] border border-slate-200/80 bg-white p-6 shadow-md shadow-slate-200/40 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/30"
+                className="group relative flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] flex-col rounded-[2rem] border border-slate-200/80 bg-white shadow-md shadow-slate-200/40 overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/30"
               >
-                <div className="relative z-10 flex flex-col h-full">
-                  {/* Real Image Icon Container */}
-                  <div className="mb-5 inline-flex">
-                    {getIconForMachinery(item.name)}
-                  </div>
-                  
+                {/* Grand Full-Bleed Image Container */}
+                <div className="relative h-64 w-full overflow-hidden bg-slate-100">
+                  {getIconForMachinery(item.name)}
+                  {/* Subtle overlay for premium look */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                </div>
+                
+                {/* Content Section */}
+                <div className="relative z-10 flex flex-col h-full p-6 pt-5">
                   {/* Category Pill */}
                   <span className="mb-3 w-fit rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 transition-colors duration-500 group-hover:bg-accent/10 group-hover:text-accent">
                     {item.category}
                   </span>
                   
-                  <h3 className="mb-2 text-lg font-bold text-slate-900 transition-colors duration-500 group-hover:text-accent" style={{ fontFamily: "var(--font-barlow)" }}>
+                  <h3 className="mb-2 text-xl font-bold text-slate-900 transition-colors duration-500 group-hover:text-accent" style={{ fontFamily: "var(--font-barlow)" }}>
                     {item.name}
                   </h3>
                   <p className="text-sm font-medium leading-relaxed text-slate-500">
@@ -163,7 +164,7 @@ export default function MachineryPage() {
                 </div>
                 
                 {/* Calm Bottom Glowing Line */}
-                <div className="absolute inset-x-0 bottom-0 h-1 scale-x-0 rounded-b-3xl bg-gradient-to-r from-accent to-[#ea5a02] transition-transform duration-700 ease-in-out group-hover:scale-x-100" />
+                <div className="absolute inset-x-0 bottom-0 h-1.5 scale-x-0 rounded-b-3xl bg-gradient-to-r from-accent to-[#ea5a02] transition-transform duration-700 ease-in-out group-hover:scale-x-100" />
               </motion.div>
             ))}
           </AnimatePresence>
