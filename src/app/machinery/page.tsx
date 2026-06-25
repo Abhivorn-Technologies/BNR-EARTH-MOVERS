@@ -27,13 +27,13 @@ function getIconForMachinery(name: string) {
   }
 
   return (
-    <div className="relative h-20 w-20 overflow-hidden rounded-2xl shadow-sm border border-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:border-[#fc6604]/40">
+    <div className="relative h-14 w-14 overflow-hidden rounded-full bg-slate-50 shadow-sm ring-1 ring-slate-200 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:ring-[#fc6604] group-hover:ring-2">
       <Image 
         src={imgSrc} 
         alt={name} 
         fill 
         className="object-cover"
-        sizes="80px"
+        sizes="56px"
       />
     </div>
   );
