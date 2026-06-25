@@ -163,14 +163,6 @@ export default function MachineryPage() {
                       {item.desc}
                     </p>
                   </div>
-                  
-                  {/* Anchored Bottom Link to Fix Empty Space */}
-                  <div className="mt-6 flex items-center text-sm font-bold text-accent">
-                    <span>Request Details</span>
-                    <svg className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </div>
                 </div>
                 
                 {/* Calm Bottom Glowing Line */}
