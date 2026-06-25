@@ -174,7 +174,7 @@ export const NEW_GALLERY_PHOTOS = Array.from({ length: 15 }, (_, i) => ({
   category: "Projects",
 }));
 
-export const NEW_GALLERY_VIDEOS = Array.from({ length: 6 }, (_, i) => ({
+export const NEW_GALLERY_VIDEOS = Array.from({ length: 17 }, (_, i) => ({
   src: `/gallery/videos/video${i + 1}.mp4`,
   title: `Video Showcase ${i + 1}`,
   category: "Projects",
