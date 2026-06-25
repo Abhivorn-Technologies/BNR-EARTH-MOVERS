@@ -186,7 +186,10 @@ export default function GalleryPage() {
   const [durations, setDurations] = useState<Record<string, number>>({});
 
   const handleMetadataLoaded = (src: string, e: React.SyntheticEvent<HTMLVideoElement>) => {
-    setDurations(prev => ({ ...prev, [src]: e.currentTarget.duration }));
+    const duration = e.currentTarget.duration;
+    if (duration) {
+      setDurations(prev => ({ ...prev, [src]: duration }));
+    }
   };
 
   const formatDuration = (timeInSeconds: number) => {
