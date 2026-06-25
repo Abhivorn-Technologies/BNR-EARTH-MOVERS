@@ -34,7 +34,7 @@ export const SERVICES = [
   {
     id: "rope-cutting",
     title: "Rope Cutting",
-    image: "/Rope Cutting.png",
+    image: "/services/Rope Cutting.png",
     description: "Advanced diamond wire rope cutting for precise, vibration-free concrete and rock slicing.",
     points: [
       "Diamond wire sawing for heavy concrete structures",
@@ -48,7 +48,7 @@ export const SERVICES = [
   {
     id: "rock-excavation",
     title: "Rock Excavation",
-    image: "/ROCK EXCAVATION 1.png",
+    image: "/services/ROCK EXCAVATION 1.png",
     description: "Comprehensive rock excavation and controlled blasting solutions for complex terrains.",
     points: [
       "Rock Excavation using Licensed Control Blasting methods",
@@ -62,7 +62,7 @@ export const SERVICES = [
   {
     id: "soil-excavation",
     title: "Soil Excavation",
-    image: "/Soil Excavations.jpg",
+    image: "/services/Soil Excavations.jpg",
     description: "Rapid and reliable mass soil excavation for all types of infrastructure projects.",
     points: [
       "Mass Soil Excavation for residential, commercial, industrial and infrastructure projects",
@@ -76,7 +76,7 @@ export const SERVICES = [
   {
     id: "site-preparation",
     title: "Site Preparation",
-    image: "/Site Preparations.jpeg",
+    image: "/services/Site Preparations.jpeg",
     description: "Complete site preparation, from jungle clearing to high-quality soil supplying and compaction.",
     points: [
       "Jungle Cleaning, tree cutting and Land leveling works",
@@ -90,7 +90,7 @@ export const SERVICES = [
   {
     id: "concrete-breaking",
     title: "Concrete Breaking",
-    image: "/Concrete Breaking.webp",
+    image: "/services/Concrete Breaking.webp",
     description: "Advanced structural breaking for RCC/PCC floors, dams, bridges, and retaining walls.",
     points: [
       "Breaking of RCC Floor, footings, slab, columns, structures, Roads, retaining walls",
@@ -104,7 +104,7 @@ export const SERVICES = [
   {
     id: "demolition-works",
     title: "Demolition Works",
-    image: "/Demolition Works.png",
+    image: "/services/Demolition Works.png",
     description: "Safe and efficient structural demolition services utilizing heavy machinery.",
     points: [
       "Complete demolition of commercial and residential structures",
@@ -118,7 +118,7 @@ export const SERVICES = [
   {
     id: "rig-blasting",
     title: "Rig Blasting",
-    image: "/RIG BALSTING.png",
+    image: "/services/RIG BALSTING.png",
     description: "Precision drilling and controlled rig blasting for large-scale earthmoving projects.",
     points: [
       "High-efficiency crawler drill rig operations",
@@ -133,7 +133,7 @@ export const SERVICES = [
   {
     id: "tractor-jack-hammer",
     title: "Tractor Jack Hammer",
-    image: "/tractor jack hammer blasting 1.png",
+    image: "/services/tractor jack hammer blasting 1.png",
     description: "Heavy-duty tractor-mounted pneumatic jack hammers for rapid rock and concrete breaking.",
     points: [
       "High-impact breaking using tractor-mounted compressors",
@@ -148,19 +148,19 @@ export const SERVICES = [
 
 export const GALLERY_IMAGES = [
   // The 8 Services Images
-  { src: "/ROCK EXCAVATION 1.png", title: "Rock Excavation", category: "Services" },
+  { src: "/services/ROCK EXCAVATION 1.png", title: "Rock Excavation", category: "Services" },
   { src: "/SOIL EXCAVATION.png", title: "Soil Excavation", category: "Services" },
   { src: "/Site preparation.png", title: "Site Preparation", category: "Services" },
-  { src: "/Concrete Breaking.webp", title: "Concrete Breaking", category: "Services" },
-  { src: "/Demolition Works.png", title: "Demolition Works", category: "Services" },
-  { src: "/RIG BALSTING.png", title: "Rig Blasting", category: "Services" },
-  { src: "/Rope Cutting.png", title: "Rope Cutting", category: "Services" },
-  { src: "/tractor jack hammer blasting 1.png", title: "Tractor Jack Hammer", category: "Services" },
+  { src: "/services/Concrete Breaking.webp", title: "Concrete Breaking", category: "Services" },
+  { src: "/services/Demolition Works.png", title: "Demolition Works", category: "Services" },
+  { src: "/services/RIG BALSTING.png", title: "Rig Blasting", category: "Services" },
+  { src: "/services/Rope Cutting.png", title: "Rope Cutting", category: "Services" },
+  { src: "/services/tractor jack hammer blasting 1.png", title: "Tractor Jack Hammer", category: "Services" },
   
   // Other Public Images
   { src: "/Rock Excavations.avif", title: "Heavy Rock Cutting", category: "Projects" },
-  { src: "/Soil Excavations.jpg", title: "Mass Excavation Site", category: "Projects" },
-  { src: "/Site Preparations.jpeg", title: "Land Leveling", category: "Projects" },
+  { src: "/services/Soil Excavations.jpg", title: "Mass Excavation Site", category: "Projects" },
+  { src: "/services/Site Preparations.jpeg", title: "Land Leveling", category: "Projects" },
   { src: "/Equipments for Hire.jpg", title: "Fleet Ready for Hire", category: "Machinery" },
   { src: "/about-excavator-premium.png", title: "Premium Excavator", category: "Machinery" },
   { src: "/cbn.avif", title: "Heavy Construction Machinery", category: "Machinery" },

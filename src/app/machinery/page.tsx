@@ -7,23 +7,23 @@ import { MACHINERY } from "@/lib/constants";
 
 // Helper function to pick a real image for each machinery
 function getIconForMachinery(name: string) {
-  let imgSrc = "/photo1.jpeg"; // Fallback image
+  let imgSrc = "/machinery/wagon-drills.jpeg"; // Fallback image
 
   switch (name) {
-    case "Excavators": imgSrc = "/Excavators.jpg"; break;
-    case "Dumpers": imgSrc = "/photo11.jpeg"; break;
-    case "Jack Hammer Drills": imgSrc = "/tractor jack hammer blasting 1.png"; break;
-    case "Wagon Drills": imgSrc = "/photo1.jpeg"; break;
-    case "Explosives Mobile Magazines": imgSrc = "/photo2.jpeg"; break;
-    case "Seismographs": imgSrc = "/photo3.jpeg"; break;
-    case "Water Tanker with Sprinklers": imgSrc = "/photo4.jpeg"; break;
-    case "Dozers": imgSrc = "/photo5.jpeg"; break;
-    case "Dewatering Pumps": imgSrc = "/photo6.jpeg"; break;
-    case "Diamond Rope Cutting Units": imgSrc = "/Rope Cutting.png"; break;
-    case "Blasting Mats / Rubber Mats": imgSrc = "/photo7.jpeg"; break;
-    case "Pile Load Testing Equipment": imgSrc = "/photo8.jpeg"; break;
-    case "Backhoe": imgSrc = "/photo9.jpeg"; break;
-    case "Hydraulic Rotary Rig": imgSrc = "/RIG BALSTING.png"; break;
+    case "Excavators": imgSrc = "/machinery/excavators.jpg"; break;
+    case "Dumpers": imgSrc = "/machinery/dumpers.jpeg"; break;
+    case "Jack Hammer Drills": imgSrc = "/machinery/jack-hammer.png"; break;
+    case "Wagon Drills": imgSrc = "/machinery/wagon-drills.jpeg"; break;
+    case "Explosives Mobile Magazines": imgSrc = "/machinery/explosives.jpeg"; break;
+    case "Seismographs": imgSrc = "/machinery/seismographs.jpeg"; break;
+    case "Water Tanker with Sprinklers": imgSrc = "/machinery/water-tanker.jpeg"; break;
+    case "Dozers": imgSrc = "/machinery/dozers.jpeg"; break;
+    case "Dewatering Pumps": imgSrc = "/machinery/dewatering-pumps.jpeg"; break;
+    case "Diamond Rope Cutting Units": imgSrc = "/machinery/rope-cutting.png"; break;
+    case "Blasting Mats / Rubber Mats": imgSrc = "/machinery/blasting-mats.jpeg"; break;
+    case "Pile Load Testing Equipment": imgSrc = "/machinery/pile-testing.jpeg"; break;
+    case "Backhoe": imgSrc = "/machinery/backhoe.jpeg"; break;
+    case "Hydraulic Rotary Rig": imgSrc = "/machinery/rotary-rig.png"; break;
   }
 
   return (
