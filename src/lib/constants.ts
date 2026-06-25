@@ -104,7 +104,7 @@ export const SERVICES = [
   {
     id: "demolition-works",
     title: "Demolition Works",
-    image: "/services/Demolition Works.png",
+    image: "/services/demolition-works.jpg",
     description: "Safe and efficient structural demolition services utilizing heavy machinery.",
     points: [
       "Complete demolition of commercial and residential structures",
@@ -133,7 +133,7 @@ export const SERVICES = [
   {
     id: "tractor-jack-hammer",
     title: "Tractor Jack Hammer",
-    image: "/services/tractor jack hammer blasting 1.png",
+    image: "/services/tractor-jack-hammer.jpg",
     description: "Heavy-duty tractor-mounted pneumatic jack hammers for rapid rock and concrete breaking.",
     points: [
       "High-impact breaking using tractor-mounted compressors",
@@ -152,10 +152,10 @@ export const GALLERY_IMAGES = [
   { src: "/services/SOIL EXCAVATION.png", title: "Soil Excavation", category: "Services" },
   { src: "/services/Site preparation.png", title: "Site Preparation", category: "Services" },
   { src: "/services/Concrete Breaking.webp", title: "Concrete Breaking", category: "Services" },
-  { src: "/services/Demolition Works.png", title: "Demolition Works", category: "Services" },
+  { src: "/services/demolition-works.jpg", title: "Demolition Works", category: "Services" },
   { src: "/services/RIG BALSTING.png", title: "Rig Blasting", category: "Services" },
   { src: "/services/Rope Cutting.png", title: "Rope Cutting", category: "Services" },
-  { src: "/services/tractor jack hammer blasting 1.png", title: "Tractor Jack Hammer", category: "Services" },
+  { src: "/services/tractor-jack-hammer.jpg", title: "Tractor Jack Hammer", category: "Services" },
   
   // Other Public Images
   { src: "/gallery/photos/Rock Excavations.avif", title: "Heavy Rock Cutting", category: "Projects" },
