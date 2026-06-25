@@ -15,11 +15,11 @@ const trustBadges = [
 export function FinalCta() {
   return (
     <AnimatedSection id="contact" className="relative bg-white border-t border-slate-200">
-      <div className="flex items-center justify-center py-16 lg:py-24 relative overflow-hidden">
+      <div className="flex items-center justify-center pt-16 pb-32 lg:py-24 relative overflow-hidden">
         
         {/* Massive Background Watermark */}
         <div 
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[12rem] sm:text-[20rem] lg:text-[28rem] font-black tracking-tighter text-slate-50 opacity-80 pointer-events-none" 
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[8rem] sm:text-[14rem] lg:text-[28rem] font-black tracking-tighter text-slate-50 opacity-80 pointer-events-none" 
           style={{ fontFamily: "var(--font-barlow)", lineHeight: 1 }}
         >
           BNR
