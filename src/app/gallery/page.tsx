@@ -216,7 +216,7 @@ export default function GalleryPage() {
         {/* Full Bleed Background Image with Subtle Scale Animation */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/ROCK EXCAVATION 1.png"
+            src="/services/ROCK EXCAVATION 1.png"
             alt="Gallery Hero Background"
             fill
             className="object-cover opacity-40 mix-blend-luminosity animate-[pulse_20s_ease-in-out_infinite] scale-105"

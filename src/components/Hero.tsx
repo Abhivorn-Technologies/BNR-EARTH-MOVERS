@@ -14,12 +14,12 @@ export function Hero() {
     <section id="home" className="relative min-h-[90vh] pt-32 pb-32 flex items-center justify-center overflow-hidden bg-slate-900">
       {/* Background Video Placeholder */}
       <video
-        src="/video.mp4"
+        src="/gallery/videos/video.mp4"
         autoPlay
         loop
         muted
         playsInline
-        poster="/ROCK EXCAVATION 1.png"
+        poster="/services/ROCK EXCAVATION 1.png"
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Very subtle dark overlay so the video is super clear */}
