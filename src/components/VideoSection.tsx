@@ -31,7 +31,7 @@ const highlights = [
               className="group relative h-[300px] sm:h-[400px] w-full overflow-hidden rounded-3xl shadow-2xl shadow-slate-900/10 ring-8 ring-white"
             >
               <Image
-                src="/ROCK EXCAVATION 1.png"
+                src="/services/ROCK EXCAVATION 1.png"
                 alt="Heavy construction machinery"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
