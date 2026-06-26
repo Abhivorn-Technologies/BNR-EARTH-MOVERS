@@ -63,7 +63,7 @@ export const SERVICES = [
   {
     id: "soil-excavation",
     title: "Soil Excavation",
-    image: "/services/Soil Excavations.jpg",
+    image: "/services/soil-excavation.png",
     description: "Rapid and reliable mass soil excavation for all types of infrastructure projects.",
     points: [
       "Mass Soil Excavation for residential, commercial, industrial and infrastructure projects",
@@ -77,7 +77,7 @@ export const SERVICES = [
   {
     id: "site-preparation",
     title: "Site Preparation",
-    image: "/services/Site Preparations.jpeg",
+    image: "/services/site-preparation.png",
     description: "Complete site preparation, from jungle clearing to high-quality soil supplying and compaction.",
     points: [
       "Jungle Cleaning, tree cutting and Land leveling works",
