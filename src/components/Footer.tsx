@@ -6,8 +6,8 @@ import Link from "next/link";
 import { Phone, MessageCircle } from "lucide-react";
 
 const footerLinks = {
-  SERVICES: SERVICES.slice(0, 4).map(s => ({ label: s.title, href: `/?service=${s.id}#services` })),
-  "MORE SERVICES": SERVICES.slice(4, 8).map(s => ({ label: s.title, href: `/?service=${s.id}#services` })),
+  SERVICES: SERVICES.slice(0, 4).map(s => ({ label: s.title, href: `/services/${s.id}` })),
+  "MORE SERVICES": SERVICES.slice(4, 8).map(s => ({ label: s.title, href: `/services/${s.id}` })),
   COMPANY: [
     { label: "Home", href: "/#home" },
     { label: "About Us", href: "/#about" },
