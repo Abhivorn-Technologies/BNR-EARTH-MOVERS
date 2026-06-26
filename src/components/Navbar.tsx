@@ -51,7 +51,8 @@ export function Navbar() {
 
         <div className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => {
-            const targetHref = link.href.startsWith("#") ? `/${link.href}` : link.href;
+            const isHash = link.href.startsWith("#");
+            const targetHref = isHash ? (pathname === "/" ? link.href : `/${link.href}`) : link.href;
             
             // Determine if this link is the currently active page/section
             let isActive = false;
@@ -110,7 +111,8 @@ export function Navbar() {
         >
           <div className="flex flex-col gap-3">
             {NAV_LINKS.map((link) => {
-              const targetHref = link.href.startsWith("#") ? `/${link.href}` : link.href;
+              const isHash = link.href.startsWith("#");
+              const targetHref = isHash ? (pathname === "/" ? link.href : `/${link.href}`) : link.href;
               
               // Determine if this link is the currently active page/section
               let isActive = false;
