@@ -9,29 +9,12 @@ import Image from "next/image";
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
 
 function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      // Explicitly ensure the video is unmuted when the modal opens
-      videoRef.current.muted = false;
-      
-      // Programmatically play the video using the user's click context
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Browser blocked unmuted autoplay:", error);
-        });
-      }
-    }
-  }, []);
-
   return (
     <div className="relative flex items-center justify-center bg-transparent group overflow-hidden rounded-2xl p-0.5">
       <video
-        ref={videoRef}
         src={src}
         className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-xl"
+        autoPlay
         controls
         playsInline
       />
@@ -54,6 +37,19 @@ export default function GalleryPage() {
   const [expandedItem, setExpandedItem] = useState<{type: "photo" | "video", src: string, title: string, category: string} | null>(null);
   const [rotation, setRotation] = useState(0);
   const [durations, setDurations] = useState<Record<string, number>>({});
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (expandedItem) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [expandedItem]);
 
   const handleMetadataLoaded = (src: string, e: React.SyntheticEvent<HTMLVideoElement>) => {
     const duration = e.currentTarget.duration;
