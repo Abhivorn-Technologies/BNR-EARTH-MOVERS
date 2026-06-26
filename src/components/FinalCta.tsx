@@ -145,7 +145,7 @@ export function FinalCta() {
                 className="relative w-full max-w-lg aspect-square lg:aspect-[4/3] rounded-[3rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(252,102,4,0.2)] border-4 border-white"
               >
                 <Image 
-                  src="/services/Concrete Breaking.png" 
+                  src="/services/concrete-breaking.png" 
                   alt="Concrete Breaking Machinery" 
                   fill 
                   className="object-cover object-[15%_center] transition-transform duration-1000 hover:scale-105"
