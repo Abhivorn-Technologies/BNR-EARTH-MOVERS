@@ -18,7 +18,13 @@ export function Navbar() {
   useEffect(() => {
     if (pathname !== "/") return;
 
-    const sectionIds = NAV_LINKS.filter((l) => l.href.startsWith("#")).map((l) => l.href.substring(1));
+    // Map page routes to homepage section IDs for scroll spy functionality
+    const routeToSectionMap: Record<string, string> = {
+      "/about": "about",
+      "/services": "services",
+      "/contact": "contact",
+    };
+    const sectionIds = Object.values(routeToSectionMap);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -57,8 +63,10 @@ export function Navbar() {
             // Determine if this link is the currently active page/section
             let isActive = false;
             if (pathname === "/") {
-              if (link.href.startsWith("#")) {
-                isActive = activeSection === link.href.substring(1);
+              // For homepage scroll spy, check if the active section matches this link's mapped route
+              const mappedSection = link.href.substring(1); // e.g., "services" for "/services"
+              if (activeSection === mappedSection) {
+                isActive = true;
               }
             } else {
               isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
@@ -117,8 +125,10 @@ export function Navbar() {
               // Determine if this link is the currently active page/section
               let isActive = false;
               if (pathname === "/") {
-                if (link.href.startsWith("#")) {
-                  isActive = activeSection === link.href.substring(1);
+                // For homepage scroll spy
+                const mappedSection = link.href.substring(1);
+                if (activeSection === mappedSection) {
+                  isActive = true;
                 }
               } else {
                 isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
