@@ -1,28 +1,42 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { TriangleAlert, Home as HomeIcon } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
-      <div className="space-y-6">
-        <h1 className="text-8xl font-black text-slate-900 tracking-tighter" style={{ fontFamily: "var(--font-barlow)" }}>
-          404
-        </h1>
-        <h2 className="text-3xl font-bold text-slate-800 tracking-tight" style={{ fontFamily: "var(--font-barlow)" }}>
+    <main className="flex min-h-screen flex-col items-center justify-center px-4 bg-gradient-to-br from-amber-50 via-orange-50/30 to-orange-100/50 pt-20 pb-12">
+      <div className="w-full max-w-lg rounded-[2.5rem] bg-white p-10 sm:p-14 shadow-[0_8px_30px_rgb(0,0,0,0.08)] ring-1 ring-slate-100 flex flex-col items-center text-center relative overflow-hidden">
+        
+        {/* Logo */}
+        <Link href="/" className="transform scale-110 block hover:opacity-90 transition-opacity">
+          <Logo variant="default" centered={true} />
+        </Link>
+
+        {/* 404 Text with Icon */}
+        <div className="flex items-center justify-center gap-1 text-[#ea5a02] font-black text-7xl sm:text-[5.5rem] mt-2 mb-4 tracking-tighter" style={{ fontFamily: "var(--font-barlow)" }}>
+          <span>4</span>
+          <TriangleAlert className="w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20 stroke-[2.5] relative -top-1" />
+          <span>4</span>
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4" style={{ fontFamily: "var(--font-barlow)" }}>
           Page Not Found
         </h2>
-        <p className="mx-auto max-w-[500px] text-lg text-slate-600">
-          The page you are looking for doesn't exist or has been moved. Let's get you back on track.
+
+        {/* Description text */}
+        <p className="text-[15px] sm:text-base text-slate-500 leading-relaxed mb-10 max-w-[320px] mx-auto font-medium">
+          We couldn't find the page you were looking for. Please check the URL or return to the homepage.
         </p>
-        <div className="pt-8">
-          <Link
-            href="/"
-            className="group inline-flex items-center justify-center gap-3 rounded-xl bg-[#fc6604] px-8 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-xl shadow-[#fc6604]/20 transition-all hover:-translate-y-1 hover:bg-[#ea5a02] hover:shadow-[#fc6604]/40"
-          >
-            Return to Home
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
+
+        {/* Return Button */}
+        <Link
+          href="/"
+          className="w-full flex items-center justify-center gap-2.5 rounded-xl bg-[#ea5a02] px-6 py-4 text-[15px] font-bold text-white shadow-lg shadow-[#ea5a02]/20 transition-all hover:-translate-y-0.5 hover:bg-[#fc6604] hover:shadow-[#fc6604]/30 active:scale-[0.98]"
+        >
+          <HomeIcon className="h-5 w-5 stroke-[2.5]" />
+          Return to Homepage
+        </Link>
       </div>
     </main>
   );

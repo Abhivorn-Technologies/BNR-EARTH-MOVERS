@@ -10,7 +10,7 @@ const footerLinks = {
   "MORE SERVICES": SERVICES.slice(4, 8).map(s => ({ label: s.title, href: `/services/${s.id}` })),
   COMPANY: [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
+    { label: "About Us", href: "/about-us" },
     { label: "Machinery", href: "/machinery" },
     { label: "Contact", href: "/contact" },
   ],

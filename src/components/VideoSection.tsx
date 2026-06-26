@@ -14,7 +14,7 @@ const highlights = [
 
   export function VideoSection() {
     return (
-      <AnimatedSection id="about" className="relative bg-white py-12 lg:py-16 overflow-hidden">
+      <AnimatedSection id="about-us" className="relative bg-white py-12 lg:py-16 overflow-hidden">
         {/* Premium Background Elements */}
         <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-[#fc6604]/5 blur-[100px] pointer-events-none" />
         
