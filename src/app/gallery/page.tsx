@@ -15,6 +15,7 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
         src={src}
         className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-xl"
         autoPlay
+        muted
         controls
         playsInline
       />
