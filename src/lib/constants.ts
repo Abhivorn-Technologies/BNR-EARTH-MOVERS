@@ -49,7 +49,7 @@ export const SERVICES = [
   {
     id: "rock-excavation",
     title: "Rock Excavation",
-    image: "/services/ROCK EXCAVATION 1.png",
+    image: "/services/rock-excavation-1.png",
     description: "Comprehensive rock excavation and controlled blasting solutions for complex terrains.",
     points: [
       "Rock Excavation using Licensed Control Blasting methods",
@@ -91,7 +91,7 @@ export const SERVICES = [
   {
     id: "concrete-breaking",
     title: "Concrete Breaking",
-    image: "/services/Concrete Breaking.webp",
+    image: "/services/concrete-breaking.png",
     description: "Advanced structural breaking for RCC/PCC floors, dams, bridges, and retaining walls.",
     points: [
       "Breaking of RCC Floor, footings, slab, columns, structures, Roads, retaining walls",

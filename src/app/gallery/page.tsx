@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GALLERY_IMAGES, NEW_GALLERY_PHOTOS, NEW_GALLERY_VIDEOS } from "@/lib/constants";
 import { Play as PlayIcon, X as XIcon, Image as ImageIcon, RotateCw, ChevronDown } from "lucide-react";
@@ -9,12 +9,29 @@ import Image from "next/image";
 const CATEGORIES = ["All", "Services", "Projects", "Machinery"];
 
 function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      // Explicitly ensure the video is unmuted when the modal opens
+      videoRef.current.muted = false;
+      
+      // Programmatically play the video using the user's click context
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Browser blocked unmuted autoplay:", error);
+        });
+      }
+    }
+  }, []);
+
   return (
     <div className="relative flex items-center justify-center bg-transparent group overflow-hidden rounded-2xl p-0.5">
       <video
+        ref={videoRef}
         src={src}
         className="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-xl"
-        autoPlay
         controls
         playsInline
       />

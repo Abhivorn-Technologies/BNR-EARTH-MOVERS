@@ -19,7 +19,7 @@ export function Hero() {
         loop
         muted
         playsInline
-        poster="/services/ROCK EXCAVATION 1.png"
+        poster="/services/rock-excavation-1.png"
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Very subtle dark overlay so the video is super clear */}
