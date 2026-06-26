@@ -60,15 +60,17 @@ export function Navbar() {
             const isHash = link.href.startsWith("#");
             const targetHref = isHash ? (pathname === "/" ? link.href : `/${link.href}`) : link.href;
             
-            // Determine if this link is the currently active page/section
             let isActive = false;
-            if (pathname === "/") {
-              // For homepage scroll spy, check if the active section matches this link's mapped route
-              const mappedSection = link.href.substring(1); // e.g., "services" for "/services"
-              if (activeSection === mappedSection) {
-                isActive = true;
-              }
+            
+            if (link.href === "/") {
+              // Home link is active only on the actual homepage, or when scroll spy is on "home"
+              isActive = pathname === "/" && (activeSection === "home" || activeSection === "");
+            } else if (pathname === "/") {
+              // On homepage, use scroll spy mapping for section links
+              const mappedSection = link.href.replace("/", "");
+              isActive = activeSection === mappedSection;
             } else {
+              // On separate pages, use exact pathname matching
               isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
             }
 
@@ -122,14 +124,13 @@ export function Navbar() {
               const isHash = link.href.startsWith("#");
               const targetHref = isHash ? (pathname === "/" ? link.href : `/${link.href}`) : link.href;
               
-              // Determine if this link is the currently active page/section
               let isActive = false;
-              if (pathname === "/") {
-                // For homepage scroll spy
-                const mappedSection = link.href.substring(1);
-                if (activeSection === mappedSection) {
-                  isActive = true;
-                }
+              
+              if (link.href === "/") {
+                isActive = pathname === "/" && (activeSection === "home" || activeSection === "");
+              } else if (pathname === "/") {
+                const mappedSection = link.href.replace("/", "");
+                isActive = activeSection === mappedSection;
               } else {
                 isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
               }
