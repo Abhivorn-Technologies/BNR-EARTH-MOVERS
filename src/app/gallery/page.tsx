@@ -158,16 +158,15 @@ export default function GalleryPage() {
           layout
           className="flex flex-wrap justify-center gap-5 sm:gap-6"
         >
-          <AnimatePresence mode="popLayout">
-            {visibleItems.map((item) => (
+          <AnimatePresence>
+            {visibleItems.map((item, index) => (
               <motion.div
                 key={item.src}
-                layoutId={`media-container-${item.src}`}
                 onClick={() => { setExpandedItem({ ...item, type: activeTab === "Photos" ? "photo" : "video" }); setRotation(0); }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -20 }}
+                transition={{ duration: 0.5, type: "spring", damping: 25, stiffness: 300, delay: index * 0.05 }}
                 className="group relative h-80 w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] overflow-hidden rounded-[2rem] bg-slate-900 shadow-md shadow-slate-200/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 hover:ring-2 hover:ring-accent/50 cursor-pointer"
               >
                 {/* Background Media */}
@@ -255,12 +254,16 @@ export default function GalleryPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onClick={() => { setExpandedItem(null); setRotation(0); }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-xl p-4 sm:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xl p-4 sm:p-8"
           >
             <motion.div
-              layoutId={`media-container-${expandedItem.src}`}
-              className="relative flex items-center justify-center max-w-[95vw] md:max-w-[85vw] lg:max-w-[75vw] max-h-[95vh] overflow-hidden rounded-2xl bg-transparent shadow-[0_0_50px_rgba(0,0,0,0.5)] ring-1 ring-white/20 group"
+              initial={{ opacity: 0, scale: 0.85, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.85, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative flex items-center justify-center max-w-[95vw] md:max-w-[85vw] lg:max-w-[75vw] max-h-[95vh] overflow-hidden rounded-2xl bg-transparent shadow-[0_0_80px_rgba(0,0,0,0.6)] ring-1 ring-white/10 group"
               onClick={(e) => e.stopPropagation()}
             >
               {expandedItem.type === "video" ? (
