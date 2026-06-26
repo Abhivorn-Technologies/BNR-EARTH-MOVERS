@@ -176,23 +176,31 @@ function ServicesContent() {
               >
                 <Link href={`/services/${service.id}`} className="block group/card relative h-[480px] lg:h-[520px] w-full flex-col overflow-hidden rounded-[2.5rem] bg-slate-900 shadow-xl shadow-slate-200/50 border-[6px] border-white transition-all duration-500 hover:shadow-2xl hover:shadow-[#fc6604]/20 hover:border-[#fc6604] cursor-pointer">
                   
-                  {/* Image Container (Top 60%) */}
-                  <div className="relative w-full h-[60%] overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-60"
-                      sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
-                    />
-                    {/* Gradient to fade into the bottom text area */}
-                    <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
-                  </div>
+                  {/* Blurred Premium Background for aspect ratio differences */}
+                  <Image
+                    src={service.image}
+                    alt=""
+                    fill
+                    className="object-cover scale-110 blur-xl opacity-30 saturate-150 relative z-0 transition-all duration-700 group-hover/card:opacity-10"
+                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
+                  />
                   
-                  {/* Content Container (Bottom 40%) */}
-                  <div className="absolute inset-x-0 bottom-0 z-30 flex h-[50%] flex-col justify-end bg-slate-900 p-6 sm:p-8 transition-transform duration-500 group-hover/card:-translate-y-2">
+                  {/* Complete, Un-cropped Image */}
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-contain relative z-10 transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-30"
+                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
+                  />
+                  
+                  {/* Gradients */}
+                  <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-500 group-hover/card:opacity-100" />
+                  
+                  {/* Content Container (Bottom Aligned) */}
+                  <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col justify-end p-8 sm:p-10 transition-transform duration-500 group-hover/card:-translate-y-2">
                     <h3 
-                      className="mb-2 text-2xl font-black text-white sm:text-3xl transition-colors duration-300 group-hover/card:text-[#fc6604]"
+                      className="mb-3 text-2xl font-black text-white sm:text-3xl transition-colors duration-300 group-hover/card:text-[#fc6604]"
                       style={{ fontFamily: "var(--font-barlow)" }}
                     >
                       {service.title}
@@ -202,13 +210,13 @@ function ServicesContent() {
                     </p>
                     
                     {/* Hover Content (Bullet Points) */}
-                    <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 group-hover/card:grid-rows-[1fr] group-hover/card:opacity-100 group-hover/card:mt-4">
+                    <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 group-hover/card:grid-rows-[1fr] group-hover/card:opacity-100 group-hover/card:mt-6">
                       <div className="overflow-hidden">
-                        <ul className="space-y-2">
-                          {service.points.slice(0, 3).map((point, pIdx) => (
-                            <li key={pIdx} className="flex items-start gap-2">
-                              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#fc6604]" />
-                              <span className="text-xs sm:text-sm font-semibold leading-relaxed text-slate-200">
+                        <ul className="space-y-3">
+                          {service.points.slice(0, 4).map((point, pIdx) => (
+                            <li key={pIdx} className="flex items-start gap-3">
+                              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#fc6604]" />
+                              <span className="text-sm font-semibold leading-relaxed text-slate-200">
                                 {point}
                               </span>
                             </li>
