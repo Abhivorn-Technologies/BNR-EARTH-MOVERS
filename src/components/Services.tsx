@@ -176,12 +176,21 @@ function ServicesContent() {
               >
                 <Link href={`/services/${service.id}`} className="block group/card relative h-[480px] lg:h-[520px] w-full flex-col overflow-hidden rounded-[2.5rem] bg-slate-900 shadow-xl shadow-slate-200/50 border-[6px] border-white transition-all duration-500 hover:shadow-2xl hover:shadow-[#fc6604]/20 hover:border-[#fc6604] cursor-pointer">
                   
-                  {/* Complete Image (Covering entire card) */}
+                  {/* Blurred Premium Background for aspect ratio differences */}
+                  <Image
+                    src={service.image}
+                    alt=""
+                    fill
+                    className="object-cover scale-110 blur-xl opacity-30 saturate-150 relative z-0 transition-all duration-700 group-hover/card:opacity-10"
+                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
+                  />
+                  
+                  {/* Complete, Un-cropped Image */}
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover relative z-10 transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-30"
+                    className="object-contain relative z-10 transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-30"
                     sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
                   />
                   
