@@ -77,7 +77,7 @@ export const SERVICES = [
   {
     id: "site-preparation",
     title: "Site Preparation",
-    image: "/services/site-preparation.png",
+    image: "/services/site-preparation-new.jpg",
     description: "Complete site preparation, from jungle clearing to high-quality soil supplying and compaction.",
     points: [
       "Jungle Cleaning, tree cutting and Land leveling works",
