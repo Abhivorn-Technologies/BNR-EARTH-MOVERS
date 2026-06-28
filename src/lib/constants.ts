@@ -4,8 +4,25 @@ export const SITE = {
   description:
     "Specialized rock rope cutting, chemical breaking, controlled blasting, and precise excavation services for complex site development.",
   email: "earthmoversbnr@gmail.com",
-  emailUrl: "https://mail.google.com/mail/?view=cm&fs=1&to=earthmoversbnr@gmail.com&su=New%20Project%20Inquiry&body=Hi%20BNR%20Earth%20Movers!%20I%20would%20like%20to%20discuss%20a%20project%20and%20get%20a%20free%20quote.",
-  instagramUrl: "",
+  emailUrl: `https://mail.google.com/mail/?view=cm&fs=1&to=earthmoversbnr@gmail.com&su=${encodeURIComponent("New Project Inquiry - BNR Earth Movers")}&body=${encodeURIComponent(`BNR EARTH MOVERS
+Official Project Inquiry
+
+Hello BNR Team,
+
+I would like to request a free quote for a potential project. My project requirements are provided below.
+
+
+PROJECT DETAILS
+
+[ Please describe your project requirements, timeline, and specific needs here ]
+
+
+
+Looking forward to hearing from you.
+
+Sincerely,`)}`,
+  instagramUrl: "https://www.instagram.com/earthmoversbnr/",
+  facebookUrl: "https://www.facebook.com/profile.php?id=61591169862708",
   phone: "9059648878",
   phoneDisplay: "+91 90596 48878",
   whatsapp: "9059648878",
@@ -49,7 +66,7 @@ export const SERVICES = [
   {
     id: "rock-excavation",
     title: "Rock Excavation",
-    image: "/services/rock-excavation-1.png",
+    image: "/services/ROCK EXCAVATION 1.png",
     description: "Comprehensive rock excavation and controlled blasting solutions for complex terrains.",
     points: [
       "Rock Excavation using Licensed Control Blasting methods",
@@ -63,7 +80,7 @@ export const SERVICES = [
   {
     id: "soil-excavation",
     title: "Soil Excavation",
-    image: "/services/soil-excavation.png",
+    image: "/services/SOIL EXCAVATION.png",
     description: "Rapid and reliable mass soil excavation for all types of infrastructure projects.",
     points: [
       "Mass Soil Excavation for residential, commercial, industrial and infrastructure projects",
@@ -77,7 +94,7 @@ export const SERVICES = [
   {
     id: "site-preparation",
     title: "Site Preparation",
-    image: "/services/site-preparation-new.jpg",
+    image: "/services/Site preparation.png",
     description: "Complete site preparation, from jungle clearing to high-quality soil supplying and compaction.",
     points: [
       "Jungle Cleaning, tree cutting and Land leveling works",
@@ -91,7 +108,7 @@ export const SERVICES = [
   {
     id: "concrete-breaking",
     title: "Concrete Breaking",
-    image: "/services/concrete-breaking.png",
+    image: "/services/Concrete Breaking.png",
     description: "Advanced structural breaking for RCC/PCC floors, dams, bridges, and retaining walls.",
     points: [
       "Breaking of RCC Floor, footings, slab, columns, structures, Roads, retaining walls",
@@ -105,7 +122,7 @@ export const SERVICES = [
   {
     id: "demolition-works",
     title: "Demolition Works",
-    image: "/services/demolition-works.jpg",
+    image: "/services/Demolition Works.png",
     description: "Safe and efficient structural demolition services utilizing heavy machinery.",
     points: [
       "Complete demolition of commercial and residential structures",
@@ -134,7 +151,7 @@ export const SERVICES = [
   {
     id: "tractor-jack-hammer",
     title: "Tractor Jack Hammer",
-    image: "/services/tractor-jack-hammer.jpg",
+    image: "/services/tractor jack hammer blasting 1.png",
     description: "Heavy-duty tractor-mounted pneumatic jack hammers for rapid rock and concrete breaking.",
     points: [
       "High-impact breaking using tractor-mounted compressors",
@@ -262,16 +279,16 @@ export const SERVICE_AREAS = [
 export const MACHINERY = [
   { name: "Excavators", desc: "For large-scale digging, trenching, and grading.", category: "Excavation" },
   { name: "Dumpers", desc: "To efficiently transport materials and debris across the site.", category: "Transport" },
-  { name: "Jack Hammer Drills", desc: "Used for heavy-duty drilling in tough ground conditions.", category: "Drilling & Blasting" },
+  { name: "Dewatering Pumps", desc: "For efficient water removal from excavation sites and trenches.", category: "Support" },
+  { name: "Backhoe", desc: "A versatile machine for digging, lifting, and handling materials.", category: "Excavation" },
   { name: "Wagon Drills", desc: "Ideal for creating precise boreholes for blasting and excavation work.", category: "Drilling & Blasting" },
   { name: "Explosives Mobile Magazines", desc: "Secure storage for explosives, ensuring safe and controlled blasting operations.", category: "Drilling & Blasting" },
-  { name: "Seismographs", desc: "Essential for stringent monitoring during controlled blasting, ensuring safety and compliance.", category: "Drilling & Blasting" },
-  { name: "Water Tanker with Sprinklers", desc: "To control dust and keep the site hydrated.", category: "Support" },
-  { name: "Dozers", desc: "Powerful machines for clearing land, grading, and pushing materials.", category: "Excavation" },
-  { name: "Dewatering Pumps", desc: "For efficient water removal from excavation sites and trenches.", category: "Support" },
-  { name: "Diamond Rope Cutting Units", desc: "Specialized cutting equipment for precise and clean cuts in tough materials.", category: "Specialized" },
   { name: "Blasting Mats / Rubber Mats", desc: "Used to control flying debris during hard rock blasting.", category: "Drilling & Blasting" },
+  { name: "Water Tanker with Sprinklers", desc: "To control dust and keep the site hydrated.", category: "Support" },
+  { name: "Seismographs", desc: "Essential for stringent monitoring during controlled blasting, ensuring safety and compliance.", category: "Drilling & Blasting" },
+  { name: "Dozers", desc: "Powerful machines for clearing land, grading, and pushing materials.", category: "Excavation" },
   { name: "Pile Load Testing Equipment", desc: "Used to test the load-bearing capacity of piles in foundation construction.", category: "Specialized" },
-  { name: "Backhoe", desc: "A versatile machine for digging, lifting, and handling materials.", category: "Excavation" },
   { name: "Hydraulic Rotary Rig", desc: "Used for drilling, especially in challenging ground conditions, for precise boreholes.", category: "Drilling & Blasting" },
+  { name: "Diamond Rope Cutting Units", desc: "Specialized cutting equipment for precise and clean cuts in tough materials.", category: "Specialized" },
+  { name: "Jack Hammer Drills", desc: "Used for heavy-duty drilling in tough ground conditions.", category: "Drilling & Blasting" },
 ] as const;

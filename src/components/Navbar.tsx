@@ -20,6 +20,7 @@ export function Navbar() {
 
     // Map page routes to homepage section IDs for scroll spy functionality
     const routeToSectionMap: Record<string, string> = {
+      "/": "home",
       "/about-us": "about-us",
       "/services": "services",
       "/contact": "contact",

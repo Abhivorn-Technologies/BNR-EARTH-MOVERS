@@ -174,25 +174,29 @@ function ServicesContent() {
                 className="shrink-0 snap-start snap-always w-[85vw] sm:w-[400px] lg:w-[450px]"
                 onPointerDown={() => setUserInteracted(true)} // Interacting directly with cards stops autoplay
               >
-                <Link href={`/services/${service.id}`} className="block group/card relative h-[480px] lg:h-[520px] w-full flex-col overflow-hidden rounded-[2.5rem] bg-slate-900 shadow-xl shadow-slate-200/50 border-[6px] border-white transition-all duration-500 hover:shadow-2xl hover:shadow-[#fc6604]/20 hover:border-[#fc6604] cursor-pointer">
+                <Link href={`/services/${service.id}`} className="block group/card relative h-[480px] lg:h-[520px] w-full flex-col overflow-hidden rounded-[2.5rem] bg-slate-900 shadow-xl shadow-slate-200/50 border-[6px] border-white transition-all duration-500 hover:shadow-2xl hover:shadow-[#fc6604]/20 hover:border-[#fc6604] cursor-pointer isolate [transform:translateZ(0)]">
                   
                   {/* Blurred Premium Background for aspect ratio differences */}
                   <Image
                     src={service.image}
                     alt=""
                     fill
-                    className="object-cover scale-110 blur-xl opacity-30 saturate-150 relative z-0 transition-all duration-700 group-hover/card:opacity-10"
+                    draggable={false}
+                    className="object-cover scale-110 blur-xl opacity-30 saturate-150 absolute z-0 transition-all duration-700 group-hover/card:opacity-10 select-none pointer-events-none"
                     sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
                   />
                   
-                  {/* Complete, Un-cropped Image */}
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-contain relative z-10 transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-30"
-                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
-                  />
+                  {/* Complete, Un-cropped Image (Uniform Height Wrapper) */}
+                  <div className="absolute inset-x-0 top-[12%] h-[250px] lg:h-[280px] z-10 pointer-events-none select-none">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      draggable={false}
+                      className="object-cover transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-30"
+                      sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
+                    />
+                  </div>
                   
                   {/* Gradients */}
                   <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-500 group-hover/card:opacity-100" />

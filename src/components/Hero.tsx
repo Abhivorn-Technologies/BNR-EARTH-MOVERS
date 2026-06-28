@@ -22,8 +22,8 @@ export function Hero() {
         poster="/services/rock-excavation-1.png"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      {/* Very subtle dark overlay so the video is super clear */}
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Gradient overlay for much better text readability and premium look */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-slate-900/90" />
 
       <motion.div 
         style={{ y, opacity }} 
@@ -33,7 +33,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/40 bg-black/30 px-5 py-2 text-xs font-black uppercase tracking-wider text-white backdrop-blur-md"
+            className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/40 bg-black/40 px-5 py-2 text-xs font-black uppercase tracking-wider text-white backdrop-blur-md shadow-2xl"
           >
             <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-accent" />
             {SITE.availability}
@@ -53,8 +53,8 @@ export function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-6 sm:mt-10 max-w-3xl text-base font-semibold leading-relaxed text-slate-200 drop-shadow-xl sm:text-xl"
-            style={{ textShadow: "0 2px 15px rgba(0,0,0,0.8)" }}
+            className="mt-6 sm:mt-10 max-w-3xl text-lg font-medium leading-relaxed text-white/90 drop-shadow-xl sm:text-xl md:text-2xl"
+            style={{ textShadow: "0 2px 20px rgba(0,0,0,1)" }}
           >
             Precise, vibration-free rock breaking, controlled blasting, and heavy-duty excavation. Built for complex sites and strict safety requirements.
           </motion.p>

@@ -5,27 +5,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { MACHINERY } from "@/lib/constants";
 
-// Helper function to pick a real image for each machinery
 function getIconForMachinery(name: string) {
-  // Using the transparent excavator image as a fallback for all items
-  // until the specific transparent machinery images are downloaded.
-  let imgSrc = "/machinery/excavators.png"; 
+  let imgSrc = "/machinery/Excavators.png"; 
 
   switch (name) {
-    case "Excavators": imgSrc = "/machinery/excavators.png"; break;
-    case "Dumpers": imgSrc = "/machinery/Dumper.jpg"; break;
-    case "Jack Hammer Drills": imgSrc = "/machinery/Jack Hammer Drills.jpg"; break;
-    case "Wagon Drills": imgSrc = "/machinery/Wagon Drills.jpg"; break;
-    case "Explosives Mobile Magazines": imgSrc = "/machinery/Explosives Mobile Magazines.jpg"; break;
-    case "Seismographs": imgSrc = "/machinery/Seismographs.jpg"; break;
-    case "Water Tanker with Sprinklers": imgSrc = "/machinery/Water Tanker with Sprinklers.jpg"; break;
-    case "Dozers": imgSrc = "/machinery/Dozers.jpg"; break;
-    case "Dewatering Pumps": imgSrc = "/machinery/Dewatering Pumps.jpg"; break;
-    case "Diamond Rope Cutting Units": imgSrc = "/machinery/Diamond Rope Cutting Units.jpg"; break;
-    case "Blasting Mats / Rubber Mats": imgSrc = "/machinery/Blasting Mats.jpg"; break;
+    case "Excavators": imgSrc = "/machinery/Excavators.png"; break;
+    case "Dumpers": imgSrc = "/machinery/Dumpers.png"; break;
+    case "Jack Hammer Drills": imgSrc = "/machinery/Jack Hammer Drills.png"; break;
+    case "Wagon Drills": imgSrc = "/machinery/Wagon Drills.png"; break;
+    case "Explosives Mobile Magazines": imgSrc = "/machinery/Explosives Mobile Magazines.png"; break;
+    case "Seismographs": imgSrc = "/machinery/Seismographs.png"; break;
+    case "Water Tanker with Sprinklers": imgSrc = "/machinery/Water Tanker with Sprinklers.png"; break;
+    case "Dozers": imgSrc = "/machinery/Dozers.png"; break;
+    case "Dewatering Pumps": imgSrc = "/machinery/Dewatering Pumps.png"; break;
+    case "Diamond Rope Cutting Units": imgSrc = "/machinery/Diamond Rope Cutting Units.png"; break;
+    case "Blasting Mats / Rubber Mats": imgSrc = "/machinery/Blasting Mats and Rubber Mats.png"; break;
     case "Pile Load Testing Equipment": imgSrc = "/machinery/Pile Load Testing Equipment.png"; break;
-    case "Backhoe": imgSrc = "/machinery/Backhoe.jpg"; break;
-    case "Hydraulic Rotary Rig": imgSrc = "/machinery/Hydraulic Rotary Rig.avif"; break;
+    case "Backhoe": imgSrc = "/machinery/Backhoe.png"; break;
+    case "Hydraulic Rotary Rig": imgSrc = "/machinery/Hydraulic Rotary Rig.png"; break;
   }
 
   return (
@@ -33,7 +30,7 @@ function getIconForMachinery(name: string) {
       src={imgSrc} 
       alt={name} 
       fill 
-      className="object-cover transition-transform duration-700 group-hover:scale-110"
+      className="object-cover transition-all duration-500 group-hover:object-contain group-hover:bg-white"
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
     />
   );
