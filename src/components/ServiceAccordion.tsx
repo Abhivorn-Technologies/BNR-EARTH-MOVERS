@@ -22,17 +22,17 @@ export function ServiceAccordion({ points, serviceTitle }: { points: readonly st
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className={`rounded-2xl border transition-all duration-300 ${isOpen ? 'border-[#fc6604]/50 bg-black shadow-lg shadow-[#fc6604]/10' : 'border-white/10 bg-slate-900/50 hover:border-white/20 hover:bg-slate-900'}`}
+            className={`rounded-2xl border transition-all duration-300 ${isOpen ? 'border-[#fc6604]/50 bg-orange-50 shadow-lg shadow-[#fc6604]/10' : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'}`}
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
-              className="flex w-full items-start justify-between p-5 text-left sm:p-6"
+              className="flex w-full items-center justify-between p-5 text-left sm:p-6"
             >
-              <div className="pr-4 mt-1">
-                <h3 className="text-base sm:text-lg font-bold text-white leading-tight">{question}</h3>
+              <div className="pr-4">
+                <h3 className="text-base sm:text-lg font-bold text-slate-700 leading-tight">{question}</h3>
               </div>
-              <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] transition-all duration-300 ${isOpen ? 'bg-[#ea5a02] text-white rotate-45' : 'bg-white/5 text-slate-400 border border-white/10 hover:text-[#ea5a02] hover:border-[#ea5a02]/50'}`}>
-                <Plus className={`h-4 w-4 stroke-[3] transition-transform duration-300 ${isOpen ? 'rotate-0' : ''}`} />
+              <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${isOpen ? 'bg-[#fc6604] text-white rotate-45 border-transparent' : 'bg-white text-slate-500 border border-slate-200 shadow-sm hover:border-slate-300'}`}>
+                <Plus className={`h-6 w-6 stroke-[2] transition-transform duration-300 ${isOpen ? 'rotate-0' : ''}`} />
               </div>
             </button>
             <AnimatePresence initial={false}>
@@ -45,7 +45,7 @@ export function ServiceAccordion({ points, serviceTitle }: { points: readonly st
                   className="overflow-hidden"
                 >
                   <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0">
-                    <p className="text-sm font-medium leading-relaxed text-slate-400 sm:text-base">
+                    <p className="text-sm font-medium leading-relaxed text-slate-500 sm:text-base">
                       {answer}
                     </p>
                   </div>
