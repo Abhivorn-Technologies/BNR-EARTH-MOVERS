@@ -9,6 +9,8 @@
   --surface: #f8fafc;
   --muted: #475569;
   --border: #e2e8f0;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-barlow: 'Barlow', sans-serif;
 }
 
 @theme inline {

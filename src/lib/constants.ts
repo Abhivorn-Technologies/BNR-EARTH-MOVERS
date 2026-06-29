@@ -66,7 +66,7 @@ export const SERVICES = [
   {
     id: "rock-excavation",
     title: "Rock Excavation",
-    image: "/services/ROCK EXCAVATION 1.png",
+    image: "/services/rock-excavation-1.png",
     description: "Comprehensive rock excavation and controlled blasting solutions for complex terrains.",
     points: [
       "Rock Excavation using Licensed Control Blasting methods",
