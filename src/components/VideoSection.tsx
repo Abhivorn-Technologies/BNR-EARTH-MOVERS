@@ -1,18 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { CheckCircle2, Play, ArrowRight } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import { AnimatedSection } from "./AnimatedSection";
 import { SITE } from "@/lib/constants";
 
-const highlights = [
-  "Precision Rock & Chemical Cutting",
-  "Controlled Bore Hole Blasting",
-  "Deep Excavation & Land Leveling",
+const faqs = [
+  {
+    category: "SPECIALIZED SERVICE",
+    question: "Precision Rock & Chemical Cutting",
+    answer: "We utilize state-of-the-art chemical compounds and diamond wire saws for noiseless, vibration-free rock splitting in highly sensitive urban environments."
+  },
+  {
+    category: "CORE EXPERTISE",
+    question: "Controlled Bore Hole Blasting",
+    answer: "Our licensed experts conduct precise drill-and-blast operations, strictly adhering to safety regulations, ensuring optimal rock fragmentation with minimal ground vibration."
+  },
+  {
+    category: "HEAVY EARTHWORKS",
+    question: "Deep Excavation & Land Leveling",
+    answer: "We provide comprehensive bulk excavation, grading, and site preparation services for massive commercial and industrial developments, utilizing our fleet of heavy machinery."
+  }
 ];
 
   export function VideoSection() {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
     return (
       <AnimatedSection id="about-us" className="relative bg-white py-12 lg:py-16 overflow-hidden">
         {/* Premium Background Elements */}
@@ -28,10 +42,10 @@ const highlights = [
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="group relative h-[300px] sm:h-[400px] w-full overflow-hidden rounded-3xl shadow-2xl shadow-slate-900/10 ring-8 ring-white"
+              className="group relative h-[250px] sm:h-[320px] lg:h-[380px] w-full overflow-hidden rounded-3xl shadow-2xl shadow-slate-900/10 ring-8 ring-white"
             >
               <Image
-                src="/services/rock-excavation-1.png"
+                src="/about-excavator.jpg"
                 alt="Heavy construction machinery"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -42,20 +56,18 @@ const highlights = [
 
             {/* Floating Experience Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="absolute bottom-4 right-4 sm:-right-8 sm:-bottom-8 lg:-right-8 lg:-bottom-8 z-20 flex flex-col items-center justify-center rounded-[2rem] bg-white p-4 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-slate-100"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 lg:top-6 lg:right-4 z-20 flex items-center gap-3 sm:gap-4 rounded-2xl bg-slate-900/50 backdrop-blur-md border border-white/10 p-2 pr-5 sm:pr-6 shadow-2xl"
             >
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#fc6604] to-[#ea5a02] text-white shadow-lg shadow-[#fc6604]/30">
-                  <span className="text-2xl font-black">15</span>
-                </div>
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Years of</p>
-                  <p className="text-xl font-black text-slate-900" style={{ fontFamily: "var(--font-barlow)" }}>Excellence</p>
-                </div>
+              <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl bg-[#ea5a02] text-white shadow-lg shadow-[#ea5a02]/40">
+                <span className="text-xl sm:text-2xl font-black">15</span>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-white/95">Years of</p>
+                <p className="text-lg sm:text-xl font-black text-white leading-none mt-0.5" style={{ fontFamily: "var(--font-barlow)" }}>Excellence</p>
               </div>
             </motion.div>
           </div>
@@ -68,7 +80,7 @@ const highlights = [
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-sm font-black uppercase tracking-widest text-[#fc6604]">
+              <p className="text-sm sm:text-base font-black uppercase tracking-widest text-[#fc6604]">
                 Our Expertise
               </p>
               <h2
@@ -83,39 +95,51 @@ const highlights = [
               </p>
             </motion.div>
 
-            <ul className="mt-5 space-y-2">
-              {highlights.map((item, i) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="group flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-100 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-200/50 hover:ring-[#fc6604]/20"
-                >
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-[#fc6604] transition-colors duration-300 group-hover:bg-[#fc6604] group-hover:text-white">
-                    <CheckCircle2 className="h-4 w-4" />
-                  </div>
-                  <span className="text-sm font-bold text-slate-700 transition-colors group-hover:text-slate-900">{item}</span>
-                </motion.li>
-              ))}
-            </ul>
+            <div className="mt-8 space-y-4">
+              {faqs.map((faq, i) => {
+                const isOpen = openIndex === i;
+                return (
+                  <motion.div
+                    key={faq.question}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className={`rounded-2xl border transition-all duration-300 ${isOpen ? 'border-[#fc6604]/30 bg-white shadow-lg shadow-[#fc6604]/5' : 'border-slate-200 bg-slate-50/50 hover:border-slate-300 hover:bg-white'}`}
+                  >
+                    <button
+                      onClick={() => setOpenIndex(isOpen ? null : i)}
+                      className="flex w-full items-start justify-between p-5 text-left sm:p-6"
+                    >
+                      <div className="pr-4 mt-1">
+                        <h3 className="text-lg font-bold text-slate-900 leading-tight">{faq.question}</h3>
+                      </div>
+                      <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all duration-300 ${isOpen ? 'bg-[#ea5a02] text-white rotate-45' : 'bg-white text-slate-400 border border-slate-200 hover:text-[#ea5a02] hover:border-[#ea5a02]/30'}`}>
+                        <Plus className="h-4 w-4 stroke-[3]" />
+                      </div>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0">
+                            <p className="text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="mt-6"
-            >
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#fc6604] to-[#ea5a02] px-8 py-3.5 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-[#fc6604]/30 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#fc6604]/40"
-              >
-                Get a Free Quote
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </motion.div>
           </div>
 
         </div>

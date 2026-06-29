@@ -78,8 +78,8 @@ export default function MachineryPage() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent"></span>
             </span>
-            <span className="text-xs font-black uppercase tracking-widest text-white">
-              Our Heavy Arsenal
+            <span className="text-sm sm:text-base font-black uppercase tracking-widest text-white">
+              Our Heavy Equipment
             </span>
           </motion.div>
 

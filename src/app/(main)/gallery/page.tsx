@@ -113,10 +113,11 @@ export default function GalleryPage() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent"></span>
             </span>
-            <span className="text-xs font-black uppercase tracking-widest text-white">
+            <span className="text-sm sm:text-base font-black uppercase tracking-widest text-white">
               Visual Showcase
             </span>
           </motion.div>
+          
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -181,7 +182,6 @@ export default function GalleryPage() {
                     src={item.src}
                     alt={item.title}
                     fill
-                    unoptimized={true}
                     className="object-cover opacity-90 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:opacity-100"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
@@ -192,18 +192,16 @@ export default function GalleryPage() {
                     muted
                     playsInline
                     preload="metadata"
-                    onLoadedMetadata={(e) => handleMetadataLoaded(item.src, e)}
                   />
                 )}
 
                 {/* Clean Hover Overlay */}
                 <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/40 z-10" />
 
-                {/* YouTube-style Video Duration Badge */}
                 {activeTab === "Videos" && (
                   <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1 rounded bg-black/80 px-2 py-1 text-xs font-bold tracking-wider text-white backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
                     <PlayIcon className="h-3 w-3" fill="white" />
-                    <span>{durations[item.src] ? formatDuration(durations[item.src]) : "0:00"}</span>
+                    <span>Watch</span>
                   </div>
                 )}
 

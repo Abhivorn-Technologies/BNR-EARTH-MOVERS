@@ -48,11 +48,11 @@ function ServicesContent() {
 
       // Handle wrapping at ends
       if (direction === 1 && currentScroll + container.clientWidth >= container.scrollWidth - 10) {
-        // We hit the right end, instantly wrap to start without flying backwards
-        container.scrollTo({ left: 0, behavior: "auto" });
+        // We hit the right end, smoothly scroll back to start
+        container.scrollTo({ left: 0, behavior: "smooth" });
       } else if (direction === -1 && currentScroll <= 0) {
-        // We hit the left end, instantly wrap to end
-        container.scrollTo({ left: container.scrollWidth, behavior: "auto" });
+        // We hit the left end, smoothly scroll to end
+        container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
       } else {
         container.scrollTo({
           left: targetScroll,
@@ -137,7 +137,7 @@ function ServicesContent() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#fc6604] opacity-75"></span>
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#fc6604]"></span>
             </span>
-            <span className="text-xs font-black uppercase tracking-widest text-[#fc6604]">
+            <span className="text-sm sm:text-base font-black uppercase tracking-widest text-[#fc6604]">
               Our Services
             </span>
           </div>
@@ -181,8 +181,9 @@ function ServicesContent() {
                     src={service.image}
                     alt=""
                     fill
+                    priority={idx < 4}
                     draggable={false}
-                    className="object-cover scale-110 blur-xl opacity-30 saturate-150 absolute z-0 transition-all duration-700 group-hover/card:opacity-10 select-none pointer-events-none"
+                    className="object-cover scale-110 blur-xl opacity-30 saturate-150 absolute z-0 transition-all duration-700 group-hover/card:opacity-10 select-none pointer-events-none text-transparent bg-transparent"
                     sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
                   />
                   
@@ -192,8 +193,9 @@ function ServicesContent() {
                       src={service.image}
                       alt={service.title}
                       fill
+                      priority={idx < 4}
                       draggable={false}
-                      className="object-cover transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-30"
+                      className="object-cover transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-30 text-transparent bg-transparent"
                       sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 450px"
                     />
                   </div>

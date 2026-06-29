@@ -54,7 +54,7 @@ export function FinalCta() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
                 }}
-                className="text-sm font-bold uppercase tracking-widest text-[#fc6604] mb-3"
+                className="text-sm sm:text-base font-black uppercase tracking-widest text-[#fc6604] mb-3"
               >
                 Get a Quote
               </motion.p>

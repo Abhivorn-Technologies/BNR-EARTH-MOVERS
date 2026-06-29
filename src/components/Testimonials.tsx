@@ -11,7 +11,7 @@ export function Testimonials() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto">
-          <p className="text-sm font-black uppercase tracking-widest text-[#fc6604]">
+          <p className="text-sm sm:text-base font-black uppercase tracking-widest text-[#fc6604]">
             Client Feedback
           </p>
           <h2

@@ -19,6 +19,22 @@ export const metadata: Metadata = {
   },
 };
 
+import { Barlow, Plus_Jakarta_Sans } from "next/font/google";
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-barlow",
+  display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,12 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="antialiased font-sans overflow-x-hidden max-w-[100vw]">
+      <body className={`${jakarta.className} ${barlow.variable} antialiased font-sans overflow-x-hidden max-w-[100vw]`}>
         {children}
       </body>
     </html>

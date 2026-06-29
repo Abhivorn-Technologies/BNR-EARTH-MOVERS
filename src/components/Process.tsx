@@ -22,7 +22,7 @@ export function Process() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <p className="text-sm font-bold uppercase tracking-widest text-[#fc6604]">
+          <p className="text-sm sm:text-base font-black uppercase tracking-widest text-[#fc6604]">
             How We Work
           </p>
           <h2
@@ -63,7 +63,7 @@ export function Process() {
               </motion.div>
 
               <div className="mt-8">
-                <span className="inline-block rounded-full bg-[#fc6604]/10 border border-[#fc6604]/20 px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#fc6604] shadow-[0_0_15px_rgba(252,102,4,0.1)]">
+                <span className="inline-block rounded-full bg-[#fc6604]/10 border border-[#fc6604]/20 px-4 py-1.5 text-sm sm:text-base font-black uppercase tracking-widest text-[#fc6604] shadow-[0_0_15px_rgba(252,102,4,0.1)]">
                   Phase {step.step}
                 </span>
                 <h3
@@ -89,7 +89,7 @@ export function WhyUs() {
     <AnimatedSection className="bg-slate-50 py-10 lg:py-20 border-t border-slate-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <p className="text-sm font-bold uppercase tracking-widest text-[#fc6604]">
+          <p className="text-sm sm:text-base font-black uppercase tracking-widest text-[#fc6604]">
             Why Choose Us
           </p>
           <h2

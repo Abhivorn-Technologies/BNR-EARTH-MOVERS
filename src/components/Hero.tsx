@@ -19,7 +19,7 @@ export function Hero() {
         loop
         muted
         playsInline
-        poster="/services/rock-excavation-1.png"
+        preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Gradient overlay for much better text readability and premium look */}
@@ -33,7 +33,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/40 bg-black/40 px-5 py-2 text-xs font-black uppercase tracking-wider text-white backdrop-blur-md shadow-2xl"
+            className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/40 bg-black/40 px-5 py-2 text-sm sm:text-base font-black uppercase tracking-wider text-white backdrop-blur-md shadow-2xl"
           >
             <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-accent" />
             {SITE.availability}

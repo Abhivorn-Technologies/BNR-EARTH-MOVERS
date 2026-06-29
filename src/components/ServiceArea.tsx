@@ -15,8 +15,8 @@ export function ServiceArea() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-6 lg:grid-cols-2">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-              Service Area
+            <p className="text-sm sm:text-base font-black uppercase tracking-widest text-accent">
+              Service Areas
             </p>
             <h2 className="mt-3 text-3xl font-extrabold uppercase text-white sm:text-4xl">
               Serving <span className="text-accent">Andhra Pradesh & Telangana</span>
@@ -60,12 +60,15 @@ export function ServiceArea() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+            className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-2xl aspect-square md:aspect-video lg:aspect-[4/3] w-full"
           >
             <iframe
-              title={`BNR Earth Movers service area — ${activeArea}`}
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(activeArea + ', India')}&z=10&output=embed`}
-              className="block aspect-[4/3] w-full border-0 grayscale-[30%] invert-[90%] hue-rotate-180"
+              title={`Map of ${activeArea}`}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(activeArea + ', India')}&z=${activeArea === 'Andhra Pradesh' ? 6 : 10}&output=embed&iwloc=B`}
+              width="100%"
+              height="100%"
+              className="border-0 filter invert-[90%] hue-rotate-180 contrast-[1.1] grayscale-[20%]"
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
