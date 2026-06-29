@@ -22,7 +22,7 @@ export function ServiceAccordion({ points, serviceTitle }: { points: readonly st
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className={`rounded-2xl border transition-all duration-300 ${isOpen ? 'border-[#fc6604]/50 bg-orange-50 shadow-lg shadow-[#fc6604]/10' : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'}`}
+            className={`rounded-2xl border transition-all duration-300 ${isOpen ? 'border-[#fc6604]/50 bg-white shadow-lg shadow-[#fc6604]/10' : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'}`}
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
