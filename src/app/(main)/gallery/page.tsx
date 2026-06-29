@@ -21,7 +21,7 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
       />
 
       {/* Top Right Close Button (Appears on Hover) */}
-      <button 
+      <button
         onClick={(e) => { e.stopPropagation(); onClose(); }}
         className="absolute top-4 right-4 z-50 rounded-full bg-black/70 p-2 text-white hover:bg-[#fc6604] transition-colors backdrop-blur-sm"
         aria-label="Close Video"
@@ -35,7 +35,7 @@ function CustomVideoPlayer({ src, onClose }: { src: string, onClose: () => void 
 export default function GalleryPage() {
   const [activeTab, setActiveTab] = useState<"Photos" | "Videos">("Photos");
   const [showAll, setShowAll] = useState(false);
-  const [expandedItem, setExpandedItem] = useState<{type: "photo" | "video", src: string, title: string, category: string} | null>(null);
+  const [expandedItem, setExpandedItem] = useState<{ type: "photo" | "video", src: string, title: string, category: string } | null>(null);
   const [rotation, setRotation] = useState(0);
   const [durations, setDurations] = useState<Record<string, number>>({});
 
@@ -46,7 +46,7 @@ export default function GalleryPage() {
     } else {
       document.body.style.overflow = "unset";
     }
-    
+
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -77,7 +77,7 @@ export default function GalleryPage() {
 
   return (
     <main className="min-h-screen bg-slate-100 selection:bg-accent selection:text-white pb-24">
-      
+
       {/* 1. Stunning Image-Driven Hero Section */}
       <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden pt-32 pb-32 text-center bg-slate-900">
         {/* Full Bleed Background Image with Subtle Scale Animation */}
@@ -110,17 +110,17 @@ export default function GalleryPage() {
             </span>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl drop-shadow-2xl"
             style={{ fontFamily: "var(--font-barlow)", textShadow: "0 4px 30px rgba(0,0,0,0.5)" }}
           >
-            Our Project <span className="text-accent">Gallery</span>
+            Our Projects <span className="text-accent">Gallery</span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -133,28 +133,26 @@ export default function GalleryPage() {
 
       {/* 2. Premium Image Grid */}
       <section id="gallery-section" className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-16">
-        
+
         {/* Tabs */}
         <div className="relative z-30 mx-auto mb-12 flex max-w-fit items-center justify-center gap-2 rounded-full bg-white p-2 shadow-xl shadow-black/10 ring-1 ring-slate-900/5">
           <button
             onClick={() => handleTabChange("Photos")}
-            className={`rounded-full px-8 py-3 text-sm font-bold tracking-wide transition-all duration-300 ${
-              activeTab === "Photos" ? "bg-[#fc6604] text-white shadow-md" : "bg-transparent text-slate-600 hover:bg-slate-50 hover:text-[#fc6604]"
-            }`}
+            className={`rounded-full px-8 py-3 text-sm font-bold tracking-wide transition-all duration-300 ${activeTab === "Photos" ? "bg-[#fc6604] text-white shadow-md" : "bg-transparent text-slate-600 hover:bg-slate-50 hover:text-[#fc6604]"
+              }`}
           >
             Photos
           </button>
           <button
             onClick={() => handleTabChange("Videos")}
-            className={`rounded-full px-8 py-3 text-sm font-bold tracking-wide transition-all duration-300 ${
-              activeTab === "Videos" ? "bg-[#fc6604] text-white shadow-md" : "bg-transparent text-slate-600 hover:bg-slate-50 hover:text-[#fc6604]"
-            }`}
+            className={`rounded-full px-8 py-3 text-sm font-bold tracking-wide transition-all duration-300 ${activeTab === "Videos" ? "bg-[#fc6604] text-white shadow-md" : "bg-transparent text-slate-600 hover:bg-slate-50 hover:text-[#fc6604]"
+              }`}
           >
             Videos
           </button>
         </div>
 
-        <motion.div 
+        <motion.div
           layout
           className="flex flex-wrap justify-center gap-5 sm:gap-6"
         >
@@ -189,10 +187,10 @@ export default function GalleryPage() {
                     onLoadedMetadata={(e) => handleMetadataLoaded(item.src, e)}
                   />
                 )}
-                
+
                 {/* Clean Hover Overlay */}
                 <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/40 z-10" />
-                
+
                 {/* YouTube-style Video Duration Badge */}
                 {activeTab === "Videos" && (
                   <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1 rounded bg-black/80 px-2 py-1 text-xs font-bold tracking-wider text-white backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
@@ -200,20 +198,20 @@ export default function GalleryPage() {
                     <span>{durations[item.src] ? formatDuration(durations[item.src]) : "0:00"}</span>
                   </div>
                 )}
-                
+
                 {/* Hover Icon (Center) */}
                 <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full p-4 shadow-xl ring-1 backdrop-blur-md transition-all duration-500 z-20
-                  ${activeTab === "Videos" 
-                    ? "scale-100 opacity-100 bg-black/50 ring-white/20 group-hover:scale-110 group-hover:bg-[#fc6604] group-hover:ring-[#fc6604]" 
+                  ${activeTab === "Videos"
+                    ? "scale-100 opacity-100 bg-black/50 ring-white/20 group-hover:scale-110 group-hover:bg-[#fc6604] group-hover:ring-[#fc6604]"
                     : "scale-50 opacity-0 bg-white/20 ring-white/30 group-hover:scale-100 group-hover:opacity-100"}`}
                 >
-                   {activeTab === "Photos" ? <ImageIcon className="h-8 w-8 text-white" /> : <PlayIcon className="h-8 w-8 text-white" fill="white" />}
+                  {activeTab === "Photos" ? <ImageIcon className="h-8 w-8 text-white" /> : <PlayIcon className="h-8 w-8 text-white" fill="white" />}
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
-        
+
         {/* Pagination Buttons */}
         <div className="mt-12 flex justify-center gap-4">
           {hasMore && (
@@ -239,7 +237,7 @@ export default function GalleryPage() {
             </button>
           )}
         </div>
-        
+
         {activeItems.length === 0 && (
           <div className="py-20 text-center">
             <p className="text-lg text-slate-500">No media found.</p>
@@ -271,7 +269,7 @@ export default function GalleryPage() {
               ) : (
                 <div className="relative flex items-center justify-center bg-transparent">
                   {/* Top Right Close Button (YouTube Style) */}
-                  <button 
+                  <button
                     onClick={(e) => { e.stopPropagation(); setExpandedItem(null); setRotation(0); }}
                     className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-[#fc6604] transition-colors opacity-0 group-hover:opacity-100 backdrop-blur-sm"
                     aria-label="Close Image"
