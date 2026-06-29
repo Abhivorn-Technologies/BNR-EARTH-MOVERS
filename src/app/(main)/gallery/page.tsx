@@ -39,16 +39,24 @@ export default function GalleryPage() {
   const [rotation, setRotation] = useState(0);
   const [durations, setDurations] = useState<Record<string, number>>({});
 
-  // Prevent background scrolling when modal is open
+  // Prevent background scrolling when modal is open and handle Escape key
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setExpandedItem(null);
+      }
+    };
+
     if (expandedItem) {
       document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
     } else {
       document.body.style.overflow = "unset";
     }
 
     return () => {
       document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [expandedItem]);
 
@@ -257,10 +265,10 @@ export default function GalleryPage() {
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xl p-4 sm:p-8"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.85, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.85, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="relative flex items-center justify-center max-w-[95vw] md:max-w-[85vw] lg:max-w-[75vw] max-h-[95vh] overflow-hidden rounded-2xl bg-transparent shadow-[0_0_80px_rgba(0,0,0,0.6)] ring-1 ring-white/10 group"
               onClick={(e) => e.stopPropagation()}
             >
