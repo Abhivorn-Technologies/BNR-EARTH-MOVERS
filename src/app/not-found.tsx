@@ -5,27 +5,27 @@ import { Logo } from "@/components/Logo";
 export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center px-4 bg-gradient-to-br from-amber-50 via-orange-50/30 to-orange-100/50 pt-20 pb-12">
-      <div className="w-full max-w-lg rounded-[2.5rem] bg-white p-10 sm:p-14 shadow-[0_8px_30px_rgb(0,0,0,0.08)] ring-1 ring-slate-100 flex flex-col items-center text-center relative overflow-hidden">
+      <div className="w-full max-w-lg rounded-[2.5rem] bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.08)] ring-1 ring-slate-100 flex flex-col items-center text-center relative overflow-hidden">
         
         {/* Logo */}
-        <Link href="/" className="transform scale-110 block hover:opacity-90 transition-opacity">
+        <Link href="/" className="transform scale-110 block hover:opacity-90 transition-opacity mb-2">
           <Logo variant="default" centered={true} />
         </Link>
 
         {/* 404 Text with Icon */}
-        <div className="flex items-center justify-center gap-1 text-[#ea5a02] font-black text-7xl sm:text-[5.5rem] mt-2 mb-4 tracking-tighter" style={{ fontFamily: "var(--font-barlow)" }}>
+        <div className="flex items-center justify-center gap-1 text-[#ea5a02] font-black text-5xl sm:text-6xl mt-2 mb-2 tracking-tighter" style={{ fontFamily: "var(--font-barlow)" }}>
           <span>4</span>
-          <TriangleAlert className="w-[4.5rem] h-[4.5rem] sm:w-20 sm:h-20 stroke-[2.5] relative -top-1" />
+          <TriangleAlert className="w-10 h-10 sm:w-12 sm:h-12 stroke-[2.5] relative -top-0.5" />
           <span>4</span>
         </div>
 
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4" style={{ fontFamily: "var(--font-barlow)" }}>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2" style={{ fontFamily: "var(--font-barlow)" }}>
           Page Not Found
         </h2>
 
         {/* Description text */}
-        <p className="text-[15px] sm:text-base text-slate-500 leading-relaxed mb-10 max-w-[320px] mx-auto font-medium">
+        <p className="text-[15px] sm:text-base text-slate-500 leading-relaxed mb-6 max-w-[320px] mx-auto font-medium">
           We couldn't find the page you were looking for. Please check the URL or return to the homepage.
         </p>
 

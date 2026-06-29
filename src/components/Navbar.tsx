@@ -95,12 +95,12 @@ export function Navbar() {
         </div>
 
         <div className="hidden lg:block">
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="inline-flex items-center rounded-md bg-accent px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-accent/30 transition-all hover:bg-accent-dark hover:-translate-y-0.5"
           >
             Get Free Quote
-          </a>
+          </Link>
         </div>
 
         <button
@@ -151,13 +151,13 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               onClick={() => setMobileOpen(false)}
               className="mt-4 rounded-xl bg-gradient-to-r from-accent to-[#ea5a02] px-4 py-3 text-center text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-accent/20 active:scale-95 transition-transform"
             >
               Get Free Quote
-            </a>
+            </Link>
           </div>
         </motion.div>
       )}
