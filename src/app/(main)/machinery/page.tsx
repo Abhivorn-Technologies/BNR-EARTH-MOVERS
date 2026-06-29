@@ -6,10 +6,10 @@ import Image from "next/image";
 import { MACHINERY } from "@/lib/constants";
 
 function getIconForMachinery(name: string) {
-  let imgSrc = "/machinery/Excavators.png"; 
+  let imgSrc = "/machinery/excavators.png"; 
 
   switch (name) {
-    case "Excavators": imgSrc = "/machinery/Excavators.png"; break;
+    case "Excavators": imgSrc = "/machinery/excavators.png"; break;
     case "Dumpers": imgSrc = "/machinery/Dumpers.png"; break;
     case "Jack Hammer Drills": imgSrc = "/machinery/Jack Hammer Drills.png"; break;
     case "Wagon Drills": imgSrc = "/machinery/Wagon Drills.png"; break;
