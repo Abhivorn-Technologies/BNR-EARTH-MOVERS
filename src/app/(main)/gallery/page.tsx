@@ -192,6 +192,7 @@ export default function GalleryPage() {
                     muted
                     playsInline
                     preload="metadata"
+                    onLoadedMetadata={(e) => handleMetadataLoaded(item.src, e)}
                   />
                 )}
 
@@ -201,7 +202,7 @@ export default function GalleryPage() {
                 {activeTab === "Videos" && (
                   <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1 rounded bg-black/80 px-2 py-1 text-xs font-bold tracking-wider text-white backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
                     <PlayIcon className="h-3 w-3" fill="white" />
-                    <span>Watch</span>
+                    <span>{durations[item.src] ? formatDuration(durations[item.src]) : "0:00"}</span>
                   </div>
                 )}
 

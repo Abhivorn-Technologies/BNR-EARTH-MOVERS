@@ -223,7 +223,7 @@ function ServicesContent() {
                             <li key={pIdx} className="flex items-start gap-3">
                               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#fc6604]" />
                               <span className="text-sm font-semibold leading-relaxed text-slate-200">
-                                {point}
+                                {point.q}
                               </span>
                             </li>
                           ))}

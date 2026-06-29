@@ -75,6 +75,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     src={service.image}
                     alt={service.title}
                     fill
+                    priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover transition-transform duration-1000 group-hover:scale-105"
                   />

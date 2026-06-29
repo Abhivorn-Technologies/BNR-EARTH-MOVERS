@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 
-export function ServiceAccordion({ points, serviceTitle }: { points: readonly string[], serviceTitle: string }) {
+export function ServiceAccordion({ points, serviceTitle }: { points: readonly { q: string, a: string }[], serviceTitle: string }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -12,8 +12,8 @@ export function ServiceAccordion({ points, serviceTitle }: { points: readonly st
       {points.map((point, i) => {
         const isOpen = openIndex === i;
         
-        const question = point;
-        const answer = `Our expert team is fully equipped to handle ${point.toLowerCase()}. We leverage years of industry experience, advanced ${serviceTitle.toLowerCase()} machinery, and strict safety protocols to ensure flawless execution.`;
+        const question = point.q;
+        const answer = point.a;
 
         return (
           <motion.div
