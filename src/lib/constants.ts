@@ -273,6 +273,9 @@ export const SERVICE_AREAS = [
   "Visakhapatnam",
   "Vijayawada",
   "Chennai",
+  "Telangana",
+  "Pune",
+  "Chandanagar",
 ] as const;
 
 export const MACHINERY = [

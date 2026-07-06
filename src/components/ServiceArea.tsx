@@ -64,7 +64,7 @@ export function ServiceArea() {
           >
             <iframe
               title={`Map of ${activeArea}`}
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(activeArea + ', India')}&z=${activeArea === 'Andhra Pradesh' ? 6 : 10}&output=embed&iwloc=B`}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(activeArea === 'Chandanagar' ? 'Chandanagar, Hyderabad, India' : activeArea + ', India')}&z=${activeArea === 'Andhra Pradesh' || activeArea === 'Telangana' ? 6 : activeArea === 'Chandanagar' ? 13 : 10}&output=embed`}
               width="100%"
               height="100%"
               className="border-0 filter invert-[90%] hue-rotate-180 contrast-[1.1] grayscale-[20%]"
