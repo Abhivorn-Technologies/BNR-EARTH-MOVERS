@@ -22,6 +22,7 @@ Looking forward to hearing from you.
 
 Sincerely,`)}`,
   instagramUrl: "https://www.instagram.com/earthmoversbnr/",
+  // Currently a personal profile. Replace with the official Page URL (e.g. https://www.facebook.com/bnrearthmovers) once the Page is created.
   facebookUrl: "https://www.facebook.com/profile.php?id=61591169862708",
   phone: "9052136136",
   phoneDisplay: "+91 90521 36136",
@@ -165,24 +166,20 @@ export const SERVICES = [
 
 export const GALLERY_IMAGES = [
   // The 8 Services Images
-  { src: "/services/ROCK EXCAVATION 1.png", title: "Rock Excavation", category: "Services" },
+  { src: "/services/rock-excavation-1.png", title: "Rock Excavation", category: "Services" },
   { src: "/services/SOIL EXCAVATION.png", title: "Soil Excavation", category: "Services" },
   { src: "/services/Site preparation.png", title: "Site Preparation", category: "Services" },
-  { src: "/services/Concrete Breaking.webp", title: "Concrete Breaking", category: "Services" },
-  { src: "/services/demolition-works.jpg", title: "Demolition Works", category: "Services" },
+  { src: "/services/Concrete Breaking.png", title: "Concrete Breaking", category: "Services" },
+  { src: "/services/Demolition Works.png", title: "Demolition Works", category: "Services" },
   { src: "/services/RIG BALSTING.png", title: "Rig Blasting", category: "Services" },
   { src: "/services/Rope Cutting.png", title: "Rope Cutting", category: "Services" },
-  { src: "/services/tractor-jack-hammer.jpg", title: "Tractor Jack Hammer", category: "Services" },
+  { src: "/services/tractor jack hammer blasting 1.png", title: "Tractor Jack Hammer", category: "Services" },
   
   // Other Public Images
-  { src: "/gallery/photos/Rock Excavations.avif", title: "Heavy Rock Cutting", category: "Projects" },
-  { src: "/services/Soil Excavations.jpg", title: "Mass Excavation Site", category: "Projects" },
-  { src: "/services/Site Preparations.jpeg", title: "Land Leveling", category: "Projects" },
-  { src: "/gallery/photos/Equipments for Hire.jpg", title: "Fleet Ready for Hire", category: "Machinery" },
-  { src: "/gallery/photos/about-excavator-premium.png", title: "Premium Excavator", category: "Machinery" },
-  { src: "/gallery/photos/cbn.avif", title: "Heavy Construction Machinery", category: "Machinery" },
-  { src: "/gallery/photos/image.webp", title: "Site Operations", category: "Projects" },
-  { src: "/gallery/photos/image2.jpg", title: "Earthmoving in Action", category: "Projects" },
+  { src: "/gallery/photos/Rock Excavations.avif", title: "Dozer Clearing Broken Rock", category: "Machinery" },
+  { src: "/gallery/photos/Equipments for Hire.jpg", title: "Crawler Drill Rig", category: "Machinery" },
+  { src: "/gallery/photos/cbn.avif", title: "Excavator Loading Aggregate", category: "Machinery" },
+  { src: "/gallery/photos/image2.jpg", title: "Excavator on Excavation Site", category: "Machinery" },
 ] as const;
 
 export const NEW_GALLERY_PHOTOS = Array.from({ length: 15 }, (_, i) => ({
@@ -279,18 +276,18 @@ export const SERVICE_AREAS = [
 ] as const;
 
 export const MACHINERY = [
-  { name: "Excavators", desc: "For large-scale digging, trenching, and grading.", category: "Excavation" },
-  { name: "Dumpers", desc: "To efficiently transport materials and debris across the site.", category: "Transport" },
-  { name: "Dewatering Pumps", desc: "For efficient water removal from excavation sites and trenches.", category: "Support" },
-  { name: "Backhoe", desc: "A versatile machine for digging, lifting, and handling materials.", category: "Excavation" },
-  { name: "Wagon Drills", desc: "Ideal for creating precise boreholes for blasting and excavation work.", category: "Drilling & Blasting" },
-  { name: "Explosives Mobile Magazines", desc: "Secure storage for explosives, ensuring safe and controlled blasting operations.", category: "Drilling & Blasting" },
-  { name: "Blasting Mats / Rubber Mats", desc: "Used to control flying debris during hard rock blasting.", category: "Drilling & Blasting" },
-  { name: "Water Tanker with Sprinklers", desc: "To control dust and keep the site hydrated.", category: "Support" },
-  { name: "Seismographs", desc: "Essential for stringent monitoring during controlled blasting, ensuring safety and compliance.", category: "Drilling & Blasting" },
-  { name: "Dozers", desc: "Powerful machines for clearing land, grading, and pushing materials.", category: "Excavation" },
-  { name: "Pile Load Testing Equipment", desc: "Used to test the load-bearing capacity of piles in foundation construction.", category: "Specialized" },
-  { name: "Hydraulic Rotary Rig", desc: "Used for drilling, especially in challenging ground conditions, for precise boreholes.", category: "Drilling & Blasting" },
-  { name: "Diamond Rope Cutting Units", desc: "Specialized cutting equipment for precise and clean cuts in tough materials.", category: "Specialized" },
-  { name: "Jack Hammer Drills", desc: "Used for heavy-duty drilling in tough ground conditions.", category: "Drilling & Blasting" },
+  { name: "Excavators", icon: "excavator", desc: "For large-scale digging, trenching, and grading.", category: "Excavation" },
+  { name: "Dumpers", icon: "dumper", desc: "To efficiently transport materials and debris across the site.", category: "Transport" },
+  { name: "Dewatering Pumps", icon: "dewatering-pump", desc: "For efficient water removal from excavation sites and trenches.", category: "Support" },
+  { name: "Backhoe", icon: "backhoe", desc: "A versatile machine for digging, lifting, and handling materials.", category: "Excavation" },
+  { name: "Wagon Drills", icon: "wagon-drill", desc: "Ideal for creating precise boreholes for blasting and excavation work.", category: "Drilling & Blasting" },
+  { name: "Explosives Mobile Magazines", icon: "explosives-magazine", desc: "Secure storage for explosives, ensuring safe and controlled blasting operations.", category: "Drilling & Blasting" },
+  { name: "Blasting Mats / Rubber Mats", icon: "blasting-mat", desc: "Used to control flying debris during hard rock blasting.", category: "Drilling & Blasting" },
+  { name: "Water Tanker with Sprinklers", icon: "water-tanker", desc: "To control dust and keep the site hydrated.", category: "Support" },
+  { name: "Seismographs", icon: "seismograph", desc: "Essential for stringent monitoring during controlled blasting, ensuring safety and compliance.", category: "Drilling & Blasting" },
+  { name: "Dozers", icon: "dozer", desc: "Powerful machines for clearing land, grading, and pushing materials.", category: "Excavation" },
+  { name: "Pile Load Testing Equipment", icon: "pile-load-test", desc: "Used to test the load-bearing capacity of piles in foundation construction.", category: "Specialized" },
+  { name: "Hydraulic Rotary Rig", icon: "rotary-rig", desc: "Used for drilling, especially in challenging ground conditions, for precise boreholes.", category: "Drilling & Blasting" },
+  { name: "Diamond Rope Cutting Units", icon: "rope-saw", desc: "Specialized cutting equipment for precise and clean cuts in tough materials.", category: "Specialized" },
+  { name: "Jack Hammer Drills", icon: "jack-hammer", desc: "Used for heavy-duty drilling in tough ground conditions.", category: "Drilling & Blasting" },
 ] as const;

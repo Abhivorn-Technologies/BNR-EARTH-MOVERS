@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import { SERVICES } from "@/lib/constants";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -9,6 +10,13 @@ export async function generateStaticParams() {
   return SERVICES.map((service) => ({
     slug: service.id,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const service = SERVICES.find((s) => s.id === decodeURIComponent(slug).toLowerCase());
+  if (!service) return { title: "Service not found" };
+  return pageMetadata(service.title, service.description, `/services/${service.id}`);
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {

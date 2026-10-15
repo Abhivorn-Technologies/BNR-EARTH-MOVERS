@@ -26,7 +26,7 @@ export default function NotFound() {
 
         {/* Description text */}
         <p className="text-[15px] sm:text-base text-slate-500 leading-relaxed mb-6 max-w-[320px] mx-auto font-medium">
-          We couldn't find the page you were looking for. Please check the URL or return to the homepage.
+          We couldn&rsquo;t find the page you were looking for. Please check the URL or return to the homepage.
         </p>
 
         {/* Return Button */}
