@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SITE } from "@/lib/constants";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `${SITE.name} — Earthmoving, Excavation & Demolition`,
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE.name} — Rock Cutting, Blasting & Excavation`,
+    template: `%s | ${SITE.name}`,
+  },
+  alternates: { canonical: "/" },
+  openGraph: {
+    siteName: SITE.name,
+    locale: "en_IN",
+    type: "website",
+    images: [{ url: "/opengraph-image.jpg", width: 1200, height: 630, alt: SITE.name }],
+  },
   description: SITE.description,
   keywords: [
     "BNR Earth Movers",
