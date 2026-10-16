@@ -63,8 +63,12 @@ export function ServiceArea() {
             className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-2xl aspect-square md:aspect-video lg:aspect-[4/3] w-full"
           >
             <iframe
-              title={`Map of ${activeArea}`}
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(activeArea === 'Chandanagar' ? 'Chandanagar, Hyderabad, India' : activeArea + ', India')}&z=${activeArea === 'Andhra Pradesh' || activeArea === 'Telangana' ? 6 : activeArea === 'Chandanagar' ? 13 : 10}&output=embed`}
+              title={activeArea === "Chandanagar" ? `Map of ${SITE.chandanagarLabel}` : `Map of ${activeArea}`}
+              src={
+                activeArea === "Chandanagar"
+                  ? `https://maps.google.com/maps?q=${SITE.chandanagarCoords.lat},${SITE.chandanagarCoords.lng}&z=16&output=embed`
+                  : `https://maps.google.com/maps?q=${encodeURIComponent(activeArea + ", India")}&z=${activeArea === "Andhra Pradesh" || activeArea === "Telangana" ? 6 : 10}&output=embed`
+              }
               width="100%"
               height="100%"
               className="border-0 filter invert-[90%] hue-rotate-180 contrast-[1.1] grayscale-[20%]"
@@ -73,6 +77,17 @@ export function ServiceArea() {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </motion.div>
+          {activeArea === "Chandanagar" && (
+            <a
+              href={SITE.chandanagarMapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-white transition-colors lg:col-start-2"
+            >
+              <MapPin className="h-4 w-4 shrink-0" />
+              {SITE.chandanagarLabel}. Open in Google Maps
+            </a>
+          )}
         </div>
       </div>
     </AnimatedSection>
