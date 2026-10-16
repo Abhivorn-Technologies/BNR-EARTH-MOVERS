@@ -111,25 +111,37 @@ export default function MachineryPage() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-accent/50 hover:shadow-lg hover:shadow-slate-300/40"
               >
-                {/* Icon panel */}
-                <div className="relative flex h-36 items-center sm:h-44 justify-center overflow-hidden bg-slate-950">
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 opacity-[0.07]"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
-                      backgroundSize: "16px 16px",
-                    }}
-                  />
-                  <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1 bg-accent" />
-                  <MachineryIcon
-                    name={item.icon}
-                    size={124}
-                    strokeWidth={1.8}
-                    className="relative text-accent transition-transform duration-500 group-hover:-translate-y-1 motion-reduce:transition-none"
-                  />
-                </div>
+                {"image" in item ? (
+                  <div className="relative h-36 overflow-hidden bg-slate-950 sm:h-44">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(min-width: 1280px) 300px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
+                    />
+                    <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1 bg-accent" />
+                  </div>
+                ) : (
+                  <div className="relative flex h-36 items-center sm:h-44 justify-center overflow-hidden bg-slate-950">
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 opacity-[0.07]"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
+                        backgroundSize: "16px 16px",
+                      }}
+                    />
+                    <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1 bg-accent" />
+                    <MachineryIcon
+                      name={item.icon}
+                      size={124}
+                      strokeWidth={1.8}
+                      className="relative text-accent transition-transform duration-500 group-hover:-translate-y-1 motion-reduce:transition-none"
+                    />
+                  </div>
+                )}
 
                 <div className="flex flex-1 flex-col p-6">
                   <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent-dark">{item.category}</p>

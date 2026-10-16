@@ -31,6 +31,10 @@ Sincerely,`)}`,
   phoneUrl: "tel:+919052136136",
   address: "Andhra Pradesh, Telangana & Major Hubs",
   availability: "24/7 Emergency Earthworks",
+  // Chanda Nagar location pin shared by the client.
+  chandanagarMapUrl: "https://maps.app.goo.gl/egUq2jpRPWEyd29v8",
+  chandanagarCoords: { lat: 17.490968, lng: 78.3241956 },
+  chandanagarLabel: "Rajiv Nagar, Chanda Nagar, Hyderabad, Telangana 500050",
 } as const;
 
 export const NAV_LINKS = [
@@ -276,18 +280,18 @@ export const SERVICE_AREAS = [
 ] as const;
 
 export const MACHINERY = [
-  { name: "Excavators", icon: "excavator", desc: "For large-scale digging, trenching, and grading.", category: "Excavation" },
-  { name: "Dumpers", icon: "dumper", desc: "To efficiently transport materials and debris across the site.", category: "Transport" },
+  { name: "Excavators", icon: "excavator", image: "/machinery/excavators.webp", imageAlt: "Illustration of Hitachi excavators digging and loading soil on a construction site", desc: "For large-scale digging, trenching, and grading.", category: "Excavation" },
+  { name: "Dumpers", icon: "dumper", image: "/machinery/dumpers.webp", imageAlt: "Illustration of an excavator loading a tipper dumper, with more dumpers hauling material", desc: "To efficiently transport materials and debris across the site.", category: "Transport" },
   { name: "Dewatering Pumps", icon: "dewatering-pump", desc: "For efficient water removal from excavation sites and trenches.", category: "Support" },
   { name: "Backhoe", icon: "backhoe", desc: "A versatile machine for digging, lifting, and handling materials.", category: "Excavation" },
   { name: "Wagon Drills", icon: "wagon-drill", desc: "Ideal for creating precise boreholes for blasting and excavation work.", category: "Drilling & Blasting" },
   { name: "Explosives Mobile Magazines", icon: "explosives-magazine", desc: "Secure storage for explosives, ensuring safe and controlled blasting operations.", category: "Drilling & Blasting" },
-  { name: "Blasting Mats / Rubber Mats", icon: "blasting-mat", desc: "Used to control flying debris during hard rock blasting.", category: "Drilling & Blasting" },
+  { name: "Blasting Mats / Rubber Mats", icon: "blasting-mat", image: "/machinery/blasting-mats.webp", imageAlt: "Illustration of rubber blasting mats chained over a blast area, with an excavator lifting another mat into place", desc: "Used to control flying debris during hard rock blasting.", category: "Drilling & Blasting" },
   { name: "Water Tanker with Sprinklers", icon: "water-tanker", desc: "To control dust and keep the site hydrated.", category: "Support" },
   { name: "Seismographs", icon: "seismograph", desc: "Essential for stringent monitoring during controlled blasting, ensuring safety and compliance.", category: "Drilling & Blasting" },
   { name: "Dozers", icon: "dozer", desc: "Powerful machines for clearing land, grading, and pushing materials.", category: "Excavation" },
   { name: "Pile Load Testing Equipment", icon: "pile-load-test", desc: "Used to test the load-bearing capacity of piles in foundation construction.", category: "Specialized" },
   { name: "Hydraulic Rotary Rig", icon: "rotary-rig", desc: "Used for drilling, especially in challenging ground conditions, for precise boreholes.", category: "Drilling & Blasting" },
-  { name: "Diamond Rope Cutting Units", icon: "rope-saw", desc: "Specialized cutting equipment for precise and clean cuts in tough materials.", category: "Specialized" },
+  { name: "Diamond Rope Cutting Units", icon: "rope-saw", image: "/machinery/diamond-rope-cutting-unit.webp", imageAlt: "Illustration of a diamond wire rope cutting machine slicing through a reinforced concrete block", desc: "Specialized cutting equipment for precise and clean cuts in tough materials.", category: "Specialized" },
   { name: "Jack Hammer Drills", icon: "jack-hammer", desc: "Used for heavy-duty drilling in tough ground conditions.", category: "Drilling & Blasting" },
 ] as const;
